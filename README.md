@@ -3,7 +3,7 @@
 
 ### Team Members | GitID | Email:
 * Tiffany LaRue | tiffanylarue | tiffanyullarue@gmail.com
-* Christopher Taylor | Bockslunch | Christopher.r.taylor46@gmail.com
+* Christopher Taylor | Bockslunch | christopher.r.taylor46@gmail.com
 * Ahmed Khan | ak3689 | ahmed.khan0470@gmail.com
 * Mitchell Avery | avery-mr | averymr2484@gmail.com
 * Eric McAfee | EricCMcAfee | eric.c.mcafee@gmail.com
