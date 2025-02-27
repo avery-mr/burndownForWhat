@@ -15,7 +15,15 @@ Sundays @ 5:00 PM MT
 To create a world where every climber has access to a safe and reliable belay partner, fostering a vibrant and inclusive climbing community that empowers individuals to reach new heights. We envision Belay Buddy as the go-to platform for climbers to connect, build relationships, and confidently pursue their passion for climbing, whether on real rock or in the gym. By simplifying the process of finding partners and promoting safety and trust, Belay Buddy will break down barriers to entry, encourage participation, and strengthen the bonds within the climbing community.
 
 ### Motivation
-To build a full stack web application that applies the course material including: authentication, a database, and a simple API. In addition to learning technologies, we will also focus on design, planning, development, and testing in the context of group collaboration. While the principal goal will be to create something earning an ‘A’  in CSPB3308, many have also expressed interest in building something for our respective GitHub repos for resume building.
+Problem/need: The problem/need our project addresses is the inefficiency in finding a climbing “buddy”. Usually, partners are difficult to find, and if we match up partners using a website then it will be a way to bring the climbing community closer together as well as allow faster matchups between climbing partners.
+
+Significance: The significance of this problem is that many climbing enthusiasts cannot find a partner, as different online groups/communities may exist and be hard to find. By centralizing these communities within one website, it will make it easier to find a belay buddy instead of having to reach out to individual groups as there will be one centralized website where everyone can access and quickly find a climbing partner. If someone is traveling to a new state, they will be able to be matched up for the time/location of interest.
+
+Passion/personal connection: Many within our group are rock climbing enthusiasts who would like to see the climbing community strengthened in their local areas/communities.
+
+Broader impact/long-term vision: long term, Belay Buddy will become a reliable source of finding partners within the climbing community, allowing safe access for people to meet up. One day, Belay Buddy may be used to match up people based on location of interest, intensity of the climbing activity, and other things such as level of comfort/training or experience with climbing (such as being a novice/beginner vs. an expert).
+
+Other personal motivations: To build a full stack web application that applies the course material including: authentication, a database, and a simple API. In addition to learning technologies, we will also focus on design, planning, development, and testing in the context of group collaboration.
 
 ### Risks and Mitigation Strategy
 * __Scalability__
