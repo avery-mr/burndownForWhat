@@ -1,4 +1,30 @@
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## 02/24/2025
+
+### Summary:
+We conducted our weekly standup (notes below).
+### Standup Notes:
+* __What the team worked on last week__
+  * Most team members spent their time on the lab/individual content.
+  * Tiffany started drafting user stories and started work on the project page layout using "Figma".
+    * She noted a few additional features/enhancements that could be in scope for BelayBuddy, including:
+      * Gear exchange
+      * User weight for safe belaying (profile page)
+      * Experience level (profile page)
+* __What the team will work on this week__
+  * The team will continue to progress their individual work and explore gaps in their knowledge to ensure they are prepared for the group project.
+  * Each team member to review the Figma file shared by Tiffany: https://www.figma.com/design/SOnJDH0yk6nr3qUDyMeQ7q/BelayBuddy-App?node-id=0-1&p=f
+    * We will track additional changes and edits in Google Slides.
+  * We will complete Project Milestone 4.
+    * Eric has provided the weekly minutes (here).
+    * Mitchell will add these minutes as well as a screenshot of the Trello board to the repo ReadMe.
+    * Ahmed to add the updated project motivation to the repo ReadMe.
+    * Tiffany will submit the assignment on behalf of the group.
+* __Do you have any blockers?__
+  * The team expressed some ambiguity about the project milestones and upcoming activities.
+  * The team agreed that the instructions for Lab 6 are challenging to understand.
+  * Christopher and Mitchell shared that they have tests for other classes this week.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 02/17/2025
 
 ### Summary:
