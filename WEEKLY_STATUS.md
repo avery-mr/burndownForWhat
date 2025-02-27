@@ -6,7 +6,7 @@
 ### Summary:
 We conducted our weekly standup (notes below).
 ### Standup Notes:
-* __What the team worked on last week__
+* __What did the team work on last week?__
   * Most team members spent their time on the lab/individual content.
   * Tiffany started drafting user stories and designing a prototype for the web pages layout using "Figma".
     * She noted a few additional features/enhancements that could be in scope for BelayBuddy, including:
@@ -14,7 +14,7 @@ We conducted our weekly standup (notes below).
       * User weight for safe belaying (profile page)
       * Experience level (profile page)
   * Chris started identifying what data will need to be captured and added some user stories. 
-* __What the team will work on this week__
+* __What will the team work on this week?__
   * The team will continue to progress their individual work and explore gaps in their knowledge to ensure they are prepared for the group project.
   * Team members who have experience with rock climbing will contribute to user interviews, and Chris will check with rock climber friends about what functionality they would like.
   * Each team member will review the Figma file shared by Tiffany: https://www.figma.com/design/SOnJDH0yk6nr3qUDyMeQ7q/BelayBuddy-App?node-id=0-1&p=f
