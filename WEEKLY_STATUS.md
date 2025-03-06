@@ -1,4 +1,25 @@
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## 03/03/2025
+
+### Summary:
+We conducted our weekly standup (notes below).
+### Standup Notes:
+* __What did the team work on last week?__
+  * Tiffany moved her Figma work to the google slides for easier collaboration.
+  * Chris added additional user stories to our project and worked on the initial schema for the database.
+* __What will the team work on this week?__
+  * Eric to update the web pages design slide deck on google drive.
+  * Mitchell to begin thinking of adding Flask routes.
+* __Do you have any blockers?__
+  *	The team shared challenges with their understanding of APIs and the difficulty of this material.
+### Upcoming:
+* Exam 1 is due this Friday
+* Milestone 4 will be due next week.
+### Other Actions:
+* Mitchell to update the status .md file with new minutes
+* Eric and Mitchell to meed Wednesday at 6:00 MT to work on project activites
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 02/24/2025
 
 <img width="850" alt="image" src="https://github.com/user-attachments/assets/4bdcab46-4736-4492-b7b4-e5195c5d31e9" />
