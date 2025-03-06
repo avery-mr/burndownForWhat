@@ -2,7 +2,7 @@
 
 ### Home/Landing
 * __Description__ 
-
+First page after successful login.  Contains links all other pages.  May contain climbing news, weather for user's favorite climbing area, user submtitted climbing photos.
 * __Required Parameters__
 
 * __Required Data__
