@@ -12,7 +12,7 @@ First page after successful login.  Contains links to all other pages.  May cont
 * __List of tests for verifying the rendering of the page__
 
 ### Profile Page
-* __Description__ 
+* __Description:__ 
 
 * __Required Parameters__
 
@@ -23,7 +23,7 @@ First page after successful login.  Contains links to all other pages.  May cont
 * __List of tests for verifying the rendering of the page__
 
 ### Find a Buddy
-* __Description__ 
+* __Description:__ 
 
 * __Required Parameters__
 
@@ -34,7 +34,7 @@ First page after successful login.  Contains links to all other pages.  May cont
 * __List of tests for verifying the rendering of the page__
 
 ### My Buddies
-* __Description__ 
+* __Description:__ 
 
 * __Required Parameters__
 
@@ -45,7 +45,7 @@ First page after successful login.  Contains links to all other pages.  May cont
 * __List of tests for verifying the rendering of the page__
 
 ### Create an Event
-* __Description__ 
+* __Description:__ 
 
 * __Required Parameters__
 
@@ -56,7 +56,7 @@ First page after successful login.  Contains links to all other pages.  May cont
 * __List of tests for verifying the rendering of the page__
 
 ### Find an Event
-* __Description__ 
+* __Description:__ 
 
 * __Required Parameters__
 
@@ -67,7 +67,7 @@ First page after successful login.  Contains links to all other pages.  May cont
 * __List of tests for verifying the rendering of the page__
 
 ### Gear Swap (WIP)
-* __Description__ 
+* __Description:__ 
 
 * __Required Parameters__
 
