@@ -23,8 +23,8 @@ First page after successful login.  Contains links to all other pages.  May cont
       * trad
       * ice  
     * location
-  * bragging wall acomplishments
-  * favorite climbing
+  * bragging wall/acomplishments
+  * favorite routes
   * routes bucket list 
 
 * __Required Parameters__
