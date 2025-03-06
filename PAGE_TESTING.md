@@ -1,6 +1,6 @@
 # Design
 
-### Page 1 Title
+### Home/Landing
 * __Description__ 
 
 * __Required Parameters__
@@ -11,7 +11,7 @@
 
 * __List of tests for verifying the rendering of the page__
 
-### Page 2 Title
+### Profile Page
 * __Description__ 
 
 * __Required Parameters__
@@ -22,7 +22,7 @@
 
 * __List of tests for verifying the rendering of the page__
 
-### Page 3 Title
+### Find a Buddy
 * __Description__ 
 
 * __Required Parameters__
@@ -33,7 +33,7 @@
 
 * __List of tests for verifying the rendering of the page__
 
-### Page 4 Title
+### My Buddies
 * __Description__ 
 
 * __Required Parameters__
@@ -44,7 +44,7 @@
 
 * __List of tests for verifying the rendering of the page__
 
-### Page 5 Title
+### Create an Event
 * __Description__ 
 
 * __Required Parameters__
@@ -54,3 +54,27 @@
 * __Link Destinations for Page__
 
 * __List of tests for verifying the rendering of the page__
+
+### Find an Event
+* __Description__ 
+
+* __Required Parameters__
+
+* __Required Data__
+
+* __Link Destinations for Page__
+
+* __List of tests for verifying the rendering of the page__
+
+  ### Gear Swap (WIP)
+* __Description__ 
+
+* __Required Parameters__
+
+* __Required Data__
+
+* __Link Destinations for Page__
+
+* __List of tests for verifying the rendering of the page__
+
+
