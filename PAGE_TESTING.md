@@ -12,7 +12,20 @@ First page after successful login.  Contains links to all other pages.  May cont
 * __List of tests for verifying the rendering of the page__
 
 ### Profile Page
-* __Description:__ 
+* __Description__ 
+  * Basic user data/stats
+    * name 
+    * height
+    * weight
+    * climbing type
+      * sport
+      * sport/lead
+      * trad
+      * ice  
+    * location
+  * bragging wall acomplishments
+  * favorite climbing
+  * routes bucket list 
 
 * __Required Parameters__
 
