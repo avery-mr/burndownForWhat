@@ -66,7 +66,7 @@
 
 * __List of tests for verifying the rendering of the page__
 
-  ### Gear Swap (WIP)
+### Gear Swap (WIP)
 * __Description__ 
 
 * __Required Parameters__
