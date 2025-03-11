@@ -39,7 +39,7 @@ First page after successful login.  Contains links to all other pages.  May cont
 * __List of tests for verifying the rendering of the page__
 
 ### Find a Buddy
-* __Description:__ Will host a form to collect additional data for pairing up fellow users. Form will need to gather:
+* __Description:__  Will host a form to collect additional data for pairing up fellow users. Form will need to gather:
   * Dates available
   * Location options
   * Specific route targets
@@ -67,7 +67,8 @@ First page after successful login.  Contains links to all other pages.  May cont
 
 ### The Crag
 * __Description:__ 
-Allows users to publish climbing stories with photos to a public forum/wall space (think isntagram with one shared feed). Users can posts narratives or even simple reviews of routes and conditions they witnessed on their last outing.
+  * Allows users to publish climbing stories with photos to a public forum/wall space (think isntagram with one shared feed).
+  * Users can posts narratives or even simple reviews of routes and conditions they witnessed on their last outing.
 * __Required Parameters__
 
 * __Required Data__
