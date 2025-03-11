@@ -41,9 +41,9 @@ First page after successful login.  Contains links to all other pages.  May cont
 ### Find a Buddy
 * __Description:__
 Will host a form to collect additional data for pairing up fellow users. Form will need to gather:
-* Dates available
-* Location options
-* Specific route targets
+ * Dates available
+ * Location options
+ * Specific route targets
 
 * __Required Parameters__
 
@@ -55,9 +55,9 @@ Will host a form to collect additional data for pairing up fellow users. Form wi
 
 ### My Buddies
 * __Description:__ 
- * Displays a list of added climbing partners.
- * Allows user to track availability and maintain connections
- * Provids shortcuts for messaging and planning climbs
+  * Displays a list of added climbing partners.
+  * Allows user to track availability and maintain connections
+  * Provids shortcuts for messaging and planning climbs
 * __Required Parameters__
 
 * __Required Data__
@@ -80,7 +80,7 @@ Allows users to publish climbing stories with photos to a public forum/wall spac
 
 ### Gear Swap (WIP)
 * __Description:__ 
- * Platform for users to buy, sell, or trade climbing gear
+  * Platform for users to buy, sell, or trade climbing gear
 * __Required Parameters__
 
 * __Required Data__
