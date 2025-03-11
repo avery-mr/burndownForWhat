@@ -31,13 +31,25 @@ First page after successful login.  Contains links to all other pages.  May cont
   * routes bucket list 
 
 * __Required Parameters__
+  * User authentication?
+  * Profile ID for retrieving user data.
 
 * __Required Data__
-
+  * Name, height, weight
+  * Climbing type preference
+  * Home location
+  * Experience level
+  * Favorite routes and bucket lists
+  * Profile picture
 * __Link Destinations for Page__
-
+  * Find a Buddy
+  * My Buddies
+  * The Crag
 * __List of tests for verifying the rendering of the page__
-
+  * Validate correct profile data loads for user
+  * Verify images display properly
+  * Ensure updates save correctly
+  * 
 ### Find a Buddy
 * __Description:__  Will host a form to collect additional data for pairing up fellow users. Form will need to gather:
   * Dates available
