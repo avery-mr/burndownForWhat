@@ -39,11 +39,10 @@ First page after successful login.  Contains links to all other pages.  May cont
 * __List of tests for verifying the rendering of the page__
 
 ### Find a Buddy
-* __Description:__
-Will host a form to collect additional data for pairing up fellow users. Form will need to gather:
- * Dates available
- * Location options
- * Specific route targets
+* __Description:__ Will host a form to collect additional data for pairing up fellow users. Form will need to gather:
+  * Dates available
+  * Location options
+  * Specific route targets
 
 * __Required Parameters__
 
