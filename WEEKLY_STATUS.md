@@ -1,3 +1,23 @@
+## 03//10/2025
+
+### Summary:
+* We discussed our understanding of Lab 8 and shared a few ideas and things we learned from completing it.
+* We reviewed the requirements of Milestone 4 and assigned tasks for completion of this by the due date (upcoming Thursday).
+### Actions:
+* Each team member to complete a page of the Web Page Design Document __-due Wednesday__
+  * The document has already been created in the repo: [Page_Test.md](page_testing.md)
+  * __Eric__ - Climber Search - "Find a Buddy"
+  * __Tiffay__ - View My Buddies / Messages
+  * __Christopher__ - Landing Page
+  * __Mitchell__ - Profile Page
+  * __Ahmed__ - The Crag
+* __Mitchell__ to update Weekly_Status.md with minute from the week.
+* __Tiffany__ to submit Milestone 4 on the group's behalf - __due Thursday__
+* __Christopher, Tiffany__ to share clarifications from the office hours to the quetions below:
+  * What parameters are required for milestone 4?
+  * What type of 'login' functionality is required for milestone 4?
+  * General questions regarding the requirements for each page.
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 03/03/2025
 
@@ -18,7 +38,6 @@ We conducted our weekly standup (notes below).
 ### Other Actions:
 * Mitchell to update the status .md file with new minutes
 * Eric and Mitchell to meed Wednesday at 6:00 MT to work on project activites
-
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 02/24/2025
 
