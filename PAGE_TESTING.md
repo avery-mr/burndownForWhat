@@ -1,5 +1,7 @@
 # Design
 
+[Google Slides - Page Design](https://docs.google.com/presentation/d/1ncAmPZ-siARAbuOKce5822HwWyBCqII-jvZPaDD3iIg/edit?usp=sharing)
+
 ### Home/Landing
 * __Description:__ 
 First page after successful login.  Contains links to all other pages.  May contain climbing news, weather for user's favorite climbing area, user submtitted climbing photos.
