@@ -6,10 +6,15 @@ First page after successful login.  Contains links to all other pages.  May cont
 * __Required Parameters__
 
 * __Required Data__
-
+  * Username
+  * Carry username on to other pages
+  * Logo, Go image, and username input
 * __Link Destinations for Page__
-
+  * Login action links to Profile Page
 * __List of tests for verifying the rendering of the page__
+  * Ensure logo and login form loads correctly
+  * Username correctly logs in
+  * GO links to Profile page
 
 ### Profile Page
 * __Description__
@@ -55,11 +60,10 @@ First page after successful login.  Contains links to all other pages.  May cont
   * Dates available
   * Location options
   * Specific route targets
-
 * __Required Parameters__
-
+  * User name or ID
 * __Required Data__
-
+  * 
 * __Link Destinations for Page__
 
 * __List of tests for verifying the rendering of the page__
@@ -67,26 +71,36 @@ First page after successful login.  Contains links to all other pages.  May cont
 ### My Buddies
 * __Description:__ 
   * Displays a list of added climbing partners.
-  * Allows user to track availability and maintain connections
-  * Provids shortcuts for messaging and planning climbs
+  * Allows user to track availability and maintain connections.
+  * Contains conversation history with each buddy and allows new messages to be added.
 * __Required Parameters__
-
+  * Name or ID of logged in user
+  * Buddy that user clicks in Buddy Seach
 * __Required Data__
-
+  * Buddies
+  * Message history with each buddy
 * __Link Destinations for Page__
-
+  * My profile, buddy profiles
+  * Find a Buddy
+  * The Crag
+  * Logout
 * __List of tests for verifying the rendering of the page__
+  * Buddies showing up correctly
+  * All messages listed in descending order by date
 
 ### The Crag
 * __Description:__ 
   * Allows users to publish climbing stories with photos to a public forum/wall space (think isntagram with one shared feed).
   * Users can posts narratives or even simple reviews of routes and conditions they witnessed on their last outing.
 * __Required Parameters__
-
+  * Name or ID of logged in User
 * __Required Data__
-
+  * Photos/images of climbing stories
+  * Narratives/personal stories of last outing
 * __Link Destinations for Page__
-
+  * Ensure that images render correctly
+  * Personal stories are correctly displayed
+  * Other people are able to access the website and add their own stories to the public forum
 * __List of tests for verifying the rendering of the page__
 
 
