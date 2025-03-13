@@ -123,17 +123,3 @@ First page after successful login.  Contains links to all other pages.  May cont
     * Adventure should then display
     * Ensure filters, etc work
   * Anyone is able to access the website.  After logging in with valid user credentials, they are then able to add their stories to the public forum
-
-
-### Gear Swap (WIP - TODO)
-* __Description:__ 
-  * Platform for users to buy, sell, or trade climbing gear
-* __Required Parameters__
-
-* __Required Data__
-
-* __Link Destinations for Page__
-
-* __List of tests for verifying the rendering of the page__
-
-
