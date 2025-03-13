@@ -78,7 +78,7 @@ First page after successful login.  Contains links to all other pages.  May cont
   * Enter a new request, refresh, assert this populated on the pending table
   * Visit pending request, confirm a match, assert this request moves to the confirmed requests table
   
-### My Buddies
+### My Buddies / Messages
 * __Description:__ 
   * Displays a list of added climbing partners.
   * Allows user to track availability and maintain connections.
