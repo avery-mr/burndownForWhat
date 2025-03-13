@@ -63,13 +63,21 @@ First page after successful login.  Contains links to all other pages.  May cont
   * Location options
   * Specific route targets
 * __Required Parameters__
-  * User name or ID
+  * User name or ID - used to retrieve data on another table for pending and confirmed resquest records.
 * __Required Data__
-  * 
+  * Date range
+  * Time range
+  * Locations (multiple values)
+  * Climbing type
 * __Link Destinations for Page__
-
+  * My Profile, Find a Buddy, The Crag, Logout
+  * Submit - links to the results of other requests that "match" your submission"
+    * Clicking on any pending request should also bring up this same page
 * __List of tests for verifying the rendering of the page__
-
+  * Ensure pending and confirmed requests all display
+  * Enter a new request, refresh, assert this populated on the pending table
+  * Visit pending request, confirm a match, assert this request moves to the confirmed requests table
+  
 ### My Buddies
 * __Description:__ 
   * Displays a list of added climbing partners.
