@@ -100,8 +100,13 @@ First page after successful login.  Contains links to all other pages.  May cont
 
 ### The Crag
 * __Description:__ 
-  * Allows users to publish climbing stories with photos to a public forum/wall space (think isntagram with one shared feed).
-  * Users can posts narratives or even simple reviews of routes and conditions they witnessed on their last outing.
+  * Page displays reviews, stories and photos of various individual's rock climbing adventures
+  * Individuals will be able to share a new adventure
+  * Ideally, there will be a way to filter out the posts on the page by:
+    * indoor vs outdoor
+    * geographical location
+    * date
+    * etc.
 * __Required Parameters__
   * Name or ID of logged in User
 * __Required Data__
@@ -112,9 +117,15 @@ First page after successful login.  Contains links to all other pages.  May cont
   * Personal stories are correctly displayed
   * Other people are able to access the website and add their own stories to the public forum
 * __List of tests for verifying the rendering of the page__
+  * Ensure that the images display correctly after upload
+  * Personal stories are correctly shown on the website
+    * When a user uploads a new adventure, it should allow the user to input relevant information
+    * Adventure should then display
+    * Ensure filters, etc work
+  * Anyone is able to access the website.  After logging in with valid user credentials, they are then able to add their stories to the public forum
 
 
-### Gear Swap (WIP)
+### Gear Swap (WIP - TODO)
 * __Description:__ 
   * Platform for users to buy, sell, or trade climbing gear
 * __Required Parameters__
