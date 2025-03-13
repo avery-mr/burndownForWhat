@@ -1,4 +1,4 @@
-# Design
+# Web Pages Design
 
 [Google Slides - Page Design](https://docs.google.com/presentation/d/1ncAmPZ-siARAbuOKce5822HwWyBCqII-jvZPaDD3iIg/edit?usp=sharing)
 
