@@ -3,6 +3,7 @@
 [Google Slides - Page Design](https://docs.google.com/presentation/d/1ncAmPZ-siARAbuOKce5822HwWyBCqII-jvZPaDD3iIg/edit?usp=sharing)
 
 ### Home/Landing
+<img width="311" alt="image" src="https://github.com/user-attachments/assets/38d345de-cd40-4b2e-a3f0-a8be43862938" />
 * __Description:__ 
 First page after successful login.  Contains links to all other pages.  May contain climbing news, weather for user's favorite climbing area, user submtitted climbing photos.
 * __Required Parameters__
@@ -19,6 +20,7 @@ First page after successful login.  Contains links to all other pages.  May cont
   * GO links to Profile page
 
 ### Profile Page
+<img width="278" alt="image" src="https://github.com/user-attachments/assets/ce0be649-a9a2-4d5f-8632-57315eaf5d3b" />
 * __Description__
   * Users can create and manage their personal profiles
   * Profile fields include climbing experience, preferred climbing styles, favorite locations, and short bio
@@ -58,6 +60,7 @@ First page after successful login.  Contains links to all other pages.  May cont
   * Ensure updates save correctly
   * 
 ### Find a Buddy
+<img width="293" alt="image" src="https://github.com/user-attachments/assets/c49bee85-2028-4922-9b65-36b5b2e44cfc" />
 * __Description:__  Will host a form to collect additional data for pairing up fellow users. Form will need to gather:
   * Dates available
   * Location options
@@ -79,6 +82,7 @@ First page after successful login.  Contains links to all other pages.  May cont
   * Visit pending request, confirm a match, assert this request moves to the confirmed requests table
   
 ### My Buddies / Messages
+<img width="313" alt="image" src="https://github.com/user-attachments/assets/1116f95d-4b11-49d6-8d2c-97c2860b8cb8" />
 * __Description:__ 
   * Displays a list of added climbing partners.
   * Allows user to track availability and maintain connections.
@@ -99,6 +103,7 @@ First page after successful login.  Contains links to all other pages.  May cont
   * All messages listed in descending order by date
 
 ### The Crag
+<img width="126" alt="image" src="https://github.com/user-attachments/assets/35e4ae4e-7565-47e2-a501-ed6ca101dff9" />
 * __Description:__ 
   * Page displays reviews, stories and photos of various individual's rock climbing adventures
   * Individuals will be able to share a new adventure
