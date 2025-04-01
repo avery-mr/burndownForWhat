@@ -6,7 +6,7 @@
 
 ### Users
 **Description:** Stores user account and profile details  
-**Fields:**
+**Fields:**  
 - 'user_id'(INT, PRIMARY KEY, AUTO_INCREMENT): Unique user id
 - 'username' (VARCHAR): Display name
 - 'email' (VARCHAR): User email address
@@ -16,6 +16,13 @@
 - 'experience_level' (INT): User's experence level 
 - 'profile_pic': (TEXT): URL of user profile photo
 - 'bio' (TEXT)
+**Tests:**
+  - Insert a valid user and retrieve by ID
+  - Make sure user_id auto-increments properly
+  - Prevent duplicate usernames / emails?
+  - Make sure required fields are provided
+  - Update fields?
+  - Delete user?
 
 ### Climbing Styles  
 **Description:** List of all available climbing styles  
