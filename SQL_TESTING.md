@@ -15,7 +15,7 @@
 - 'location' (VARCHAR): User's home location
 - 'experience_level' (INT): User's experence level 
 - 'profile_pic': (TEXT): URL of user profile photo
-- 'bio' (TEXT)
+- 'bio' (TEXT)  
 **Tests:**
   - Insert a valid user and retrieve by ID
   - Make sure user_id auto-increments properly
