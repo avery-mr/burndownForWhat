@@ -16,6 +16,7 @@
 - 'experience_level' (INT): User's experence level 
 - 'profile_pic': (TEXT): URL of user profile photo
 - 'bio' (TEXT)  
+
 **Tests:**
   - Insert a valid user and retrieve by ID
   - Make sure user_id auto-increments properly
