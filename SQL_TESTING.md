@@ -68,3 +68,14 @@
 
 ## Database Access Methods
 
+### Table: Users
+**Access Method:** getUserProfile(user_id)
+  - **Use case name:** Retrieve full user profile for valid user ID
+  - **Description:** Test whether the correct profile is retrieved and displayed
+  - **Pre-Conditions:** User with ID exists in the database
+  - **Test steps:**
+    1. Call getUserProfile() with known user_id
+    2. Verify returned values against expected values
+  - **Expected Result:** Full user profile including any joined data (if we decide to use any) is returned
+  - **Actual result:**  Returned data matches expected structure and values
+  - **Post-conditions:** no changes to database.
