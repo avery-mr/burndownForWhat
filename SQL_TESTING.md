@@ -204,6 +204,14 @@
 
 ## Table Relationships
 
+- Login page connects to Users table and User profile page
+- User profile page connections:
+ 1. Connections table/page
+ 2. Requests table/page
+ 3. Messages table/page
+ 4. Locations table/page
+
+
 ## Database Access Methods
 
 ### Table: Users
