@@ -8,13 +8,12 @@
 **Description:** Stores user account and profile details  
 **Fields:**  
 - 'user_id'(INT, PRIMARY KEY, AUTO_INCREMENT): Unique user id
-- 'username' (VARCHAR): Display name
-- 'email' (VARCHAR): User email address
+- 'username' (VARCHAR UNIQUE NON NULL): Display name
+- 'email' (VARCHAR UNIQUE NON NULL): User email address
 - 'height' (INT): User height
 - 'weight' (INT): User weight
-- 'location' (VARCHAR): User's home location
-- 'experience_level' (INT): User's experence level 
-- 'profile_pic': (TEXT): URL of user profile photo
+- 'location' (VARCHAR NON NULL): User's home location
+- 'experience' (ENUM('1', '2', '3', '4', '5') NON NULL: User's experience level (1 lowest, 5 highest)
 - 'bio' (TEXT)  
 
 **Tests:**
@@ -25,15 +24,60 @@
   - Update fields?
   - Delete user?
 
-### Buddy Requests
-**Description:** Holds current and past requests   
+### Requests
+**Description:** Holds current and past connection requests   
 **Fields:**
-- 'request_id' (INT, PRIMARY KEY)
-- 'user_id' (INT, FOREIGN KEY)
-- 'date' (DATE)
-- 'Location' (VARCHAR)
-- 'type' (VARCHAR): type (style) of climb?
-- 'status' (VARCHAR)    e.g. 'open', 'matched', 'declined', etc
+- 'RequestID' INT PRIMARY KEY AUTO_INCREMENT
+- 'SenderID' INT FOREIGN KEY References Users(user_id)
+- 'ReceiverID' INT FOREIGN KEY References Users(user_id)
+- 'DateTime' DATETIME NON NULL
+- 'Location' VARCHAR
+- 'Status' ENUM('open', 'matched', 'declined')
+
+**Tests**
+Use case name : 
+	Verify friend request is sent from one user to another 
+Description:
+	Test Buddy Request page 
+Pre-conditions (what needs to be true about the system before the test can be applied):
+        Both users have valid Users(user_id)
+Test steps:
+        1. Navigate to Buddy Request page
+        2. Provide valid user name for receiver
+        4. Click Send button
+Expected result:
+        User should be able to send friend request
+Actual result (when you are testing this, how can you tell it worked):
+        Friend request is sent to other user and logged in database
+Status (Pass/Fail, when this test was performed)
+        TBD
+Notes:
+        N/A
+Post-conditions (what must be true about the system when the test has completed successfully):
+        UserIDs are validated with Users table and request message successfully sent from Sender to Receiver
+        The 2 UserIDs,request message, datetime, and status details are logged in database.
+
+Use case name : 
+	Verify friend request is sent from one user to another 
+Description:
+	Test Buddy Request page 
+Pre-conditions (what needs to be true about the system before the test can be applied):
+        Both users have valid Users(user_id)
+Test steps:
+        1. Navigate to Buddy Request page
+        2. Provide valid user name for receiver
+        4. Click Send button
+Expected result:
+        User should be able to send friend request
+Actual result (when you are testing this, how can you tell it worked):
+        Friend request is sent to other user and logged in database
+Status (Pass/Fail, when this test was performed)
+        TBD
+Notes:
+        N/A
+Post-conditions (what must be true about the system when the test has completed successfully):
+        UserIDs are validated with Users table and request message successfully sent from Sender to Receiver
+        The 2 UserIDs,request message, datetime, and status details are logged in database.
 
 ### Messages  
 **Description:** chat or message history between buddies  
@@ -43,6 +87,8 @@
 - ReceiverID INT NON NULL
 - Text TEXT NON NULL
 - DateTime DATETIME NON NULL
+  FOREIGN KEY SenderID REFERENCES Users(user_id)
+  FOREIGN KEY ReceiverID REFERENCES Users(user_id)
 
 **Test:**
 - Use case name: 
@@ -66,16 +112,12 @@
 	- The new message is added to the screen for the relevant buddy.
 	- The new message is logged in the Messages table in the database.
 
-### The Crag  
-**Description:** Forum style posts or feed style posts on 'the Crag' page (stories, pics, etc)  
+### Connections  
+**Description:** List of friends that user has connected with, used for easy meetup/climb requests
 **Fields:**
-- 'post_id' (INT, PRIMARY-KEY)
-- 'user_id' (INT, *from users(user_id)*)
-- 'title' (VARCHAR)
-- 'story' (TEXT)
-- 'photo_url' (TEXT)
-- 'location' (VARCHAR)
-- 'date' (date/time?),
+- 'user_id' (INT FOREIGN KEY REFERENCES Users(user_id))
+- 'friend_id' (INT FOREIGN KEY REFERENCES Users(user_id))
+- PRIMARY KEY (user_id, friend_id)
 
 ## Table Relationships
 
