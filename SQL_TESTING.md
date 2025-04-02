@@ -202,6 +202,36 @@
  	- Connections Table updated with new delete of UserID and BuddyID data of specific connection
 	- Neither user sees the deleted connection on their respective pages
 
+### Locations  
+**Description:** List of locations where users can go to climb
+**Fields:**
+- 'LocationID' INT PRIMARY KEY: LocationID for each unique location
+- 'Name' VARCHAR NON NULL: Name of climbing location
+- 'Type' VARCHAR NON NULL: type of climbing location (gym, bouldering, sport, traditional, ice, mixed, etc.)
+- 'Rating' INT CHECK (Rating BETWEEN 1 AND 10): User-provided ratings of the location
+- 'Notes' TEXT: User-written notes about the location
+
+ - Use case name: 
+	- Search for a climbing Location by type
+- Description:
+	- Verify that user can find a Location for their desired type of climbing
+- Pre-conditions:
+	- User must be valid user in Users table
+ 	- Location must exist in Locations table
+- Test steps:  
+	1. Navigate to Locations page
+	2. Select a Type from list
+ 	3. Click Search button
+- Expected result:
+	- Locations with desired Type should appear in the list
+- Actual result:
+	- TBD
+- Notes:
+	- N/A
+- Post-conditions:
+	- Locations with desired Type should appear on Locations page
+ 	- Search logged in database
+
 ## Table Relationships
 
 - Login page connects to Users table and User profile page
