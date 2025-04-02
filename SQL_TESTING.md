@@ -7,7 +7,7 @@
 ### Users
 **Description:** Stores user account and profile details
 **Fields:**  
-- 'UserID'INT PRIMARY KEY AUTO_INCREMENT: Unique user id
+- 'UserID' INT PRIMARY KEY AUTO_INCREMENT: Unique user id
 - 'Username' VARCHAR UNIQUE NOT NULL: Display name
 - 'Email' VARCHAR UNIQUE NOT NULL: User email address
 - 'Height' (INT): User height
@@ -256,11 +256,11 @@ ________________________________________________________________________________
 ### Messages  
 **Description:** chat or message history between buddies  
 **Fields:**
-- MessageID INT PRIMARY KEY AUTO_INCREMENT: Unique MessageID
-- SenderID INT NOT NULL: Sender's UserID
-- ReceiverID INT NOT NULL: Receiver's UserID
-- Text TEXT NOT NULL: Message text
-- DateTime DATETIME NOT NULL: Date and Time when message sent
+- 'MessageID' INT PRIMARY KEY AUTO_INCREMENT: Unique MessageID
+- 'SenderID' INT NOT NULL: Sender's UserID
+- 'ReceiverID' INT NOT NULL: Receiver's UserID
+- 'Text' TEXT NOT NULL: Message text
+- 'DateTime' DATETIME NOT NULL: Date and Time when message sent
 - FOREIGN KEY (SenderID) REFERENCES Users(user_id)
 - FOREIGN KEY (ReceiverID) REFERENCES Users(user_id)
 
