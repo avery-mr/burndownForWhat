@@ -42,9 +42,9 @@
 - Pre-conditions (what needs to be true about the system before the test can be applied):
         - Both users have valid Users(user_id)
 - Test steps:
-        - 1. Navigate to Buddy Request page
-        - 2. Provide valid user name for receiver
-        - 4. Click Send button
+  1. Navigate to Buddy Request page
+  2. Provide valid user name for receiver
+  3. Click Send Button
 - Expected result:
         - User should be able to send friend request
 - Actual result (when you are testing this, how can you tell it worked):
