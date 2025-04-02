@@ -35,6 +35,8 @@
 - Post-conditions:
 	- User's data correctly inserted into Users table, to include being assigned a UserID automatically (auto-increment)
  	- User navigated to their Profile page
+
+______________________________________________________________________________________________________
  
 - Use case name: 
 	- Search/Retrieve user by Name
@@ -55,6 +57,8 @@
 - Post-conditions:
 	- Correct user records are retrieved and displayed to user 
 
+______________________________________________________________________________________________________
+
 - Use case name: 
 	- Make sure UserID auto-increments properly
 - Description:
@@ -74,6 +78,8 @@
 - Post-conditions:
 	- Database maintains sequential unique UserID values
 
+______________________________________________________________________________________________________
+
 - Use case name: 
 	- Prevent duplicate usernames/emails
 - Description:
@@ -91,6 +97,8 @@
 - Post-conditions:
 	- Users table only contains unique usernames and email addresses
 
+______________________________________________________________________________________________________
+
 - Use case name: 
 	- Make sure all required (NOT NULL) fields are provided
 - Description:
@@ -107,6 +115,8 @@
 	- Test different combinations of missing fields
 - Post-conditions:
 	- Only valid user entries are allowed in the Users table
+
+______________________________________________________________________________________________________
 
 - Use case name: 
 	- Update fields
@@ -127,6 +137,8 @@
 	- Ensure username/email uniqueness constraints are still enforced
 - Post-conditions:
 	- User's data updates correctly and persists in the database
+
+______________________________________________________________________________________________________
 
 - Use case name: 
 	- Delete user
@@ -183,6 +195,8 @@
 	- UserIDs are validated with Users table and request message successfully sent from Sender to Receiver
  	- The 2 UserIDs,request message, datetime, and status details are logged in database.
 
+______________________________________________________________________________________________________
+
 - Use case name : 
 	- Verify request status is updated when receiver accepts request
  	- Verify Connections table updated with new Connection between 2 UserIDs
@@ -209,6 +223,8 @@
 	- UserIDs are added to connections table
  	- The 2 UserIDs and status details are logged in database
 
+______________________________________________________________________________________________________
+
 - Use case name : 
 	- Verify request status is updated when receiver declines request
 - Description:
@@ -234,6 +250,7 @@
 	- UserIDs are added to connections table
  	- The 2 UserIDs and status details are logged in database
 
+
 ### Messages  
 **Description:** chat or message history between buddies  
 **Fields:**
@@ -245,7 +262,7 @@
 - FOREIGN KEY (SenderID) REFERENCES Users(user_id)
 - FOREIGN KEY (ReceiverID) REFERENCES Users(user_id)
 
-**Test:**
+**Tests:**
 - Use case name: 
 	- Create a message on the My Buddies ("Base Camp") page
 - Description:
@@ -302,7 +319,9 @@
  	- Connections Table updated with new insert of UserID and BuddyID data
 	- Both users see the new connection on their respective pages
 
- - Use case name: 
+______________________________________________________________________________________________________
+
+- Use case name: 
 	- Delete a connection between two users
 - Description:
 	- Verify that user can delete a Connection with another user
@@ -325,6 +344,7 @@
 	- Newly deleted Connection disappears from Connections page
  	- Connections Table updated with new delete of UserID and BuddyID data of specific connection
 	- Neither user sees the deleted connection on their respective pages
+
 
 ### Locations  
 **Description:** List of locations where users can go to climb
@@ -358,6 +378,8 @@
 	- Locations with desired Type should appear on Locations page
  	- Search logged in database
 
+______________________________________________________________________________________________________
+
 - Use case name: 
 	- Search for a climbing Location by name
 - Description:
@@ -378,6 +400,8 @@
 - Post-conditions:
 	- Locations with searched name (and similar names) should appear on Locations page
  	- Search logged in database
+
+______________________________________________________________________________________________________
  
 - Use case name: 
 	- Rate a climbing Location
@@ -402,6 +426,7 @@
 - Post-conditions:
 	- Location's AverageRating updated in Locations table
  	- UserRating for Location stored in database
+
 
 ## Table Relationships
 
