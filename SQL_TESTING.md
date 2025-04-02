@@ -38,10 +38,11 @@
 ### Messages  
 **Description:** chat or message history between buddies  
 **Fields:**
-- 'message_id' (INT, PRIMARY_KEY)
-- 'sender_id' (INT, *from users(user_id)*)
-- 'receiver_id' (INT, *from users(user_id)*)
-- 'message' (TEXT)
+- MessageID INT PRIMARY KEY AUTO_INCREMENT
+- SenderID INT NON NULL
+- ReceiverID INT NON NULL
+- Text TEXT NON NULL
+- DateTime DATETIME NON NULL
 
 **Test:**
 - Use case name: 
