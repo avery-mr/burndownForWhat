@@ -159,6 +159,7 @@ ________________________________________________________________________________
 - Post-conditions:
 	- User's data permenently deleted from database
 
+______________________________________________________________________________________________________
 
 ### Requests
 **Description:** Holds current and past connection requests   
@@ -250,6 +251,7 @@ ________________________________________________________________________________
 	- UserIDs are added to connections table
  	- The 2 UserIDs and status details are logged in database
 
+______________________________________________________________________________________________________
 
 ### Messages  
 **Description:** chat or message history between buddies  
@@ -286,6 +288,8 @@ ________________________________________________________________________________
 	- The new message is added to the screen for the relevant buddy.
  	- The new message is added to the screen for current user
 	- The new message is logged in the Messages table in the database.
+
+______________________________________________________________________________________________________
 
 ### Connections  
 **Description:** List of buddies that user has connected with, used for easy meetup/climb requests
@@ -345,6 +349,7 @@ ________________________________________________________________________________
  	- Connections Table updated with new delete of UserID and BuddyID data of specific connection
 	- Neither user sees the deleted connection on their respective pages
 
+______________________________________________________________________________________________________
 
 ### Locations  
 **Description:** List of locations where users can go to climb
@@ -427,6 +432,7 @@ ________________________________________________________________________________
 	- Location's AverageRating updated in Locations table
  	- UserRating for Location stored in database
 
+______________________________________________________________________________________________________
 
 ## Table Relationships
 
@@ -437,6 +443,7 @@ ________________________________________________________________________________
  3. Messages table/page
  4. Locations table/page
 
+______________________________________________________________________________________________________
 
 ## Database Access Methods
 
@@ -452,6 +459,8 @@ ________________________________________________________________________________
   - **Actual result:**  Returned data matches expected structure and values
   - **Post-conditions:** no changes to database.
 
+______________________________________________________________________________________________________
+
 ### Table: Messages
 **Access Method:** getMessage(MessageID)
   - **Use case name:** Retrieve message for valid MessageID
@@ -463,3 +472,5 @@ ________________________________________________________________________________
   - **Expected Result:** Full Message including any joined data (if we decide to use any) is returned
   - **Actual result:**  Returned Message matches expected structure and values
   - **Post-conditions:** no changes to database.
+
+______________________________________________________________________________________________________
