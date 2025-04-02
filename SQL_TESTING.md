@@ -155,6 +155,53 @@
 - FOREIGN KEY (UserID) REFERENCES Users(UserID)
 - FOREIGN KEY (BuddyID) REFERENCES Users(UserID)
 
+**Tests:**
+- Use case name: 
+	- Create a connection between two users
+- Description:
+	- Verify that Accepting a buddy request inserts new data into Connections table
+- Pre-conditions:
+	- Both UserID and BuddyID must be valid users in Users table
+ 	- Buddy request sent by Sender and received by Receiver
+  	- Receiver has clicked Accept button on request
+- Test steps:  Done AFTER the Requests Accept test
+	1. Navigate to Connections page
+	2. Verify newly accepted connection appears on page
+- Expected result:
+	- The Connection with buddy should appear on the page
+- Actual result:
+	- TBD
+- Notes:
+	- N/A
+- Post-conditions:
+	- Newly accepted Connection appears on Connection page
+ 	- Connections Table updated with new insert of UserID and BuddyID data
+	- Both users see the new connection on their respective pages
+
+ - Use case name: 
+	- Delete a connection between two users
+- Description:
+	- Verify that user can delete a Connection with another user
+- Pre-conditions:
+	- Both UserID and BuddyID must be valid users in Users table
+ 	- Connection between UserID and BuddyID exists on Connections table
+  	- User clicks Delete/Remove button on Connections page
+- Test steps:  
+	1. Navigate to Connections page
+	2. Select a Connection from list/table
+ 	3. Click Delete/Remove button
+- Expected result:
+	- The Connection with buddy should disappear from the page
+ 	- Connection between the two users should be deleted from Connections table
+- Actual result:
+	- TBD
+- Notes:
+	- N/A
+- Post-conditions:
+	- Newly deleted Connection disappears from Connections page
+ 	- Connections Table updated with new delete of UserID and BuddyID data of specific connection
+	- Neither user sees the deleted connection on their respective pages
+
 ## Table Relationships
 
 ## Database Access Methods
