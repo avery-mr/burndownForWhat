@@ -206,12 +206,14 @@
 **Description:** List of locations where users can go to climb
 **Fields:**
 - 'LocationID' INT PRIMARY KEY: LocationID for each unique location
-- 'Name' VARCHAR NON NULL: Name of climbing location
+- 'Name' VARCHAR UNIQUE NON NULL: Name of climbing location
 - 'Type' VARCHAR NON NULL: type of climbing location (gym, bouldering, sport, traditional, ice, mixed, etc.)
-- 'Rating' INT CHECK (Rating BETWEEN 1 AND 10): User-provided ratings of the location
+- 'AverageRating' INT CHECK (AverageRating BETWEEN 1 AND 10): Overall average of user ratings
+- 'UserRating' INT CHECK (UserRating BETWEEN 1 AND 10): User-provided ratings of the location
 - 'Notes' TEXT: User-written notes about the location
 
- - Use case name: 
+**Tests:**
+- Use case name: 
 	- Search for a climbing Location by type
 - Description:
 	- Verify that user can find a Location for their desired type of climbing
@@ -231,6 +233,51 @@
 - Post-conditions:
 	- Locations with desired Type should appear on Locations page
  	- Search logged in database
+
+- Use case name: 
+	- Search for a climbing Location by name
+- Description:
+	- Verify that user can find a Location for climbing based on name
+- Pre-conditions:
+	- User must be valid user in Users table
+ 	- Location must exist in Locations table
+- Test steps:  
+	1. Navigate to Locations page
+	2. Type a Name in Search bar
+ 	3. Click Search button
+- Expected result:
+	- Locations with similar names appear in the list
+- Actual result:
+	- TBD
+- Notes:
+	- N/A
+- Post-conditions:
+	- Locations with searched name (and similar names) should appear on Locations page
+ 	- Search logged in database
+ 
+- Use case name: 
+	- Rate a climbing Location
+- Description:
+	- Verify that user can give a location a rating from 1-10 (1 worst, 10 best)
+- Pre-conditions:
+	- User must be valid user in Users table
+ 	- Location must exist in Locations table
+- Test steps:  
+	1. Navigate to Locations page
+	2. Click Name of Location to select it
+ 	3. Click Rate button
+  	4. Choose number between 1 and 10
+  	5. Click Submit
+- Expected result:
+	- UserRating for Location updated
+ 	- Location's AverageRating updated
+- Actual result:
+	- TBD
+- Notes:
+	- N/A
+- Post-conditions:
+	- Location's AverageRating updated in Locations table
+ 	- UserRating for Location stored in database
 
 ## Table Relationships
 
