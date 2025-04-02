@@ -43,27 +43,27 @@
 - 'receiver_id' (INT, *from users(user_id)*)
 - 'message' (TEXT)
 
-***Test:***
-Use case name: 
-	Create a message on the My Buddies ("Base Camp") page
-Description:
-	Verify that submitting a message adds the message to the Messages table, with correct metadata, and displays on the page.
-Pre-conditions (what needs to be true about the system before the test can be applied):
-	User needs to be on the My Buddies page
-Test steps:
+**Test:**
+- Use case name: 
+	- Create a message on the My Buddies ("Base Camp") page
+- Description:
+	- Verify that submitting a message adds the message to the Messages table, with correct metadata, and displays on the page.
+- Pre-conditions (what needs to be true about the system before the test can be applied):
+	- User needs to be on the My Buddies page
+- Test steps:
 	1. Navigate to My Buddies page
 	2. Select a buddy
 	3. Enter a message in the bar 
 	4. Submit the message
-Expected result:
-	The message should appear as the latest message with the buddy.
-Actual result:
-	TBD
-Notes:
-	N/A
-Post-conditions:
-	The new message is added to the screen for the relevant buddy.
-	The new message is logged in the Messages table in the database.
+- Expected result:
+	- The message should appear as the latest message with the buddy.
+- Actual result:
+	- TBD
+- Notes:
+	- N/A
+- Post-conditions:
+	- The new message is added to the screen for the relevant buddy.
+	- The new message is logged in the Messages table in the database.
 
 ### The Crag  
 **Description:** Forum style posts or feed style posts on 'the Crag' page (stories, pics, etc)  
