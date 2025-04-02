@@ -48,7 +48,7 @@
 	- Create a message on the My Buddies ("Base Camp") page
 - Description:
 	- Verify that submitting a message adds the message to the Messages table, with correct metadata, and displays on the page.
-- Pre-conditions (what needs to be true about the system before the test can be applied):
+- Pre-conditions:
 	- User needs to be on the My Buddies page
 - Test steps:
 	1. Navigate to My Buddies page
