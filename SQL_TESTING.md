@@ -5,7 +5,7 @@
 
 
 ### Users
-**Description:** Stores user account and profile details  
+**Description:** Stores user account and profile details
 **Fields:**  
 - 'UserID'INT PRIMARY KEY AUTO_INCREMENT: Unique user id
 - 'Username' VARCHAR UNIQUE NON NULL: Display name
