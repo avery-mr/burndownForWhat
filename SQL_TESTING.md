@@ -25,24 +25,6 @@
   - Update fields?
   - Delete user?
 
-### Climbing Styles  
-**Description:** List of all available climbing styles  
-**Fields:**
-- 'style_id' (INT, PRIMARY KEY)
-- 'name' (VARCHAR): e.g. 'sport, 'trad', 'ice', 'bouldering'
-
-### User Styles Join  
-**Description:** Join table for users and associated styles  
-**Fields:**
-- 'user_id' (INT, *from users(user_id)*)
-- 'style_id' (INT, *from climbing_styles(style_id)*)
-
-### Experience Level  
-**Descriptiion:** Lookup table for user climbing experience level  
-**Fields:**
-- 'level_id' (INT, PRIMARY KEY): Value from 1 to 5
-- 'label' (VARCHAR): Description of level (e.g. 'Belay Slave', 'Gumby', 'Crag Rat', 'Dirt Bag', 'Send Lord')
-
 ### Buddy Requests
 **Description:** Holds current and past requests   
 **Fields:**
@@ -60,6 +42,28 @@
 - 'sender_id' (INT, *from users(user_id)*)
 - 'receiver_id' (INT, *from users(user_id)*)
 - 'message' (TEXT)
+
+***Test:***
+Use case name: 
+	Create a message on the My Buddies ("Base Camp") page
+Description:
+	Verify that submitting a message adds the message to the Messages table, with correct metadata, and displays on the page.
+Pre-conditions (what needs to be true about the system before the test can be applied):
+	User needs to be on the My Buddies page
+Test steps:
+	1. Navigate to My Buddies page
+	2. Select a buddy
+	3. Enter a message in the bar 
+	4. Submit the message
+Expected result:
+	The message should appear as the latest message with the buddy.
+Actual result:
+	TBD
+Notes:
+	N/A
+Post-conditions:
+	The new message is added to the screen for the relevant buddy.
+	The new message is logged in the Messages table in the database.
 
 ### The Crag  
 **Description:** Forum style posts or feed style posts on 'the Crag' page (stories, pics, etc)  
