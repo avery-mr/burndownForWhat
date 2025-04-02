@@ -8,29 +8,153 @@
 **Description:** Stores user account and profile details
 **Fields:**  
 - 'UserID'INT PRIMARY KEY AUTO_INCREMENT: Unique user id
-- 'Username' VARCHAR UNIQUE NON NULL: Display name
-- 'Email' VARCHAR UNIQUE NON NULL: User email address
+- 'Username' VARCHAR UNIQUE NOT NULL: Display name
+- 'Email' VARCHAR UNIQUE NOT NULL: User email address
 - 'Height' (INT): User height
 - 'Weight' (INT): User weight
-- 'Location' VARCHAR NON NULL: User's home location
-- 'Experience' ENUM('1', '2', '3', '4', '5') NON NULL: User's experience level (1 lowest, 5 highest)
+- 'Location' VARCHAR NOT NULL: User's home location
+- 'Experience' ENUM('1', '2', '3', '4', '5') NOT NULL: User's experience level (1 lowest, 5 highest)
 - 'Bio' TEXT: User's Bio
 
 **Tests:**
-  - Insert a valid user and retrieve by ID
-  - Make sure UserID auto-increments properly
-  - Prevent duplicate usernames / emails
-  - Make sure required fields are provided
-  - Update fields
-  - Delete user
+- Use case name: 
+	- Insert user into Users table
+- Description:
+	- Verify that user data is properly inserted
+- Pre-conditions:
+	- User must "signup" for an account, filling out the necessary information on signup form
+- Test steps:  
+	1. User fills out signup form
+	2. User clicks Submit button
+- Expected result:
+	- User auto-navigated to their User profile page
+- Actual result:
+	- TBD
+- Notes:
+	- N/A
+- Post-conditions:
+	- User's data correctly inserted into Users table, to include being assigned a UserID automatically (auto-increment)
+ 	- User navigated to their Profile page
+ 
+- Use case name: 
+	- Search/Retrieve user by Name
+- Description:
+	- Verify that a user can be searched and retrieved from the Users table using their username
+- Pre-conditions:
+	- At least one user record exists in the Users table
+- Test steps:  
+	1. Navigate to Requests (or Connections?) page
+ 	2. User enters a username in the search field
+	3. User clicks Search button
+- Expected result:
+	- Correct user matching search query appear in the results
+- Actual result:
+	- TBD
+- Notes:
+	- Test both exact matches and partial name matches
+- Post-conditions:
+	- Correct user records are retrieved and displayed to user 
+
+- Use case name: 
+	- Make sure UserID auto-increments properly
+- Description:
+	- Verify that each new user receives a unique, auto-incrementing UserID
+- Pre-conditions:
+	- Users table can be either empty or some user records can already exist
+- Test steps:  
+	1. Insert a new user into the Users table
+	2. Insert another user immediately after the first
+ 	3. Query the Users table and check assigned UserIDs
+- Expected result:
+	- Each new user receives a unique UserID, which increments by 1 from the previous entry
+- Actual result:
+	- TBD
+- Notes:
+	- Ensure deleted UserIDs do not get reused
+- Post-conditions:
+	- Database maintains sequential unique UserID values
+
+- Use case name: 
+	- Prevent duplicate usernames/emails
+- Description:
+	- Verify that database prevents duplicate usernames and email addresses
+- Pre-conditions:
+	- User with a specific username/email already exists in Users table
+- Test steps:  
+	1. Attempt to insert a new user with same username and/or email address as existing user
+- Expected result:
+	- Database rejects the duplicate entry and returns an error
+- Actual result:
+	- TBD
+- Notes:
+	- Ensure database constraints (UNIQUE) are properly enforced
+- Post-conditions:
+	- Users table only contains unique usernames and email addresses
+
+- Use case name: 
+	- Make sure all required (NOT NULL) fields are provided
+- Description:
+	- Verify that users cannot be created if required fields are missing
+- Pre-conditions:
+	- Database schema has NOT NULL constraints for required fields
+- Test steps:  
+	1. Attempt to insert a user with missing required fields (Username, Email, Location, Experience)
+- Expected result:
+	- Database rejects the entr and returns an appropriate error
+- Actual result:
+	- TBD
+- Notes:
+	- Test different combinations of missing fields
+- Post-conditions:
+	- Only valid user entries are allowed in the Users table
+
+- Use case name: 
+	- Update fields
+- Description:
+	- Verify that user's data can be successfully updated
+- Pre-conditions:
+	- User exists in the Users table
+- Test steps:  
+	1. Locate existing user in Users table
+	2. Update 1 or more fields (email, username, experience, etc.)
+ 	3. Save changes
+ 	4. Retrieve updated user record
+- Expected result:
+	- Updated fields reflect the new values
+- Actual result:
+	- TBD
+- Notes:
+	- Ensure username/email uniqueness constraints are still enforced
+- Post-conditions:
+	- User's data updates correctly and persists in the database
+
+- Use case name: 
+	- Delete user
+- Description:
+	- Verify that user can be deleted from database
+- Pre-conditions:
+	- User exists in the Users table
+- Test steps:  
+	1. Locate an existing user
+	2. Delete user record
+ 	3. Attempt to retrieve deleted user
+- Expected result:
+	- User record no longer present in Users table
+- Actual result:
+	- TBD
+- Notes:
+	- Ensure cascading deletes do not remove UNintended related records
+- Post-conditions:
+	- User's data permenently deleted from database
+
 
 ### Requests
 **Description:** Holds current and past connection requests   
 **Fields:**
 - 'RequestID' INT PRIMARY KEY AUTO_INCREMENT: Unique RequestID
-- 'SenderID' INT NON NULL: Sender's UserID
-- 'ReceiverID' INT NON NULL: Receiver's UserID
-- 'DateTime' DATETIME NON NULL: Date and Time when request was sent
+- 'SenderID' INT NOT NULL: Sender's UserID
+- 'ReceiverID' INT NOT NULL: Receiver's UserID
+- 'DateTime' DATETIME NOT NULL: Date and Time when request was sent
 - 'Location' VARCHAR: Location of Sender
 - 'Status' ENUM('Open', 'Accepted', 'Declined'): Status of request
 - FOREIGN KEY (SenderID) References Users(UserID)
@@ -114,10 +238,10 @@
 **Description:** chat or message history between buddies  
 **Fields:**
 - MessageID INT PRIMARY KEY AUTO_INCREMENT: Unique MessageID
-- SenderID INT NON NULL: Sender's UserID
-- ReceiverID INT NON NULL: Receiver's UserID
-- Text TEXT NON NULL: Message text
-- DateTime DATETIME NON NULL: Date and Time when message sent
+- SenderID INT NOT NULL: Sender's UserID
+- ReceiverID INT NOT NULL: Receiver's UserID
+- Text TEXT NOT NULL: Message text
+- DateTime DATETIME NOT NULL: Date and Time when message sent
 - FOREIGN KEY (SenderID) REFERENCES Users(user_id)
 - FOREIGN KEY (ReceiverID) REFERENCES Users(user_id)
 
@@ -149,8 +273,8 @@
 ### Connections  
 **Description:** List of buddies that user has connected with, used for easy meetup/climb requests
 **Fields:**
-- 'UserID' INT NON NULL: UserID for current user
-- 'BuddyID' INT NON NULL: UserID for current user's buddy
+- 'UserID' INT NOT NULL: UserID for current user
+- 'BuddyID' INT NOT NULL: UserID for current user's buddy
 - PRIMARY KEY (UserID, BuddyID)
 - FOREIGN KEY (UserID) REFERENCES Users(UserID)
 - FOREIGN KEY (BuddyID) REFERENCES Users(UserID)
@@ -206,9 +330,9 @@
 **Description:** List of locations where users can go to climb
 **Fields:**
 - 'LocationID' INT PRIMARY KEY: LocationID for each unique location
-- 'Name' VARCHAR UNIQUE NON NULL: Name of climbing location
-- 'Type' VARCHAR NON NULL: type of climbing location (gym, bouldering, sport, traditional, ice, mixed, etc.)
-- 'AverageRating' INT CHECK (AverageRating BETWEEN 1 AND 10): Overall average of user ratings
+- 'Name' VARCHAR UNIQUE NOT NULL: Name of climbing location
+- 'Type' VARCHAR NOT NULL: type of climbing location (gym, bouldering, sport, traditional, ice, mixed, etc.)
+- 'AverageRating' DECIMAL(3,2) CHECK (AverageRating BETWEEN 1 AND 10): Overall average of user ratings
 - 'UserRating' INT CHECK (UserRating BETWEEN 1 AND 10): User-provided ratings of the location
 - 'Notes' TEXT: User-written notes about the location
 
