@@ -162,13 +162,13 @@ ________________________________________________________________________________
 
 ______________________________________________________________________________________________________
 
-### Requests
-**Description:** Holds current and past connection requests   
+### Buddy Event Requests
+**Description:** Holds current and past buddy event requests
 **Fields:**
 - 'RequestID' INT PRIMARY KEY AUTO_INCREMENT: Unique RequestID
 - 'SenderID' INT NOT NULL: Sender's UserID
 - 'ReceiverID' INT NOT NULL: Receiver's UserID
-- 'DateTime' DATETIME NOT NULL: Date and Time when request was sent
+- 'DateTime' DATETIME NOT NULL: Date and Time of the event
 - 'Location' VARCHAR: Location of Sender
 - 'Status' ENUM('Open', 'Accepted', 'Declined'): Status of request
 - FOREIGN KEY (SenderID) References Users(UserID)
@@ -176,81 +176,73 @@ ________________________________________________________________________________
 
 **Tests**
 - Use case name : 
-	- Verify buddy request is sent from one user to another 
+	- Verify "Find a Buddy" request is sent to the request table
 - Description:
-	- Test Buddy Request page 
+	- Test "Find a Buddy" form submission
 - Pre-conditions (what needs to be true about the system before the test can be applied):
-        - Both users have valid Users(user_id)
+        - A valid user, and location must exist in their respective tables
 - Test steps:
-  1. Navigate to Buddy Request page
-  2. Provide valid user name for receiver
-  3. Click Send Button
+  1. Navigate to Find a Buddy page
+  2. Fill out the appropriate fields in the embedded form (date, time, location, climbing type)
+  3. Click the "Submit" Button
 - Expected result:
-        - User should be able to send buddy request
+        - User should be able to submit a populated form
 - Actual result (when you are testing this, how can you tell it worked):
-        - Buddy request is sent to other user and logged in database
+        - User can see their open request on the "Find a Buddy" page.
 - Status (Pass/Fail, when this test was performed)
         - TBD
 - Notes:
         - N/A
 - Post-conditions (what must be true about the system when the test has completed successfully):
-	- UserIDs are validated with Users table and request message successfully sent from Sender to Receiver
- 	- The 2 UserIDs,request message, datetime, and status details are logged in database.
+	- Requests table contains the respective data from the form submission with the status field marked "open"
 
 ______________________________________________________________________________________________________
 
 - Use case name : 
-	- Verify request status is updated when receiver accepts request
- 	- Verify Connections table updated with new Connection between 2 UserIDs
+	- Verify pending "Find a Buddy" requests are displayed to the user
 - Description:
-	- Test Buddy Request page status updates
+	- Test "Find a Buddy" page displays open requests for the user to review and confirm
 - Pre-conditions (what needs to be true about the system before the test can be applied):
-	- Both users have valid Users(UserID)
-	- One user (Sender) has sent the other user (Receiver) a buddy request
- 	- Receiver can view buddy request
+	- 2 valid users, an open "Find a Buddy" request from the second user
 - Test steps:
-  1. Navigate to Buddy Request page
-  2. Navigate to received request
-  3. Click Accept button
+  1. Navigate to Find a Buddy page
+  2. Check for the existing open request under the "Open" section
 - Expected result:
-        - User should be able to accept buddy request
+        - User should be able to see a list of open requests in date order
 - Actual result (when you are testing this, how can you tell it worked):
-	- Message sent to Sender telling them that request was Accepted
-        - Buddy request is accepted and Connections table updated to include the connection
+	- TBD
 - Status (Pass/Fail, when this test was performed)
         - TBD
 - Notes:
         - N/A
 - Post-conditions (what must be true about the system when the test has completed successfully):
-	- UserIDs are added to connections table
- 	- The 2 UserIDs and status details are logged in database
+	- List of open user requests displayed in date order
 
 ______________________________________________________________________________________________________
 
 - Use case name : 
-	- Verify request status is updated when receiver declines request
+	- Test "Join a Buddy" functionality
 - Description:
-	- Test Buddy Request page status updates
+	- Verify "Join a Buddy" button confirms an open "Find  a Buddy" request
 - Pre-conditions (what needs to be true about the system before the test can be applied):
-	- Both users have valid Users(UserID)
-	- One user (Sender) has sent the other user (Receiver) a buddy request
- 	- Receiver can view buddy request
+	- 2 valid users, an open "Find a Buddy" request from the second user
 - Test steps:
-  1. Navigate to Buddy Request page
-  2. Navigate to received request
-  3. Click Decline button
+  1. 1st (primary user) logs in
+  2. User navigates to the requests page
+  3. User clicks on the open "Find a Buddy" request they would like to join under the "Open Requests" header
+  4. User is prompted to confirm
+  5. User confirms
+  6. User is redirected to the "Find a Buddy" page
 - Expected result:
-        - User should be able to decline buddy request
+        - User should be able to join a buddy
 - Actual result (when you are testing this, how can you tell it worked):
-	- Buddy request status is updated to Declined
-	- Message sent to Sender that their request was declined
+	- TBD
 - Status (Pass/Fail, when this test was performed)
         - TBD
 - Notes:
         - N/A
 - Post-conditions (what must be true about the system when the test has completed successfully):
-	- UserIDs are added to connections table
- 	- The 2 UserIDs and status details are logged in database
+	- The status field on the "Requests" table is changed to "Confirmed"
 
 ______________________________________________________________________________________________________
 
