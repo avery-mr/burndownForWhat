@@ -508,7 +508,7 @@ ________________________________________________________________________________
   - **Description:** Test whether the correct connections appear for a user
   - **Pre-Conditions:** At least 2 users are created in the Users table, and there is an entry in the Connections table linking two users as connections
   - **Test steps:**
-    1. Call getConnections(userID) with a UserID
+    1. Call getConnections() with a UserID
     2. Verify returned values against expected values
   - **Expected Result:** All connections for a user are returned
   - **Actual result:**  TBD
