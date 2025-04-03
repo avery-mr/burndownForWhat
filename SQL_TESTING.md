@@ -516,7 +516,7 @@ ________________________________________________________________________________
 
 ______________________________________________________________________________________________________
 
-### Table: Table: Locations
+### Table: Locations
 **Access Method:** getLocations(region)
   - **Use case name:** Retrieve locations within the given region
   - **Description:** Test whether the correct locations appear for a region
