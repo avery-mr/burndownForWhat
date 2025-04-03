@@ -474,18 +474,16 @@ ________________________________________________________________________________
 ______________________________________________________________________________________________________
 
 ### Table: Buddy Event Requests
-**Access Method:** 
-import datetime
-getActiveRequests(datetime.datetime.now())
-  - **Use case name:** Retrieve upcoming Buddy Event Requests with date in the future
-  - **Description:** Test whether the upcoming requests are retrieved and displayed
-  - **Pre-Conditions:** There are upcoming Buddy Event Requests in the database
-  - **Test steps:**
+**Access Method:** import datetime, getActiveRequests(datetime.datetime.now())
+- **Use case name:** Retrieve upcoming Buddy Event Requests with date in the future
+- **Description:** Test whether the upcoming requests are retrieved and displayed
+- **Pre-Conditions:** There are upcoming Buddy Event Requests in the database
+- **Test steps:**
     1. Call getActiveRequests() with the current date/time
     2. Verify returned values against expected values
-  - **Expected Result:** All event requests with date/times in the future are returned
-  - **Actual result:**  TBD
-  - **Post-conditions:** no changes to database.
+- **Expected Result:** All event requests with date/times in the future are returned
+- **Actual result:**  TBD
+- **Post-conditions:** no changes to database.
 
 ______________________________________________________________________________________________________
 
