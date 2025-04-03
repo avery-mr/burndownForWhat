@@ -22,18 +22,18 @@
 - Description:
 	- Verify that user data is properly inserted
 - Pre-conditions:
-	- User must "signup" for an account, filling out the necessary information on signup form
+	- User must be on the home page
 - Test steps:  
 	1. User fills out signup form
 	2. User clicks Submit button
 - Expected result:
-	- User auto-navigated to their User profile page
+	- User's account is created and user is auto-navigated to their User profile page
 - Actual result:
 	- TBD
 - Notes:
 	- N/A
 - Post-conditions:
-	- User's data correctly inserted into Users table, to include being assigned a UserID automatically (auto-increment)
+	- User's data is correctly inserted into the Users table, to include being assigned a UserID automatically (auto-increment)
  	- User navigated to their Profile page
 
 ______________________________________________________________________________________________________
@@ -45,7 +45,7 @@ ________________________________________________________________________________
 - Pre-conditions:
 	- At least one user record exists in the Users table
 - Test steps:  
-	1. Navigate to Requests (or Connections?) page
+	1. Navigate to Requests (or My Buddies) page
  	2. User enters a username in the search field
 	3. User clicks Search button
 - Expected result:
@@ -108,7 +108,7 @@ ________________________________________________________________________________
 - Test steps:  
 	1. Attempt to insert a user with missing required fields (Username, Email, Location, Experience)
 - Expected result:
-	- Database rejects the entr and returns an appropriate error
+	- Database rejects the entry and returns an appropriate error
 - Actual result:
 	- TBD
 - Notes:
@@ -126,7 +126,7 @@ ________________________________________________________________________________
 	- User exists in the Users table
 - Test steps:  
 	1. Locate existing user in Users table
-	2. Update 1 or more fields (email, username, experience, etc.)
+	2. Update 1 or more fields (email, username, experience, etc.) from the Profile page
  	3. Save changes
  	4. Retrieve updated user record
 - Expected result:
@@ -137,6 +137,7 @@ ________________________________________________________________________________
 	- Ensure username/email uniqueness constraints are still enforced
 - Post-conditions:
 	- User's data updates correctly and persists in the database
+ 	- User's updated data displays on their profile page 
 
 ______________________________________________________________________________________________________
 
