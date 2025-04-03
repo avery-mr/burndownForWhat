@@ -190,9 +190,9 @@ ________________________________________________________________________________
 - Actual result (when you are testing this, how can you tell it worked):
         - User can see their open request on the "Find a Buddy" page.
 - Status (Pass/Fail, when this test was performed)
-        - TBD
+	- TBD
 - Notes:
-        - N/A
+	- N/A
 - Post-conditions (what must be true about the system when the test has completed successfully):
 	- Requests table contains the respective data from the form submission with the status field marked "open"
 
@@ -212,9 +212,9 @@ ________________________________________________________________________________
 - Actual result (when you are testing this, how can you tell it worked):
 	- TBD
 - Status (Pass/Fail, when this test was performed)
-        - TBD
+	- TBD
 - Notes:
-        - N/A
+	- N/A
 - Post-conditions (what must be true about the system when the test has completed successfully):
 	- List of open user requests displayed in date order
 
@@ -238,9 +238,9 @@ ________________________________________________________________________________
 - Actual result (when you are testing this, how can you tell it worked):
 	- TBD
 - Status (Pass/Fail, when this test was performed)
-        - TBD
+	- TBD
 - Notes:
-        - N/A
+	- N/A
 - Post-conditions (what must be true about the system when the test has completed successfully):
 	- The status field on the "Requests" table is changed to "Confirmed"
 
