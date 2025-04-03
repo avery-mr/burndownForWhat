@@ -297,15 +297,38 @@ ________________________________________________________________________________
 **Fields:**
 - 'UserID' INT NOT NULL: UserID for current user
 - 'BuddyID' INT NOT NULL: UserID for current user's buddy
+- 'Status' TEXT NOT NULL: Captures values of 'Pending' for pending connection request, and 'Confirmed' for confirmed connection
 - PRIMARY KEY (UserID, BuddyID)
 - FOREIGN KEY (UserID) REFERENCES Users(UserID)
 - FOREIGN KEY (BuddyID) REFERENCES Users(UserID)
 
 **Tests:**
 - Use case name: 
-	- Create a connection between two users
+	- Create a pending connection between two users
 - Description:
-	- Verify that Accepting a buddy request inserts new data into Connections table
+	- Verify that requesting a buddy connection inserts new data into Connections table with status of 'pending'
+- Pre-conditions:
+	- Both UserID and BuddyID must be valid users in Users table
+- Test steps: 
+	1. Navigate to Connections page
+	2. Send Buddy request to another user ('Receiver')
+	3. Verify connection request is received and status is pending
+- Expected result:
+	- The Connection request should appear on the Receiver's Profile page
+- Actual result:
+	- TBD
+- Notes:
+	- N/A
+- Post-conditions:
+	- Requested Connection appears on Receiver's Profile page
+ 	- Connections Table updated with new insert of UserID and BuddyID data and status of 'pending'
+	- Both users see the pending connection on their respective pages
+______________________________________________________________________________________________________
+
+- Use case name: 
+	- Confirm a connection between two users
+- Description:
+	- Verify that Accepting a buddy request updates the related row in the Connections table with status of 'confirmed' 
 - Pre-conditions:
 	- Both UserID and BuddyID must be valid users in Users table
  	- Buddy request sent by Sender and received by Receiver
@@ -313,6 +336,7 @@ ________________________________________________________________________________
 - Test steps:  Done AFTER the Requests Accept test
 	1. Navigate to Connections page
 	2. Verify newly accepted connection appears on page
+ 	3. Verify in the Connections table that the related record has updated status of 'confirmed' 
 - Expected result:
 	- The Connection with buddy should appear on the page
 - Actual result:
@@ -321,8 +345,8 @@ ________________________________________________________________________________
 	- N/A
 - Post-conditions:
 	- Newly accepted Connection appears on Connection page
- 	- Connections Table updated with new insert of UserID and BuddyID data
-	- Both users see the new connection on their respective pages
+ 	- Connections Table updated with status of 'confirmed'
+	- Both users see the new confirmed connection on their respective pages
 
 ______________________________________________________________________________________________________
 
