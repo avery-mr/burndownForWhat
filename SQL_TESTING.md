@@ -374,6 +374,7 @@ ________________________________________________________________________________
 - 'LocationID' INT PRIMARY KEY: LocationID for each unique location
 - 'Name' VARCHAR UNIQUE NOT NULL: Name of climbing location
 - 'Type' VARCHAR NOT NULL: type of climbing location (gym, bouldering, sport, traditional, ice, mixed, etc.)
+- 'Region' VARCHAR NOT NULL: name of the region where the location is located
 - 'AverageRating' DECIMAL(3,2) CHECK (AverageRating BETWEEN 1 AND 10): Overall average of user ratings
 - 'UserRating' INT CHECK (UserRating BETWEEN 1 AND 10): User-provided ratings of the location
 - 'Notes' TEXT: User-written notes about the location
@@ -500,3 +501,29 @@ ________________________________________________________________________________
   - **Post-conditions:** no changes to database.
 
 ______________________________________________________________________________________________________
+
+### Table: Connections
+**Access Method:** getConnections(UserID)
+  - **Use case name:** Retrieve user's connections
+  - **Description:** Test whether the correct connections appear for a user
+  - **Pre-Conditions:** At least 2 users are created in the Users table, and there is an entry in the Connections table linking two users as connections
+  - **Test steps:**
+    1. Call getConnections(userID) with a UserID
+    2. Verify returned values against expected values
+  - **Expected Result:** All connections for a user are returned
+  - **Actual result:**  TBD
+  - **Post-conditions:** no changes to database.
+
+______________________________________________________________________________________________________
+
+### Table: Table: Locations
+**Access Method:** getLocations(region)
+  - **Use case name:** Retrieve locations within the given region
+  - **Description:** Test whether the correct locations appear for a region
+  - **Pre-Conditions:** At least 3 locations are added to the Locations table
+  - **Test steps:**
+    1. Call getLocations() with a region
+    2. Verify returned values against expected values
+  - **Expected Result:** All locations for a region are returned
+  - **Actual result:**  TBD
+  - **Post-conditions:** no changes to database.
