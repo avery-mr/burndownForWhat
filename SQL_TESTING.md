@@ -453,12 +453,7 @@ ________________________________________________________________________________
 
 ## Table Relationships
 
-- Login page connects to Users table and User profile page
-- User profile page connections:
- 1. Connections table/page
- 2. Requests table/page
- 3. Messages table/page
- 4. Locations table/page
+<img width="437" alt="image" src="https://github.com/user-attachments/assets/d38fa8b5-3ae3-4657-8508-d98cd709ea96" />
 
 ______________________________________________________________________________________________________
 
