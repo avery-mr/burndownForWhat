@@ -16,6 +16,12 @@
 - 'Experience' ENUM('1', '2', '3', '4', '5') NOT NULL: User's experience level (1 lowest, 5 highest)
 - 'Bio' TEXT: User's Bio
 
+**Field Constraints Tests:**
+- Verifiy 'UserID' auto-increments and remains unique
+- Verify 'Username' and 'Email' are UNIQUE
+- Verify 'Username' 'Email, 'Location' and 'Experience' are NOT NULL
+- Verify 'Experirence' only allows values 1-5
+
 **Tests:**
 - Use case name: 
 	- Insert user into Users table
@@ -174,6 +180,12 @@ ________________________________________________________________________________
 - FOREIGN KEY (SenderID) References Users(UserID)
 - FOREIGN KEY (ReceiverID) References Users(UserID)
 
+**Field Constraints Tests:**  
+- Verify `RequestID` auto-increments and is unique  
+- Verify `SenderID` and `ReceiverID` are valid existing Users  
+- Verify `Status` only allows given ENUM values  
+- Verify `DateTime` is not NULL
+
 **Tests**
 - Use case name : 
 	- Verify "Find a Buddy" request is sent to the request table
@@ -257,6 +269,11 @@ ________________________________________________________________________________
 - FOREIGN KEY (SenderID) REFERENCES Users(user_id)
 - FOREIGN KEY (ReceiverID) REFERENCES Users(user_id)
 
+**Field Constraints Tests:**  
+- Verify `Text` and `DateTime` are NOT NULL  
+- Verify valid foreign key references for sender/receiver  
+- Verify `MessageID` auto-increments  
+
 **Tests:**
 - Use case name: 
 	- Create a message on the My Buddies ("Base Camp") page
@@ -293,6 +310,11 @@ ________________________________________________________________________________
 - PRIMARY KEY (UserID, BuddyID)
 - FOREIGN KEY (UserID) REFERENCES Users(UserID)
 - FOREIGN KEY (BuddyID) REFERENCES Users(UserID)
+
+**Field Constraints Tests:**  
+- Verify composite primary key (`UserID`, `BuddyID`) is unique  
+- Verify `Status` is NOT NULL  
+- Verify table references
 
 **Tests:**
 - Use case name: 
@@ -378,6 +400,11 @@ ________________________________________________________________________________
 - 'AverageRating' DECIMAL(3,2) CHECK (AverageRating BETWEEN 1 AND 10): Overall average of user ratings
 - 'UserRating' INT CHECK (UserRating BETWEEN 1 AND 10): User-provided ratings of the location
 - 'Notes' TEXT: User-written notes about the location
+
+**Field Constraints Tests:**  
+- Verify `Name` is UNIQUE and NOT NULL  
+- Verify `Type`, `Region` are NOT NULL  
+- Verify `UserRating` and `AverageRating` follow defined CHECK constraints 
 
 **Tests:**
 - Use case name: 
@@ -467,7 +494,8 @@ ________________________________________________________________________________
   - **Pre-Conditions:** Valid UserID exists in the database
   - **Test steps:**
     1. Call getUserProfile() with known UserID
-    2. Verify returned values against expected values
+    2. Call with invalid userID, ensure error handling
+    3. Verify returned values against expected values
   - **Expected Result:** Full user profile including any joined data (if we decide to use any) is returned
   - **Actual result:**  TBD
   - **Post-conditions:** no changes to database.
@@ -486,6 +514,27 @@ ________________________________________________________________________________
 - **Actual result:**  TBD
 - **Post-conditions:** no changes to database.
 
+**Access Method:** createUserRequest(SenderID, Location, DateTime)
+- **Use case name:** Create a new climbing buddy request
+- **Description:** Test whether a user can successfully create a climbing request, which will be inserted into the Buddy Event Requests table, referencing a location from the locations table.
+- **Paramters:**
+ - 'SenderID' (int) - The UserID of the person making the request
+ - 'Location' (string) - The name of the climbing location
+ - 'DateTime' (datetime) - When the event is scheduled
+- **Return Values:** Success status (true/false), or new RequestID
+- **Pre-Conditions:**
+  - Valid 'SenderID exists in Users table
+  - Location exists in locations table; if not, it should be added before the request is created
+- **Test Steps:**
+  1. Verify the specified location exists in the locations table; insert if necessary
+  2. Call 'createUserRequest(SenderID, Location, DateTime)'
+  3. Query the Buddy Event REquests table and check for a new request entry with correct fields
+- **Expected Result:**
+  - A new record is added to Buddy Event Requests
+- **Post-Conditions:**
+  - Buddy Event Requests table contains a new valid request
+   
+
 ______________________________________________________________________________________________________
 
 ### Table: Messages
@@ -499,6 +548,22 @@ ________________________________________________________________________________
   - **Expected Result:** Full Message including any joined data (if we decide to use any) is returned
   - **Actual result:**  TBD
   - **Post-conditions:** no changes to database.
+
+**Access Method:** postMessage(senderID, receiverID, text)
+  - **Use case name:** Post a msessage to a buddy
+  - **Description:** Adds a new message to the Messages table from one user to another with timestamp.
+  - **Parameters:**
+  	- senderID (int) - ID of user sending message
+	- receiverID (int) - ID of recipient
+	- text (string) - Message body 
+  - **Pre-Conditions:** valid senderID and receiverID that exist in Users table
+  - **Test steps:**
+    1. Call postMessage() with valid sender, receiver, and text
+    2. Query Messages table for latest entry
+  - **Expected Result:** Message appears in Messages table
+  - **Post-conditions:**
+	- New row inserted in Messages table
+   	- Message visible on webpage
 
 ______________________________________________________________________________________________________
 
