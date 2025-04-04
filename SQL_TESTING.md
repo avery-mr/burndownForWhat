@@ -489,9 +489,10 @@ ________________________________________________________________________________
 
 ### Table: Users
 **Access Method:** getUserProfile(UserID)
-  - **Use case name:** Retrieve full user profile for valid UserID
-  - **Description:** Test whether the correct profile is retrieved and displayed
+  - **Description:** Retrieves full user profile
+  - **Parameters:** 'UserID' (int)
   - **Pre-Conditions:** Valid UserID exists in the database
+  - **Returns:** User record with all fields
   - **Test steps:**
     1. Call getUserProfile() with known UserID
     2. Call with invalid userID, ensure error handling
