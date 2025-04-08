@@ -23,6 +23,9 @@ body {
     text-decoration: none;
 }
 
+a {
+    color: #ff9800;
+}
 .container {
     width: 800px;
     margin: 20px auto;
