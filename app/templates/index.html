@@ -10,7 +10,7 @@
         <h2>LOGIN or SIGN UP</h2>
 
         <form action="{{ url_for('profile') }}">
-            <input type="text" id="userName" name="userName" value="User Name" required>
+            <input type="text" id="userName" name="userName" placeholder="User Name" required>
             <input type="submit" placeholder="Login"><br><br>
         </form>
         <a href="{{ url_for('create_profile') }}">Sign up as new user</a>
