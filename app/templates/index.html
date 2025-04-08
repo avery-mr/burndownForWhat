@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>Belay Buddy Login</title>
+    </head>
+    <body>
+        <h1>LOGIN or SIGN UP</h1>
+
+        <form action="{{ url_for('profile') }}">
+            <input type="text" id="userName" name="userName" value="User Name" required>
+            <input type="submit" placeholder="Login">
+        </form>
+        <a href="{{ url_for('create_profile') }}">Sign up as new user</a>
+    </body>
+</html>
+

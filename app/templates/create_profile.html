@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Belay Budy - New User Signup</title>
+    </head>
+    <body>
+        <h1>Enter your info</h1>
+
+        <form action="{{ url_for('profile') }}">
+            <label>User Name</label><br>
+            <input type="text" id="userName" required><br>
+            <label>First Name</label><br>
+            <input type="text" id="firstName" required><br>
+            <label>Last Name</label><br>
+            <input type="text" id="lastName" required><br>
+            <input type="submit" value="Submit">
+        </form>
+
+    </body>
+</html>

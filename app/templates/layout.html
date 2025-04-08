@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Belay Buddy</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('events') }}">Events</a>
+            <a href="{{ url_for('messages') }}">Messages</a>
+            <a href="{{ url_for('locations') }}">Locations</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
