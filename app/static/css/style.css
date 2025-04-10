@@ -1,6 +1,7 @@
 body {
     font-family: 'Franaklin Gothic Medium', sans-serif;
-    background-color: #1a1a1a;
+    /* background-color: #1a1a1a; */
+    background-color: #151D23;
     color: white;
     margin: 0;
     padding: 0;
@@ -8,7 +9,8 @@ body {
 }
 
 .navbar {
-    background-color: #333;
+    /* background-color: #333; */
+    background-color: #31353B;
     padding: 15px;
     display: flex;
     justify-content: center;
@@ -16,11 +18,58 @@ body {
 
 .navbar a {
     color: white;
-    background-color: #ff9800;
+    /* background-color: #ff9800; */
+    background-color: #C95730;
+    border-radius: 10px;
     padding: 15px;
     margin-left: 5px;
     margin-right: 5px;
     text-decoration: none;
+}
+
+
+.login-container {
+    width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #222;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    width: 55%;
+    max-width: 300px;
+    margin-bottom: 10px;
+}
+
+.login-form input {
+    width: 50%;
+    padding: 14px;
+    /* margin: 10px 0; */
+    border: 2px solid #5D757B;
+    background-color: transparent;
+    color: #FAF6EA;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.login-form button {
+    width: 55%;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    background-color: #C95730; /* rustic orange */
+    color: #f5e9c5;
+    border: none;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+  
+  .login-form a, p {
+    margin-top: 15px;
+    color: #5D757B
+    
 }
 
 a {

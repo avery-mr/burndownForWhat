@@ -7,13 +7,16 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     </head>
     <body>
-        <h2>LOGIN or SIGN UP</h2>
+        <div class="login-container">
+            <img src="static/img/belayBuddy_logo_temp_01.svg" alt ="Belay Buddy Logo" class="logo">
 
-        <form action="{{ url_for('profile') }}">
-            <input type="text" id="userName" name="userName" placeholder="User Name" required>
-            <input type="submit" placeholder="Login"><br><br>
-        </form>
-        <a href="{{ url_for('create_profile') }}">Sign up as new user</a>
+            <form class="login-form" action="{{ url_for('profile') }}">
+                <input type="text" id="userName" name="userName" placeholder="User Name" required>
+                <button type="submit">Log In</button>
+                <p>Don't have an account? <a href="{{ url_for('create_profile') }}">Sign up!</a></p>
+            </form>
+            
+        </div>
     </body>
 </html>
 
