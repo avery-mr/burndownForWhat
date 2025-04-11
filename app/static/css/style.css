@@ -27,6 +27,10 @@ body {
     text-decoration: none;
 }
 
+.navbar a:hover {
+    background-color: #813015;
+}
+
 
 .login-container {
     width: 500px;
@@ -45,7 +49,7 @@ body {
 .login-form input {
     width: 50%;
     padding: 14px;
-    /* margin: 10px 0; */
+    margin: 10px 0;
     border: 2px solid #5D757B;
     background-color: transparent;
     color: #FAF6EA;
@@ -75,6 +79,7 @@ body {
 a {
     color: #ff9800;
 }
+
 .container {
     width: 800px;
     margin: 20px auto;
@@ -100,6 +105,42 @@ a {
     background-color: gray;
 }
 
-.dashboard-section {
-    margin-top: 30px;
+.event-form-container {
+    width:500px;
+    margin: 20px auto;
+
+}
+
+.event-form input {
+    box-sizing: border-box;
+    width:100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 2px solid #5D757B;
+    background-color: transparent;
+    color: #FAF6EA;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.event-form button {
+    width: 100%;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    background-color: #C95730; /* rustic orange */
+    color: #f5e9c5;
+    border: none;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.event-form button:hover {
+    background-color: #813015;
+}
+
+.event-posts-container {
+    border-top: solid;
+    border-color:#C95730;
 }

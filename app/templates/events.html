@@ -4,17 +4,23 @@
 
 
 <div class="container">
-    <h2>Create Event</h2>
-    <form>
-        <input type="text" placeholder="Event Title" required><br>
-        <input type="date" required><br>
-        <input type="text" placeholder="Location" required><br>
-        <input type="number" placeholder="Number of Climbers Needed" required><br>
-        <button type="submit">Post Event</button>
-    </form>
+    <div class="event-form-container">
+        <h2>Create Event</h2>
+        <form class="event-form">
+            <label for="event-title">Event Title</label>
+            <input type="text" id="event-title" required><br>
+            <label for="event-date">Date</label>
+            <input type="date" id="event-date" required><br>
+            <label for="event-location">Location</label>
+            <input type="text" id="event-location" required><br>
+            <label for="event-count">Buddies Needed</label>
+            <input type="number" id="event-count" required><br>
+            <button type="submit">Post Event</button>
+        </form>
+    </div>
 
-    <div class="postings">
-        <h3>Open Events</h3>
+    <div class="event-posts-container">
+        <h2>Open Events</h2>
         <div class="event-entry">
             <p><strong>Bouldering at Flagstaff</strong></p>
             <p>Date</p>
