@@ -6,17 +6,35 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     </head>
     <body>
-        <h1>Enter your info</h1>
+        <div class="signup-container">
+            <h2>Enter your info</h2>
 
-        <form action="{{ url_for('profile') }}">
-            <label>User Name</label>
-            <input type="text" id="userName" required><br><br>
-            <label>First Name</label>
-            <input type="text" id="firstName" required><br><br>
-            <label>Last Name</label>
-            <input type="text" id="lastName" required><br><br>
-            <input type="submit" value="Submit">
-        </form>
-
+            <form  class="event-form" action="{{ url_for('profile') }}">
+                <label for="userName">User Name</label>
+                <input type="text" id="userName" required>
+                <label for="userEmail">Email Address</label>
+                <input type="text" id = userEmail required>
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" required>
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" required>
+                <label for="userHeight">Height</label>
+                <input type="text" id="userHeight" required>
+                <label for="userWeight">Weight</label>
+                <input type="text" id="userWeight" required>
+                <label for="userLocation">Location</label>
+                <input type="text" id="userLocation" required>
+                <label for="userXP">Experience</label>
+                <select id="userXP" required>
+                    <option value="1">Gumby</option>
+                    <option value="2">Crag Tourist</option>
+                    <option value="3">Gear Junkie</option>
+                    <option value="4">Rope Gun</option>
+                    <option value="5">Beta Whisperer</option>
+                    <option value="6">Crag Legend</option>
+                </select>
+                <button type="submit">Sign Me Up!</button>
+            </form>
+        </div>
     </body>
 </html>
