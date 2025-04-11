@@ -162,3 +162,17 @@ select option {
     border-top: solid;
     border-color:#C95730;
 }
+
+.event-entry {
+    padding: 20px;
+    margin: 20px auto;
+    border: 2px solid #5D757B;
+    border-radius:20px;
+    background-color: #333;
+}
+
+.event-header {
+    margin-top: 0;
+    font-size: 20px;
+    border-bottom: 2px solid #5D757B;
+}
