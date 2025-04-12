@@ -148,23 +148,23 @@ CREATE TABLE IF NOT EXISTS `BelayBuddy`.`Event` (
   `Notes` TEXT,
   PRIMARY KEY (`EventID`),
   INDEX `FK_userID_idx` (`ClimberID1` ASC, `ClimberID2` ASC, `ClimberID3` ASC, `ClimberID4` ASC, `ClimberID5` ASC) VISIBLE,
-  INDEX `FK_style_idx` (`PrimaryStyle` ASC) VISIBLE,
-  INDEX `FK_secstyle_idx` (`SecondaryStyle` ASC) VISIBLE,
-  INDEX `FK_location_idx` (`Location` ASC) VISIBLE,
+  INDEX `FK_style_idx` (`PrimaryStyleID` ASC) VISIBLE,
+  INDEX `FK_secstyle_idx` (`SecondaryStyleID` ASC) VISIBLE,
+  INDEX `FK_location_idx` (`LocationID` ASC) VISIBLE,
   CONSTRAINT `FK_climber1`
-    FOREIGN KEY (`ClimberID1`) REFERENCES `BelayBuddy`.`User`(UserID)
+    FOREIGN KEY (`ClimberID1`) REFERENCES `BelayBuddy`.`User`(UserID),
   CONSTRAINT `FK_climber2`
-    FOREIGN KEY (`ClimberID2`) REFERENCES `BelayBuddy`.`User`(UserID)
+    FOREIGN KEY (`ClimberID2`) REFERENCES `BelayBuddy`.`User`(UserID),
   CONSTRAINT `FK_climber3`
-    FOREIGN KEY (`ClimberID3`) REFERENCES `BelayBuddy`.`User`(UserID)
+    FOREIGN KEY (`ClimberID3`) REFERENCES `BelayBuddy`.`User`(UserID),
   CONSTRAINT `FK_climber4`
-    FOREIGN KEY (`ClimberID4`) REFERENCES `BelayBuddy`.`User`(UserID)
+    FOREIGN KEY (`ClimberID4`) REFERENCES `BelayBuddy`.`User`(UserID),
   CONSTRAINT `FK_climber5`
-    FOREIGN KEY (`ClimberID5`) REFERENCES `BelayBuddy`.`User`(UserID)
+    FOREIGN KEY (`ClimberID5`) REFERENCES `BelayBuddy`.`User`(UserID),
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `FK_primstyle`
-    FOREIGN KEY (`PrimaryStyle`)
+    FOREIGN KEY (`PrimaryStyleID`)
     REFERENCES `BelayBuddy`.`Style` (`StyleID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -174,12 +174,12 @@ CREATE TABLE IF NOT EXISTS `BelayBuddy`.`Event` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `FK_secstyle`
-    FOREIGN KEY (`SecondaryStyle`)
+    FOREIGN KEY (`SecondaryStyleID`)
     REFERENCES `BelayBuddy`.`Style` (`StyleID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `FK_location`
-    FOREIGN KEY (`Location`)
+    FOREIGN KEY (`LocationID`)
     REFERENCES `BelayBuddy`.`Location` (`LocationID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -276,7 +276,7 @@ INSERT INTO `Style` (`Name`) VALUES
 INSERT INTO `User` (`Username`, `Email`, `State`, `City`, `Experience`, `Height`, `Weight`, `Bio`) VALUES
 	('climbzRcool', 'cool@climb.com', 'Colorado', 'Boulder', 5, 170, 65, 'Lover of granite'),
 	('chalkup', 'grip@protonmail.com', 'California', 'San Diego', 3, 165, 60, 'Sandstone specialist'),
-	('belayqueen', 'ropequeen@cruxmail.com', 'Utah', 'Moab', 7, 160, 55, 'Trad and tacos')
+	('belayqueen', 'ropequeen@cruxmail.com', 'Utah', 'Moab', 7, 160, 55, 'Trad and tacos'),
 	('cruxjunkie', 'beta@stone.net', 'Nevada', 'Las Vegas', 4, 175, 70, 'Chasing the send in Red Rock'),
 	('dynoDan', 'hopskip@jumpmail.com', 'Oregon', 'Portland', 2, 180, 68, 'Boulders and beers'),
 	('racknrope', 'tradster@cragmail.com', 'Washington', 'Seattle', 6, 168, 62, 'Big walls and big coffee');
@@ -284,7 +284,7 @@ INSERT INTO `User` (`Username`, `Email`, `State`, `City`, `Experience`, `Height`
 INSERT INTO `Location` (`Name`, `Style`, `State`, `City`, `Address`, `AverageRating`, `UserRating`, `Notes`) VALUES
 	('Eldorado Canyon', 3, 'Colorado', 'Eldorado Springs', 'Eldorado Canyon State Park', 0.00, NULL, 'Classic trad routes'),
 	('Mission Cliffs Gym', 5, 'California', 'San Francisco', '2295 Harrison St', 0.00, NULL, 'Great indoor setting'),
-	('Indian Creek', 3, 'Utah', 'Moab', 'County Road 211', 0.00, NULL, 'Splitter cracks galore')
+	('Indian Creek', 3, 'Utah', 'Moab', 'County Road 211', 0.00, NULL, 'Splitter cracks galore'),
 	('Red Rock Canyon', 3, 'Nevada', 'Las Vegas', 'Scenic Loop Dr', 0.00, NULL, 'Desert trad wonderland'),
 	('Planet Granite', 5, 'Oregon', 'Portland', '1405 NW 14th Ave', 0.00, NULL, 'Modern indoor bouldering and sport'),
 	('Index Town Wall', 3, 'Washington', 'Index', 'Index-Galena Rd', 0.00, NULL, 'Granite trad lines and runouts');
