@@ -1,14 +1,22 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, request, redirect, url_for
 
 app = Flask(__name__)
+# lets try using a simple session and cookies to store user data
+app.secret_key = 'burndownforwhat'
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username'].strip()
+
+        session['username'] = username
+        return redirect(url_for('profile'))
+    return render_template('login.html')
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    username = session.get('username')
+    return render_template('profile.html', username=username)
 
 @app.route('/events')
 def events():
