@@ -30,8 +30,13 @@ def messages():
 def locations():
     return render_template('locations.html')
 
-@app.route('/create_profle')
+@app.route('/create_profle', methods=['GET', 'POST'])
 def create_profile():
+    if request.method == 'POST':
+        username = request.form['username'].strip()
+
+        session['username'] = username
+        return redirect(url_for('profile'))
     return render_template('create_profile.html')
 
 @app.route('/logout')

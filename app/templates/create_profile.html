@@ -9,19 +9,19 @@
         <div class="signup-container">
             <h2>Enter your info</h2>
 
-            <form  class="event-form" action="{{ url_for('profile') }}">
-                <label for="userName">User Name</label>
-                <input type="text" id="userName" required>
+            <form  class="event-form" method="POST">
+                <label for="username">User Name</label>
+                <input type="text" id="username" name="username" required>
                 <label for="userEmail">Email Address</label>
                 <input type="text" id = userEmail required>
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" required>
                 <label for="lastName">Last Name</label>
                 <input type="text" id="lastName" required>
-                <label for="userHeight">Height</label>
+                <!-- <label for="userHeight">Height</label>
                 <input type="text" id="userHeight" required>
                 <label for="userWeight">Weight</label>
-                <input type="text" id="userWeight" required>
+                <input type="text" id="userWeight" required> -->
                 <label for="userLocation">Location</label>
                 <input type="text" id="userLocation" required>
                 <label for="userXP">Experience</label>
@@ -32,6 +32,16 @@
                     <option value="4">Rope Gun</option>
                     <option value="5">Beta Whisperer</option>
                     <option value="6">Crag Legend</option>
+                </select>
+                <label for="userStyle">Preferred Climbing Styles</label>
+                <select id="userStyle" multiple size="7">
+                    <option value="1">Sport Climbing</option>
+                    <option value="2">Trad Climbing</option>
+                    <option value="3">Bouldering</option>
+                    <option value="4">Top Rope</option>
+                    <option value="5">Indoor Climbing</option>
+                    <option value="6">Alpine Climbing</option>
+                    <option value="7">Ice Climbing</option>
                 </select>
                 <label for="profilePic">Profile Picture</label>
                 <input type="file" name="profilePic" id="profilePic" accept="image/*">
