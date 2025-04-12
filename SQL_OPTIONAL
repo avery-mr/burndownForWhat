@@ -1,0 +1,35 @@
+1. Matchmaking Logic - adding a UserMatch table that stores match scores or preferences between users
+
+CREATE TABLE UserMatch (
+    UserID1 INTEGER,
+    UserID2 INTEGER,
+    MatchScore REAL, -- Optional: a value between 0 and 1 or 0 and 100
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (UserID1, UserID2),
+    FOREIGN KEY (UserID1) REFERENCES User(UserID),
+    FOREIGN KEY (UserID2) REFERENCES User(UserID)
+);
+
+
+2. More detailed Style preferences - add a 'UserStylePreferences' JOIN table between User and Style for fine-grain filtering
+
+CREATE TABLE UserStylePreferences (
+    UserID INTEGER,
+    StyleID INTEGER,
+    Preference ENUM('Hate', 'Dislike', 'Neutral', 'Like', 'Love'),
+    PRIMARY KEY (UserID, StyleID),
+    FOREIGN KEY (UserID) REFERENCES User(UserID),
+    FOREIGN KEY (StyleID) REFERENCES Style(StyleID)
+);
+
+3. Flexible attendance for Events - replace fixed climber columns with a JOIN table 'EventAttendance'
+
+CREATE TABLE EventAttendance (
+    EventID INTEGER,
+    UserID INTEGER,
+    Status TEXT CHECK(Status IN ('Going', 'Interested', 'Declined')) DEFAULT 'Interested',
+    RSVPTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (EventID, UserID),
+    FOREIGN KEY (EventID) REFERENCES Event(EventID),
+    FOREIGN KEY (UserID) REFERENCES User(UserID)
+);
