@@ -6,6 +6,8 @@ app.secret_key = 'burndownforwhat'
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
+    if 'username' in session:
+        return redirect(url_for('profile'))
     if request.method == 'POST':
         username = request.form['username'].strip()
 
@@ -15,19 +17,27 @@ def login():
 
 @app.route('/profile')
 def profile():
+    if 'username' not in session:
+        return redirect(url_for('login'))
     username = session.get('username')
     return render_template('profile.html', username=username)
 
 @app.route('/events')
 def events():
+    if 'username' not in session:
+        return redirect(url_for('login'))
     return render_template('events.html')
 
 @app.route('/messages')
 def messages():
+    if 'username' not in session:
+        return redirect(url_for('login'))
     return render_template('messages.html')
 
 @app.route('/locations')
 def locations():
+    if 'username' not in session:
+        return redirect(url_for('login'))
     return render_template('locations.html')
 
 @app.route('/create_profle', methods=['GET', 'POST'])
@@ -41,6 +51,9 @@ def create_profile():
 
 @app.route('/logout')
 def logout():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    session.pop('username', None)
     return render_template('logout.html')
 
 if __name__ == '__main__':
