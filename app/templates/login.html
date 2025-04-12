@@ -10,8 +10,8 @@
         <div class="login-container">
             <img src="static/img/belayBuddy_logo_temp_01.svg" alt ="Belay Buddy Logo" class="logo">
 
-            <form class="login-form" action="{{ url_for('profile') }}">
-                <input type="text" id="userName" name="userName" placeholder="User Name" required>
+            <form class="login-form" method="post">
+                <input type="text" id="username" name="username" placeholder="User Name" required>
                 <button type="submit">Log In</button>
                 <p>Don't have an account? <a href="{{ url_for('create_profile') }}">Sign up!</a></p>
             </form>
