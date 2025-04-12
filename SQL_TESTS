@@ -1,0 +1,15 @@
+1. SELECT query to test messages
+
+	-- View recent messages at a specific location
+	SELECT 
+	    m.MessageID,
+	    u1.Username AS Sender,
+	    u2.Username AS Receiver,
+	    l.Name AS Location,
+	    m.MessageText,
+	    m.Timestamp
+	FROM Messages m
+	JOIN User u1 ON m.SenderID = u1.UserID
+	JOIN User u2 ON m.ReceiverID = u2.UserID
+	JOIN Location l ON m.LocationID = l.LocationID
+	ORDER BY m.Timestamp DESC;
