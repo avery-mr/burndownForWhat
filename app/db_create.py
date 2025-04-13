@@ -131,12 +131,20 @@ def createEvent():
     return execute_query(sql, "Event Table Successfully Created")
 
 def createTriggers():
-    sql = ''' 
+    try:
+        conn = get_connection()
+        cur = conn.cursor()
+
+        sql_drop = '''
         DROP TRIGGER IF EXISTS userrating_after_insert ON "UserRating";
         DROP TRIGGER IF EXISTS userrating_after_update ON "UserRating";
         DROP TRIGGER IF EXISTS userrating_after_delete ON "UserRating";
         DROP FUNCTION IF EXISTS update_location_avg_rating();
+        DROP FUNCTION IF EXISTS update_location_avg_rating_on_delete();
+        '''
+        cur.execute(sql_drop)
 
+        sql_function = '''
         CREATE OR REPLACE FUNCTION update_location_avg_rating()
         RETURNS TRIGGER AS $$
         BEGIN
@@ -161,7 +169,6 @@ def createTriggers():
         FOR EACH ROW
         EXECUTE FUNCTION update_location_avg_rating();
 
-
         CREATE OR REPLACE FUNCTION update_location_avg_rating_on_delete()
         RETURNS TRIGGER AS $$
         BEGIN
@@ -181,7 +188,15 @@ def createTriggers():
         FOR EACH ROW
         EXECUTE FUNCTION update_location_avg_rating_on_delete();
         '''
-    return execute_query(sql, "Triggers Successfully Created")
+        cur.execute(sql_function)
+        conn.commit()
+        return "Triggers successfully created!"
+    except Exception as e:
+        conn.rollback()
+        return f"Error creating triggers: {str(e)}"
+    finally:
+        cur.close()
+        conn.close()
 
 
 def createAll():
