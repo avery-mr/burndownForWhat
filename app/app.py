@@ -277,6 +277,10 @@ def selectUser():
     response_string += "</tbody></table>"
     return response_string
 
+
+#going to create a /db_dropAll method that drops all the tables...will have to wait until tomorrow. so sleepy
+#@app.route('/db_dropAll')
+
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if 'username' in session:
