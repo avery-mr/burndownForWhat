@@ -30,7 +30,7 @@ def init_db():
 
 @app.route('/seed', methods=['GET'])
 def run_seed():
-    if os.getenv("ENV") != "development":
+    if os.getenv("ENV") != "development":  # only usable in dev environment
         return "Unauthorized", 403
     return seed_database()
     
