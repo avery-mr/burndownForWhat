@@ -35,7 +35,7 @@ def seed_database():
 
         # Insert Locations
         cur.execute("""
-        INSERT INTO "Location" ("Name", "Style", "State", "City", "Address", "AverageRating", "UserRating", "Notes") VALUES
+        INSERT INTO "Location" (Name, Style, State, City, Address, AverageRating, UserRating, Notes) VALUES
             ('Eldorado Canyon', 3, 'Colorado', 'Eldorado Springs', 'Eldorado Canyon State Park', 0.00, NULL, 'Classic trad routes'),
             ('Mission Cliffs Gym', 5, 'California', 'San Francisco', '2295 Harrison St', 0.00, NULL, 'Great indoor setting'),
             ('Indian Creek', 3, 'Utah', 'Moab', 'County Road 211', 0.00, NULL, 'Splitter cracks galore'),
@@ -46,7 +46,7 @@ def seed_database():
 
         # Insert Messages
         cur.execute("""
-        INSERT INTO "Message" ("SenderID", "ReceiverID", "LocationID", "Text", "Timestamp") VALUES
+        INSERT INTO "Message" (SenderID, ReceiverID, LocationID, Text, Timestamp) VALUES
             (1, 2, 1, 'Hey! Climbing at The Spot this weekend?', NOW() - INTERVAL '2 days'),
             (2, 1, 1, 'Sounds good! I''ll bring my gear.', NOW() - INTERVAL '1 day'),
             (3, 1, 3, 'Up for a mission on El Cap?', NOW() - INTERVAL '5 days'),
@@ -57,7 +57,7 @@ def seed_database():
 
         # Insert Ratings
         cur.execute("""
-        INSERT INTO "UserRating" ("LocationID", "UserID", "Rating") VALUES
+        INSERT INTO "UserRating" (LocationID, UserID, Rating) VALUES
             (1, 1, 5), 
             (1, 2, 4), 
             (1, 3, 5),
@@ -71,7 +71,7 @@ def seed_database():
 
         # Insert Events
         cur.execute("""
-        INSERT INTO "Event" ("HostID", "DateTime", "LocationID", "PrimaryStyle", "SecondaryStyle", "Status", "Notes") VALUES
+        INSERT INTO "Event" (HostID, DateTime, LocationID, PrimaryStyle, SecondaryStyle, Status, Notes) VALUES
             (1, '2025-04-15 09:00:00', 1, 1, NULL, 'Going', 'Morning session at the local gym'),
             (2, '2025-04-16 18:30:00', 2, 2, 4, 'Full', 'After-work climb, bring snacks!'),
             (3, '2025-04-17 14:00:00', 3, 3, NULL, 'Not Going', 'Weekend warm-up on the slab routes'),
@@ -82,7 +82,7 @@ def seed_database():
 
         # Insert Buddy relationships
         cur.execute("""
-        INSERT INTO "Buddy" ("UserID", "FriendID", "Status") VALUES
+        INSERT INTO "Buddy" (UserID, FriendID, Status) VALUES
             (1, 2, 'confirmed'), (1, 3, 'pending'), (2, 4, 'confirmed'), (3, 1, 'declined'),
             (4, 5, 'confirmed'), (5, 2, 'pending'), (6, 1, 'confirmed'),
             (3, 6, 'confirmed'), (2, 6, 'pending'), (5, 3, 'declined');
