@@ -10,7 +10,7 @@ def seed_database():
 
     try:
         # Check User table
-        cur.execute('SELECT 1 FROM "User" WHERE "Username" = %s;', ('climbzRcool',))
+        cur.execute('SELECT 1 FROM "User" WHERE Username = %s;', ('climbzRcool',))
         if cur.fetchone():
             print("Database already seeded, skipping.")
             return "Database already seeded, skipping."
