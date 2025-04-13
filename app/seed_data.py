@@ -72,12 +72,12 @@ def seed_database():
         # Insert Events
         cur.execute("""
         INSERT INTO "Event" (HostID, DateTime, LocationID, PrimaryStyle, SecondaryStyle, Status, Notes) VALUES
-            (1, '2025-04-15 09:00:00', 1, 1, NULL, 'Going', 'Morning session at the local gym'),
-            (2, '2025-04-16 18:30:00', 2, 2, 4, 'Full', 'After-work climb, bring snacks!'),
-            (3, '2025-04-17 14:00:00', 3, 3, NULL, 'Not Going', 'Weekend warm-up on the slab routes'),
-            (1, '2025-04-18 10:00:00', 2, 4, 2, 'Going', 'Trying some new routes today'),
-            (2, '2025-04-19 08:00:00', 1, 1, NULL, 'Not Going', 'Weather turned bad — rescheduling'),
-            (3, '2025-04-20 13:00:00', 3, 6, 9, 'Full', 'Mixed styles today — all levels welcome');
+            (1, '2025-04-15 09:00:00', 1, 1, NULL, 'going', 'Morning session at the local gym'),
+            (2, '2025-04-16 18:30:00', 2, 2, 4, 'full', 'After-work climb, bring snacks!'),
+            (3, '2025-04-17 14:00:00', 3, 3, NULL, 'not going', 'Weekend warm-up on the slab routes'),
+            (1, '2025-04-18 10:00:00', 2, 4, 2, 'going', 'Trying some new routes today'),
+            (2, '2025-04-19 08:00:00', 1, 1, NULL, 'not going', 'Weather turned bad — rescheduling'),
+            (3, '2025-04-20 13:00:00', 3, 6, 9, 'full', 'Mixed styles today — all levels welcome');
         """)
 
         # Insert Buddy relationships
