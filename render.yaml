@@ -10,7 +10,7 @@ services:
     env: python
     plan: free
     region: oregon 
-    buildCommand: pip install -r requirements.txt && python db_create.py && python seed_data.py
+    buildCommand: pip install -r requirements.txt && python app/db_create.py && python app/seed_data.py
     startCommand: gunicorn app.app:app
     envVars:
       - key: DATABASE_URL
@@ -19,3 +19,5 @@ services:
           property: connectionString
       - key: PYTHON_VERSION
         value: 3.11 
+      - key: SECRET_KEY
+        value: burndownforwhat
