@@ -1,7 +1,7 @@
 import psycopg2
 import os
 
-from flask import Flask, render_template, session, request, redirect, url_for
+from flask import flask, render_template, session, request, redirect, url_for
 from seed_data import seed_database
 from db_create import createAll
 from db_utils import get_connection
