@@ -10,7 +10,7 @@ def seed_database():
     try:
         # Insert Styles
         cur.execute("""
-        INSERT INTO "Style" ("StyleName") VALUES
+        INSERT INTO "Style" (StyleName) VALUES
             ('Bouldering'), 
             ('Sport'), 
             ('Trad'), 
@@ -24,7 +24,7 @@ def seed_database():
 
         # Insert Users
         cur.execute("""
-        INSERT INTO "User" ("Username", "Email", "State", "City", "Experience", "Bio") VALUES
+        INSERT INTO "User" (Username, Email, State, City, Experience, Bio) VALUES
             ('climbzRcool', 'cool@climb.com', 'Colorado', 'Boulder', 5, 'Lover of granite'),
             ('chalkup', 'grip@protonmail.com', 'California', 'San Diego', 3, 'Sandstone specialist'),
             ('belayqueen', 'ropequeen@cruxmail.com', 'Utah', 'Moab', 7, 'Trad and tacos'),
