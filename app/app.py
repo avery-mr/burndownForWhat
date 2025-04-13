@@ -12,6 +12,49 @@ def testing():
     conn.close()
     return "Database Connection Successful"
 
+@app.route('/db_createUser')
+def creating():
+    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    cur = conn.cursor()
+    cur.execute('''
+        DROP TABLE IF EXISTS "User";
+        
+        CREATE TABLE IF NOT EXISTS "User" (
+        UserID INT PRIMARY KEY,
+        Username VARCHAR(45) NOT NULL UNIQUE,
+        Email VARCHAR(45) NOT NULL UNIQUE,
+        State VARCHAR(45) NOT NULL,
+        City VARCHAR(45) NOT NULL,
+        Experience INT NOT NULL,
+        Bio TEXT,
+        );
+        ''')
+    conn.commit()
+    cur.close()
+    conn.close()
+    return "User Table Successfully Created"
+
+@app.route('/db_createBuddy')
+def creating():
+    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    cur = conn.cursor()
+    cur.execute('''
+        DROP TABLE IF EXISTS "Buddy";
+        
+        CREATE TABLE IF NOT EXISTS "Buddy" (
+        UserID INT NOT NULL,
+        FriendID INT NOT NULL,
+        Status ENUM('pending', 'confirmed', 'declined') NOT NULL,
+        PRIMARY KEY (UserID, FriendID)
+        CONSTRAINT FK_userid FOREIGN KEY (UserID) REFERENCES User(UserID)
+        CONSTRAINT FK_friendid FOREIGN KEY (FriendID) REFERENCES User(UserID)
+        );
+        ''')
+    conn.commit()
+    cur.close()
+    conn.close()
+    return "User Table Successfully Created"
+
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if 'username' in session:
