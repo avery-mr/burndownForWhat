@@ -96,12 +96,13 @@ a {
 }
 
 .container {
-    width: 800px;
+    width: 1000px;
     margin: 0 auto;
     padding: 100px 20px 20px;
     background-color: #222;
     text-align: left;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    gap: 20px;
 }
 
 .profile-header {
@@ -183,119 +184,112 @@ select option {
 }
 
 /* CSS for Messages page begins */
-#full_page {
-    margin-left: 110px;
-    margin-right: 50px;
+.msg-header {
+    width: 100%;
 }
 
-#buddies {
-    width: 25%;
-    float:left;
-    clear:left;
-    margin-bottom: 100px;
-}
-
-#p1 {
-    background: grey;
-    overflow-y: scroll;
+.msg-page-container {
+    display: flex;
     height: 500px;
+    gap: 10px;
 }
 
-.cont {
-    position: relative;
-    text-align: center;
-}
+.msg-buddies-container {
+    flex: 0 0 auto;
+    max-width: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
 
-#p2 {
-    overflow-y: scroll;
-    height: 355px;
-    position: absolute;
-    top: 45%; /* You can adjust this value */
-    left: 50%;
-    transform: translate(-19%, 0%);
-    font-size: 18px;
-    text-align: center;
-}
 
-#p2 p{
-    color: white;
-    text-align: left;
-}
-
-#messages {
-    width: 70%;
-    float:right;
-    clear:right;
-    overflow: hidden;
-    margin-bottom: 100px;
-}
-
-#p1, #p2 {
-    color: white;
-}
-
-#mtn {
-    width: 750px;
-    height: 425px;
-    object-fit: cover;
+.msg-buddy-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 20px 5px 10px;
+    background-color: #B7B7B7;
+    border: 2px solid #3e3c3c;
     border-radius: 15px;
+    font-size: 18px;
+    color: black;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}  
+
+.msg-buddy-btn:hover {
+    background-color: #949494;
 }
 
-#p3 {
-    /* height: 50px; */
-    position: absolute;
-    /* top: 50%; /* You can adjust this value */
-    left: 50%;
-    transform: translate(-18%, 0%);
-    font-size: 18px; */
-    /* text-align: center; */
+.msg-buddy-btn img {
+    height:30px;
+    width:30px;
+    border-radius: 50%;
 }
 
-#msgbox {
-    box-sizing: border-box;
-    width: 600px;
-    padding: 14px;
-    margin: 10px 0;
+.msg-messages {
+    flex: 1;
+    overflow-y: auto;
+    flex-direction: column;
+    font-size: 16px;
+    color: white;
+    padding: 10px;
+    background-color: #2f2f2f;
+    background-image: url('../img/mtn.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
+.msg-messages * {
+    color: white;
+  }
+
+.msg-chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+
+.msg-form {
+    width:100%;
+}
+
+.msg-form form {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.msg-form input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
     border: 2px solid #5D757B;
     background-color: transparent;
     color: #FAF6EA;
-    font-size: 16px;
     border-radius: 8px;
+    min-width: 0;
 }
 
-#msgbtn {
-    padding-top: 14px;
-    padding-bottom: 14px;
-    background-color: #C95730; /* rustic orange */
+.msg-form button {
+    width: 100px;
+    padding: 10px;
+    background-color: #C95730;
     color: #f5e9c5;
+    font-size: 16px;
     border: none;
-    font-size: 18px;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
-    margin-top: 20px;
-}
+    flex-shrink: 0;
+  }
 
-#chdiv1, #chdiv2, #chdiv3, #chdiv4, #chdiv5 {
-    /* margin-top: 5px;
-    margin-bottom: 5px; */
-    margin-right: 5px;
-    margin-left: 5px;
-    /* padding: 10px; */
-    border: rgb(62, 60, 60) solid 3px;
-    border-radius: 15px;
-    text-align: left;
-    font-family: sans-serif;
-    background: #B7B7B7;
-}
-
-#pardiv a {
-    color: black;
-    margin-left: 15px;
-    font-size: 22px;
-}
-
-#pardiv img {
-    margin-left: 30px;
+  .msg-form button:hover {
+    background-color: #813015;
 }
 
 /* End of CSS for Messages page */
