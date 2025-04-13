@@ -20,7 +20,7 @@ def createUser():
         DROP TABLE IF EXISTS "User";
         
         CREATE TABLE IF NOT EXISTS "User" (
-        UserID INT PRIMARY KEY,
+        UserID SERIAL PRIMARY KEY,
         Username VARCHAR(45) NOT NULL UNIQUE,
         Email VARCHAR(45) NOT NULL UNIQUE,
         State VARCHAR(45) NOT NULL,
@@ -40,8 +40,9 @@ def createBuddy():
     cur = conn.cursor()
     cur.execute('''
         DROP TABLE IF EXISTS "Buddy";
-        CREATE TYPE status_enum AS ENUM ('pending', 'confirmed', 'declined');
+        DROP TYPE IF EXISTS status_enum;
         
+        CREATE TYPE status_enum AS ENUM ('pending', 'confirmed', 'declined');
         CREATE TABLE IF NOT EXISTS "Buddy" (
         UserID INT NOT NULL,
         FriendID INT NOT NULL,
@@ -55,6 +56,45 @@ def createBuddy():
     cur.close()
     conn.close()
     return "Buddy Table Successfully Created"
+
+@app.route('/db_createMessage')
+def createUser():
+    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    cur = conn.cursor()
+    cur.execute('''
+        DROP TABLE IF EXISTS "Message";
+        
+        CREATE TABLE IF NOT EXISTS "Message" (
+        MessageID SERIAL PRIMARY KEY,
+        SenderID INT NOT NULL,
+        ReceiverID INT NOT NULL,
+        Text TEXT NOT NULL,
+        Timestamp DATETIME NOT NULL
+        CONSTRAINT FK_sender FOREIGN KEY (SenderID) REFERENCES "User"(UserID),
+        CONSTRAINT FK_receiver FOREIGN KEY (ReceiverID) REFERENCES "User"(UserID)
+        );
+        ''')
+    conn.commit()
+    cur.close()
+    conn.close()
+    return "Message Table Successfully Created"
+
+@app.route('/db_createStyle')
+def createUser():
+    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    cur = conn.cursor()
+    cur.execute('''
+        DROP TABLE IF EXISTS "Style";
+        
+        CREATE TABLE IF NOT EXISTS "Style" (
+        StyleID SERIAL PRIMARY KEY,
+        StyleName VARCHAR(45) NOT NULL UNIQUE;
+        );
+        ''')
+    conn.commit()
+    cur.close()
+    conn.close()
+    return "Style Table Successfully Created"
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
