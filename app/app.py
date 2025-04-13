@@ -181,6 +181,26 @@ def createUser():
     conn.close()
     return "UserRating Table Successfully Created"
 
+@app.route('/db_createUserStyle')
+def createUser():
+    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    cur = conn.cursor()
+    cur.execute('''
+        DROP TABLE IF EXISTS "UserStyle";
+        
+        CREATE TABLE IF NOT EXISTS "UserStyle" (
+        UserID INT NOT NULL,
+        StyleID INT NOT NULL,
+        PRIMARY KEY (UserID, StyleID),
+        CONSTRAINT FK_user FOREIGN KEY (UserID) REFERENCES "User"(UserID),
+        CONSTRAINT FK_style FOREIGN KEY (StyleID) REFERENCE "Style"(StyleID)
+        );
+        ''')
+    conn.commit()
+    cur.close()
+    conn.close()
+    return "UserStyle Table Successfully Created"
+
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if 'username' in session:
