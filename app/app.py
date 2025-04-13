@@ -69,7 +69,7 @@ def createUser():
         SenderID INT NOT NULL,
         ReceiverID INT NOT NULL,
         Text TEXT NOT NULL,
-        Timestamp DATETIME NOT NULL
+        Timestamp DATETIME NOT NULL,
         CONSTRAINT FK_sender FOREIGN KEY (SenderID) REFERENCES "User"(UserID),
         CONSTRAINT FK_receiver FOREIGN KEY (ReceiverID) REFERENCES "User"(UserID)
         );
@@ -95,6 +95,91 @@ def createUser():
     cur.close()
     conn.close()
     return "Style Table Successfully Created"
+
+@app.route('/db_createLocation')
+def createUser():
+    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    cur = conn.cursor()
+    cur.execute('''
+        DROP TABLE IF EXISTS "Location";
+        
+        CREATE TABLE IF NOT EXISTS "Location" (
+        LocationID SERIAL PRIMARY KEY,
+        Name VARCHAR(45) NOT NULL,
+        Style INT NOT NULL,
+        State VARCHAR(45) NOT NULL,
+        City VARCHAR(45) NOT NULL,
+        Address VARCHAR(45) NOT NULL,
+        AverageRating DECIMAL(3, 2) NOT NULL,
+        UserRating INT NULL,
+        Notes TEXT NULL,
+        CONSTRAINT FK_style FOREIGN KEY (Style) REFERENCES "Style"(StyleID)
+        );
+        ''')
+    conn.commit()
+    cur.close()
+    conn.close()
+    return "Location Table Successfully Created"
+
+@app.route('/db_createEvent')
+def createUser():
+    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    cur = conn.cursor()
+    cur.execute('''
+        DROP TABLE IF EXISTS "Event";
+        DROP TYPE IF EXISTS status_enum2;
+        
+        CREATE TYPE status_enum2 AS ENUM ('going', 'not going', 'full');
+        CREATE TABLE IF NOT EXISTS "Event" (
+        EventID SERIAL PRIMARY KEY,
+        HostID INT NOT NULL,
+        ClimberID1 INT,
+        ClimberID2 INT,
+        ClimberID3 INT,
+        ClimberID4 INT,
+        ClimberID5 INT,
+        DateTime DATETIME NOT NULL,
+        LocationID INT NOT NULL,
+        PrimaryStyleID INT,
+        SecondaryStyleID INT,
+        Status status_enum2 NOT NULL,
+        Notes TEXT,
+        CONSTRAINT FK_host FOREIGN KEY (HostID) REFERENCES "User"(UserID),
+        CONSTRAINT FK_climber1 FOREIGN KEY (ClimberID1) REFERENCES "User"(UserID),
+        CONSTRAINT FK_climber2 FOREIGN KEY (ClimberID2) REFERENCES "User"(UserID),
+        CONSTRAINT FK_climber3 FOREIGN KEY (ClimberID3) REFERENCES "User"(UserID),
+        CONSTRAINT FK_climber4 FOREIGN KEY (ClimberID4) REFERENCES "User"(UserID),
+        CONSTRAINT FK_climber5 FOREIGN KEY (ClimberID5) REFERENCES "User"(UserID),
+        CONSTRAINT FK_location FOREIGN KEY (LocationID) REFERENCES Location(LocationID),
+        CONSTRAINT FK_primstyle FOREIGN KEY (PrimaryStyleID) REFERENCES Style(StyleID),
+        CONSTRAINT FK_secstyle FOREIGN KEY (SecondaryStyleID) REFERENCES Style(StyleID)
+        );
+        ''')
+    conn.commit()
+    cur.close()
+    conn.close()
+    return "Event Table Successfully Created"
+
+@app.route('/db_createUserRating')
+def createUser():
+    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    cur = conn.cursor()
+    cur.execute('''
+        DROP TABLE IF EXISTS "UserRating";
+        
+        CREATE TABLE IF NOT EXISTS "UserRating" (
+        RatingID SERIAL PRIMARY KEY,
+        LocationID INT NOT NULL,
+        UserID INT NOT NULL,
+        Rating INT NOT NULL,
+        CONSTRAINT FK_location FOREIGN KEY (LocationID) REFERENCES "Location"(LocationID),
+        CONSTRAINT FK_user FOREIGN KEY (UserID) REFERENCES "User"(UserID)
+        );
+        ''')
+    conn.commit()
+    cur.close()
+    conn.close()
+    return "UserRating Table Successfully Created"
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
