@@ -18,4 +18,4 @@ services:
           name: BelayBuddy
           property: connectionString
       - key: PYTHON_VERSION
-        value: 3.8 
+        value: 3.11 
