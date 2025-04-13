@@ -3,6 +3,7 @@ import os
 
 from flask import Flask, render_template, session, request, redirect, url_for
 
+
 app = Flask(__name__)
 # lets try using a simple session and cookies to store user data
 app.secret_key = 'burndownforwhat'
@@ -251,6 +252,7 @@ def createTriggers():
     finally:
         cur.close()
         conn.close()
+
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
