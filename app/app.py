@@ -48,7 +48,7 @@ def locations():
         return redirect(url_for('login'))
     return render_template('locations.html')
 
-@app.route('/create_profle', methods=['GET', 'POST'])
+@app.route('/create_profile', methods=['GET', 'POST'])
 def create_profile():
     if request.method == 'POST':
         username = request.form['username'].strip()
