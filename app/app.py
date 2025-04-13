@@ -1,8 +1,16 @@
+import psycopg2
+
 from flask import Flask, render_template, session, request, redirect, url_for
 
 app = Flask(__name__)
 # lets try using a simple session and cookies to store user data
 app.secret_key = 'burndownforwhat'
+
+@app.route('/db_test')
+def testing():
+    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    conn.close()
+    return "Database Connection Successful"
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
