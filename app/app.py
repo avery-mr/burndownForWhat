@@ -13,7 +13,7 @@ def testing():
     return "Database Connection Successful"
 
 @app.route('/db_createUser')
-def creating():
+def createUser():
     conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
     cur = conn.cursor()
     cur.execute('''
@@ -26,7 +26,7 @@ def creating():
         State VARCHAR(45) NOT NULL,
         City VARCHAR(45) NOT NULL,
         Experience INT NOT NULL,
-        Bio TEXT,
+        Bio TEXT
         );
         ''')
     conn.commit()
@@ -35,25 +35,26 @@ def creating():
     return "User Table Successfully Created"
 
 @app.route('/db_createBuddy')
-def creating():
+def createBuddy():
     conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
     cur = conn.cursor()
     cur.execute('''
         DROP TABLE IF EXISTS "Buddy";
+        CREATE TYPE status_enum AS ENUM ('pending', 'confirmed', 'declined');
         
         CREATE TABLE IF NOT EXISTS "Buddy" (
         UserID INT NOT NULL,
         FriendID INT NOT NULL,
-        Status ENUM('pending', 'confirmed', 'declined') NOT NULL,
-        PRIMARY KEY (UserID, FriendID)
-        CONSTRAINT FK_userid FOREIGN KEY (UserID) REFERENCES User(UserID)
-        CONSTRAINT FK_friendid FOREIGN KEY (FriendID) REFERENCES User(UserID)
+        Status status_enum NOT NULL,
+        PRIMARY KEY (UserID, FriendID),
+        CONSTRAINT FK_userid FOREIGN KEY (UserID) REFERENCES "User"(UserID),
+        CONSTRAINT FK_friendid FOREIGN KEY (FriendID) REFERENCES "User"(UserID)
         );
         ''')
     conn.commit()
     cur.close()
     conn.close()
-    return "User Table Successfully Created"
+    return "Buddy Table Successfully Created"
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
