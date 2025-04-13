@@ -4,12 +4,12 @@ import os
 from flask import Flask, render_template, session, request, redirect, url_for
 from seed_data import seed_database
 from db_create import createAll
-from db_utils import get_connection, execute_query
+from db_utils import get_connection
 
 app = Flask(__name__)
 # lets try using a simple session and cookies to store user data
-app.secret_key = 'burndownforwhat'
-#app.secret_key = os.getenv("SECRET_KEY", "burndownforwhat")
+#app.secret_key = 'burndownforwhat'
+app.secret_key = os.getenv("SECRET_KEY", "burndownforwhat")
 
 @app.route('/db_test')
 def testing():
