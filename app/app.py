@@ -2,7 +2,7 @@ import psycopg2
 import os
 
 from flask import Flask, render_template, session, request, redirect, url_for
-
+from seed_data import seed_database
 
 app = Flask(__name__)
 # lets try using a simple session and cookies to store user data
@@ -27,11 +27,19 @@ def execute_query(sql: str, message: str):
         cur.close()
         conn.close()
 
+
 @app.route('/db_test')
 def testing():
     conn = get_connection()
     conn.close()
     return "Database Connection Successful"
+
+
+@app.route('/seed')
+def run_seed():
+    result = seed_database()
+    return result
+
 
 @app.route('/db_createUser')
 def createUser():
