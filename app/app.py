@@ -41,13 +41,13 @@ def init_db():
     if os.getenv("ENV") != "development":  # only usable in dev environment
         return "Unauthorized", 403
     return createAll()
-    
 
-@app.route('/seed')
+
+@app.route('/seed', methods=['GET'])
 def run_seed():
-    result = seed_database()
-    return result
-
+    if os.getenv("ENV") != "development":
+        return "Unauthorized", 403
+    return seed_database()
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
