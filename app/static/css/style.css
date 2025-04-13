@@ -181,3 +181,121 @@ select option {
     font-size: 20px;
     border-bottom: 2px solid #5D757B;
 }
+
+/* CSS for Messages page begins */
+#full_page {
+    margin-left: 110px;
+    margin-right: 50px;
+}
+
+#buddies {
+    width: 25%;
+    float:left;
+    clear:left;
+    margin-bottom: 100px;
+}
+
+#p1 {
+    background: grey;
+    overflow-y: scroll;
+    height: 500px;
+}
+
+.cont {
+    position: relative;
+    text-align: center;
+}
+
+#p2 {
+    overflow-y: scroll;
+    height: 355px;
+    position: absolute;
+    top: 45%; /* You can adjust this value */
+    left: 50%;
+    transform: translate(-19%, 0%);
+    font-size: 18px;
+    text-align: center;
+}
+
+#p2 p{
+    color: white;
+    text-align: left;
+}
+
+#messages {
+    width: 70%;
+    float:right;
+    clear:right;
+    overflow: hidden;
+    margin-bottom: 100px;
+}
+
+#p1, #p2 {
+    color: white;
+}
+
+#mtn {
+    width: 750px;
+    height: 425px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+#p3 {
+    /* height: 50px; */
+    position: absolute;
+    /* top: 50%; /* You can adjust this value */
+    left: 50%;
+    transform: translate(-18%, 0%);
+    font-size: 18px; */
+    /* text-align: center; */
+}
+
+#msgbox {
+    box-sizing: border-box;
+    width: 600px;
+    padding: 14px;
+    margin: 10px 0;
+    border: 2px solid #5D757B;
+    background-color: transparent;
+    color: #FAF6EA;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+#msgbtn {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    background-color: #C95730; /* rustic orange */
+    color: #f5e9c5;
+    border: none;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#chdiv1, #chdiv2, #chdiv3, #chdiv4, #chdiv5 {
+    /* margin-top: 5px;
+    margin-bottom: 5px; */
+    margin-right: 5px;
+    margin-left: 5px;
+    /* padding: 10px; */
+    border: rgb(62, 60, 60) solid 3px;
+    border-radius: 15px;
+    text-align: left;
+    font-family: sans-serif;
+    background: #B7B7B7;
+}
+
+#pardiv a {
+    color: black;
+    margin-left: 15px;
+    font-size: 22px;
+}
+
+#pardiv img {
+    margin-left: 30px;
+}
+
+/* End of CSS for Messages page */
