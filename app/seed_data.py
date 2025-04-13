@@ -46,13 +46,13 @@ def seed_database():
 
         # Insert Messages
         cur.execute("""
-        INSERT INTO "Message" (SenderID, ReceiverID, LocationID, Text, Timestamp) VALUES
-            (1, 2, 1, 'Hey! Climbing at The Spot this weekend?', NOW() - INTERVAL '2 days'),
-            (2, 1, 1, 'Sounds good! I''ll bring my gear.', NOW() - INTERVAL '1 day'),
-            (3, 1, 3, 'Up for a mission on El Cap?', NOW() - INTERVAL '5 days'),
-            (1, 3, 3, 'Absolutely Let''s do the Nose.', NOW() - INTERVAL '4 days'),
-            (2, 3, 2, 'Want to meet up in Moab for some cracks?', NOW() - INTERVAL '3 days'),
-            (3, 2, 2, 'I''m in. Been itching to climb that route!', NOW() - INTERVAL '2 days');
+        INSERT INTO "Message" (SenderID, ReceiverID, Text, Timestamp) VALUES
+            (1, 2, 'Hey! Climbing at The Spot this weekend?', NOW() - INTERVAL '2 days'),
+            (2, 1, 'Sounds good! I''ll bring my gear.', NOW() - INTERVAL '1 day'),
+            (3, 1, 'Up for a mission on El Cap?', NOW() - INTERVAL '5 days'),
+            (1, 3, 'Absolutely Let''s do the Nose.', NOW() - INTERVAL '4 days'),
+            (2, 3, 'Want to meet up in Moab for some cracks?', NOW() - INTERVAL '3 days'),
+            (3, 2, 'I''m in. Been itching to climb that route!', NOW() - INTERVAL '2 days');
         """)
 
         # Insert Ratings
