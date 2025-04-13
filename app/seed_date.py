@@ -7,8 +7,15 @@ try:
     # Insert Styles
     cur.execute("""
     INSERT INTO "Style" ("StyleName") VALUES
-        ('Bouldering'), ('Sport'), ('Trad'), ('Top-Rope'), ('Indoor'), 
-        ('Lead'), ('Alpine'), ('Aid'), ('Mixed');
+        ('Bouldering'), 
+        ('Sport'), 
+        ('Trad'), 
+        ('Top-Rope'), 
+        ('Indoor'), 
+        ('Lead'), 
+        ('Alpine'), 
+        ('Aid'), 
+        ('Mixed');
     """)
 
     # Insert Users
@@ -47,9 +54,15 @@ try:
     # Insert Ratings
     cur.execute("""
     INSERT INTO "UserRating" ("LocationID", "UserID", "Rating") VALUES
-        (1, 1, 5), (1, 2, 4), (1, 3, 5),
-        (2, 1, 3), (2, 2, 5), (2, 3, 4),
-        (3, 1, 5), (3, 2, 4), (3, 3, 5);
+        (1, 1, 5), 
+        (1, 2, 4), 
+        (1, 3, 5),
+        (2, 1, 3), 
+        (2, 2, 5), 
+        (2, 3, 4),
+        (3, 1, 5), 
+        (3, 2, 4), 
+        (3, 3, 5);
     """)
 
     # Insert Events
