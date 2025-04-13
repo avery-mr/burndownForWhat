@@ -21,3 +21,5 @@ services:
         value: 3.11 
       - key: SECRET_KEY
         value: burndownforwhat
+      - key: ENV
+        value: development
