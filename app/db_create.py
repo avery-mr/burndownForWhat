@@ -4,8 +4,7 @@ from db_utils import get_connection, execute_query
 
 
 def createUser():
-    sql = ''' DROP TABLE IF EXISTS "User";
-        
+    sql = ''' 
             CREATE TABLE IF NOT EXISTS "User" (
             UserID SERIAL PRIMARY KEY,
             Username VARCHAR(45) NOT NULL UNIQUE,
@@ -18,8 +17,7 @@ def createUser():
     return execute_query(sql, "User Table Successfully Created")
 
 def createStyle():
-    sql = ''' DROP TABLE IF EXISTS "Style";
-        
+    sql = '''         
             CREATE TABLE IF NOT EXISTS "Style" (
             StyleID SERIAL PRIMARY KEY,
             StyleName VARCHAR(45) NOT NULL UNIQUE
@@ -27,8 +25,7 @@ def createStyle():
     return execute_query(sql, "Style Table Successfully Created")
 
 def createLocation():
-    sql = ''' DROP TABLE IF EXISTS "Location";
-        
+    sql = ''' 
             CREATE TABLE IF NOT EXISTS "Location" (
             LocationID SERIAL PRIMARY KEY,
             Name VARCHAR(45) NOT NULL,
@@ -44,8 +41,7 @@ def createLocation():
     return execute_query(sql, "Location Table Successfully Created")
 
 def createUserStyle():
-    sql = ''' DROP TABLE IF EXISTS "UserStyle";
-        
+    sql = ''' 
             CREATE TABLE IF NOT EXISTS "UserStyle" (
             UserID INT NOT NULL,
             StyleID INT NOT NULL,
@@ -56,8 +52,7 @@ def createUserStyle():
     return execute_query(sql, "UserStyle Table Successfully Created")
 
 def createUserRating():
-    sql = ''' DROP TABLE IF EXISTS "UserRating";
-        
+    sql = '''         
             CREATE TABLE IF NOT EXISTS "UserRating" (
             RatingID SERIAL PRIMARY KEY,
             LocationID INT NOT NULL,
@@ -69,8 +64,12 @@ def createUserRating():
     return execute_query(sql, "UserRating Table Successfully Created")
 
 def createBuddy():
-    sql = ''' DROP TABLE IF EXISTS "Buddy";
-            DROP TYPE IF EXISTS status_enum;
+    sql = ''' 
+            DO $$ BEGIN
+                IF EXISTS (SELECT 1 FROM pg_type WHERE typname = 'status_enum')
+                THEN DROP TYPE status_enum CASCADE;
+                END IF;
+            END $$;
         
             CREATE TYPE status_enum AS ENUM ('pending', 'confirmed', 'declined');
             CREATE TABLE IF NOT EXISTS "Buddy" (
@@ -84,8 +83,7 @@ def createBuddy():
     return execute_query(sql, "Buddy Table Successfully Created")
 
 def createMessage():
-    sql = ''' DROP TABLE IF EXISTS "Message";
-    
+    sql = '''     
             CREATE TABLE IF NOT EXISTS "Message" (
             MessageID SERIAL PRIMARY KEY,
             SenderID INT NOT NULL,
@@ -98,8 +96,12 @@ def createMessage():
     return execute_query(sql, "Message Table Successfully Created")
 
 def createEvent():
-    sql = ''' DROP TABLE IF EXISTS "Event";
-            DROP TYPE IF EXISTS status_enum2;
+    sql = ''' 
+            DO $$ BEGIN
+                IF EXISTS (SELECT 1 FROM pg_type WHERE typname = 'status_enum2')
+                THEN DROP TYPE status_enum2 CASCADE;
+                END IF;
+            END $$;
         
             CREATE TYPE status_enum2 AS ENUM ('going', 'not going', 'full');
             CREATE TABLE IF NOT EXISTS "Event" (
@@ -129,78 +131,58 @@ def createEvent():
     return execute_query(sql, "Event Table Successfully Created")
 
 def createTriggers():
-    conn = get_connection()
-    cur = conn.cursor()
+    sql = ''' 
+        DROP TRIGGER IF EXISTS userrating_after_insert ON "UserRating";
+        DROP TRIGGER IF EXISTS userrating_after_update ON "UserRating";
+        DROP TRIGGER IF EXISTS userrating_after_delete ON "UserRating";
+        DROP FUNCTION IF EXISTS update_location_avg_rating();
 
-    try:
-        cur.execute('DROP TRIGGER IF EXISTS userrating_after_insert ON "UserRating";')
-        cur.execute('DROP TRIGGER IF EXISTS userrating_after_update ON "UserRating";')
-        cur.execute('DROP TRIGGER IF EXISTS userrating_after_delete ON "UserRating";')
-        cur.execute('DROP FUNCTION IF EXISTS update_location_avg_rating();')
+        CREATE OR REPLACE FUNCTION update_location_avg_rating()
+        RETURNS TRIGGER AS $$
+        BEGIN
+            UPDATE "Location"
+            SET "AverageRating" = (
+                SELECT ROUND(COALESCE(AVG("Rating"), 0.00), 2)
+                FROM "UserRating"
+                WHERE "LocationID" = NEW."LocationID"
+            )
+            WHERE "LocationID" = NEW."LocationID";
+            RETURN NEW;
+        END;
+        $$ LANGUAGE plpgsql;
 
-        cur.execute('''
-            CREATE OR REPLACE FUNCTION update_location_avg_rating()
-            RETURNS TRIGGER AS $$
-            BEGIN
-                UPDATE "Location"
-                SET "AverageRating" = (
-                    SELECT ROUND(COALESCE(AVG("Rating"), 0.00), 2)
-                    FROM "UserRating"
-                    WHERE "LocationID" = NEW."LocationID"
-                )
-                WHERE "LocationID" = NEW."LocationID";
+        CREATE TRIGGER userrating_after_insert
+        AFTER INSERT ON "UserRating"
+        FOR EACH ROW
+        EXECUTE FUNCTION update_location_avg_rating();
 
-                RETURN NEW;
-            END;
-            $$ LANGUAGE plpgsql;
-        ''')
+        CREATE TRIGGER userrating_after_update
+        AFTER UPDATE ON "UserRating"
+        FOR EACH ROW
+        EXECUTE FUNCTION update_location_avg_rating();
 
-        cur.execute('''
-            CREATE TRIGGER userrating_after_insert
-            AFTER INSERT ON "UserRating"
-            FOR EACH ROW
-            EXECUTE FUNCTION update_location_avg_rating();
-        ''')
 
-        cur.execute('''
-            CREATE TRIGGER userrating_after_update
-            AFTER UPDATE ON "UserRating"
-            FOR EACH ROW
-            EXECUTE FUNCTION update_location_avg_rating();
-        ''')
+        CREATE OR REPLACE FUNCTION update_location_avg_rating_on_delete()
+        RETURNS TRIGGER AS $$
+        BEGIN
+            UPDATE "Location"
+            SET "AverageRating" = (
+                SELECT ROUND(COALESCE(AVG("Rating"), 0.00), 2)
+                FROM "UserRating"
+                WHERE "LocationID" = OLD."LocationID"
+            )
+            WHERE "LocationID" = OLD."LocationID";
+            RETURN OLD;
+        END;
+        $$ LANGUAGE plpgsql;
 
-        cur.execute('''
-            CREATE OR REPLACE FUNCTION update_location_avg_rating_on_delete()
-            RETURNS TRIGGER AS $$
-            BEGIN
-                UPDATE "Location"
-                SET "AverageRating" = (
-                    SELECT ROUND(COALESCE(AVG("Rating"), 0.00), 2)
-                    FROM "UserRating"
-                    WHERE "LocationID" = OLD."LocationID"
-                )
-                WHERE "LocationID" = OLD."LocationID";
+        CREATE TRIGGER userrating_after_delete
+        AFTER DELETE ON "UserRating"
+        FOR EACH ROW
+        EXECUTE FUNCTION update_location_avg_rating_on_delete();
+        '''
+    return execute_query(sql, "Triggers Successfully Created")
 
-                RETURN OLD;
-            END;
-            $$ LANGUAGE plpgsql;
-        ''')
-
-        cur.execute('''
-            CREATE TRIGGER userrating_after_delete
-            AFTER DELETE ON "UserRating"
-            FOR EACH ROW
-            EXECUTE FUNCTION update_location_avg_rating_on_delete();
-        ''')
-
-        conn.commit()
-        return "Triggers successfully created!"
-    except Exception as e:
-        conn.rollback()
-        return f"Error creating triggers: {str(e)}"
-    finally:
-        cur.close()
-        conn.close()
 
 def createAll():
     """Create all tables and triggers in the correct order."""
