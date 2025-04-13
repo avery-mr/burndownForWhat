@@ -2,38 +2,23 @@ import psycopg2
 import os
 
 from flask import Flask, render_template, session, request, redirect, url_for
-from app.seed_data import seed_database
+from seed_data import seed_database
 from db_create import createAll
+from db_utils import get_connection, execute_query
 
 app = Flask(__name__)
 # lets try using a simple session and cookies to store user data
 app.secret_key = 'burndownforwhat'
-
-DATABASE_URL = os.getenv("DATABASE_URL")
-
-def get_connection():
-    return psycopg2.connect(DATABASE_URL)
-
-def execute_query(sql: str, message: str):
-    try:
-        conn = get_connection()
-        cur = conn.cursor()
-        cur.execute(sql)
-        conn.commit()
-        return message
-    except Exception as e:
-        print(f"Error: {e}")
-        return f"Error: {e}"
-    finally:
-        cur.close()
-        conn.close()
-
+#app.secret_key = os.getenv("SECRET_KEY", "burndownforwhat")
 
 @app.route('/db_test')
 def testing():
-    conn = get_connection()
-    conn.close()
-    return "Database Connection Successful"
+    try:
+        conn = get_connection()
+        conn.close()
+        return "Database Connection Successful"
+    except Exception as e:
+        return f"Database Connection Failed: {str(e)}", 500
 
 
 @app.route('/db_init', methods=['GET'])
@@ -48,6 +33,7 @@ def run_seed():
     if os.getenv("ENV") != "development":
         return "Unauthorized", 403
     return seed_database()
+    
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
