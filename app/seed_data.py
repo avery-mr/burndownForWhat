@@ -8,6 +8,14 @@ def seed_database():
     cur = conn.cursor()
 
     try:
+        # Check all tables
+        tables = ["User", "Style", "Location", "Message", "UserRating", "Event", "Buddy", "UserStyle"]
+        for table in tables:
+            cur.execute(f'SELECT COUNT(*) FROM "{table}";')
+            if cur.fetchone()[0] > 0:
+                print(f"Table {table} already has data, skipping seeding.")
+                return f"Table {table} already has data, skipping seeding."
+        
         # Insert Styles
         cur.execute("""
         INSERT INTO "Style" (StyleName) VALUES
