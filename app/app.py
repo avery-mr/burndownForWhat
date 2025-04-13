@@ -201,6 +201,86 @@ def createUserStyle():
     conn.close()
     return "UserStyle Table Successfully Created"
 
+@app.route('/db_createTriggers')
+def createTriggers():
+    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    cur = conn.cursor()
+
+    try:
+        # dropping existing triggers if they exist
+        cur.execute('DROP TRIGGER IF EXISTS userrating_after_insert ON "UserRating";')
+        cur.execute('DROP TRIGGER IF EXISTS userrating_after_update ON "UserRating";')
+        cur.execute('DROP TRIGGER IF EXISTS userrating_after_delete ON "UserRating";')
+        cur.execute('DROP FUNCTION IF EXISTS update_location_avg_rating();')
+
+        # creating the trigger function
+        cur.execute('''
+            CREATE OR REPLACE FUNCTION update_location_avg_rating()
+            RETURNS TRIGGER AS $$
+            BEGIN
+                UPDATE "Location"
+                SET "AverageRating" = (
+                    SELECT ROUND(COALESCE(AVG("Rating"), 0.00), 2)
+                    FROM "UserRating"
+                    WHERE "LocationID" = NEW."LocationID"
+                )
+                WHERE "LocationID" = NEW."LocationID";
+
+                RETURN NEW;
+            END;
+            $$ LANGUAGE plpgsql;
+        ''')
+
+        # After INSERT Trigger
+        cur.execute('''
+            CREATE TRIGGER userrating_after_insert
+            AFTER INSERT ON "UserRating"
+            FOR EACH ROW
+            EXECUTE FUNCTION update_location_avg_rating();
+        ''')
+
+        # After UPDATE Trigger
+        cur.execute('''
+            CREATE TRIGGER userrating_after_update
+            AFTER UPDATE ON "UserRating"
+            FOR EACH ROW
+            EXECUTE FUNCTION update_location_avg_rating();
+        ''')
+
+        # After DELETE Trigger - slightly different logic since we reference OLD
+        cur.execute('''
+            CREATE OR REPLACE FUNCTION update_location_avg_rating_on_delete()
+            RETURNS TRIGGER AS $$
+            BEGIN
+                UPDATE "Location"
+                SET "AverageRating" = (
+                    SELECT ROUND(COALESCE(AVG("Rating"), 0.00), 2)
+                    FROM "UserRating"
+                    WHERE "LocationID" = OLD."LocationID"
+                )
+                WHERE "LocationID" = OLD."LocationID";
+
+                RETURN OLD;
+            END;
+            $$ LANGUAGE plpgsql;
+        ''')
+
+        cur.execute('''
+            CREATE TRIGGER userrating_after_delete
+            AFTER DELETE ON "UserRating"
+            FOR EACH ROW
+            EXECUTE FUNCTION update_location_avg_rating_on_delete();
+        ''')
+
+        conn.commit()
+        return "Triggers successfully created!"
+    except Exception as e:
+        conn.rollback()
+        return f"Error creating triggers: {str(e)}"
+    finally:
+        cur.close()
+        conn.close()
+
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if 'username' in session:
