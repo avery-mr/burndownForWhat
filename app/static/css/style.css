@@ -181,3 +181,51 @@ select option {
     font-size: 20px;
     border-bottom: 2px solid #5D757B;
 }
+
+#full_page {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#buddies {
+    width: 25%;
+    float:left;
+    clear:left;
+}
+
+#p1 {
+    background: grey;
+    overflow: scroll;
+    height: 600px;
+}
+
+.cont {
+    position: relative;
+    text-align: center;
+}
+
+#p2 {
+    overflow: scroll;
+    height: 600px;
+    position: absolute;
+    top: 50%; /* You can adjust this value */
+    left: 50%;
+    transform: translate(-25%, 0%);
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+#messages {
+    width: 70%;
+    float:right;
+    clear:right;
+}
+
+#p1, #p2 {
+    color: white;
+}
+
+#mtn {
+    width: 100%;
+}
