@@ -90,7 +90,7 @@ def seed_database():
 
         conn.commit()
         print("Seed data inserted successfully!")
-        return "Seed data inserted successfully!")
+        return "Seed data inserted successfully!"
 
     except Exception as e:
         conn.rollback()
