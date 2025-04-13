@@ -174,9 +174,9 @@ def createEvent():
             CONSTRAINT FK_climber3 FOREIGN KEY (ClimberID3) REFERENCES "User"(UserID),
             CONSTRAINT FK_climber4 FOREIGN KEY (ClimberID4) REFERENCES "User"(UserID),
             CONSTRAINT FK_climber5 FOREIGN KEY (ClimberID5) REFERENCES "User"(UserID),
-            CONSTRAINT FK_location FOREIGN KEY (LocationID) REFERENCES Location(LocationID),
-            CONSTRAINT FK_primstyle FOREIGN KEY (PrimaryStyleID) REFERENCES Style(StyleID),
-            CONSTRAINT FK_secstyle FOREIGN KEY (SecondaryStyleID) REFERENCES Style(StyleID)
+            CONSTRAINT FK_location FOREIGN KEY (LocationID) REFERENCES "Location"(LocationID),
+            CONSTRAINT FK_primstyle FOREIGN KEY (PrimaryStyleID) REFERENCES "Style"(StyleID),
+            CONSTRAINT FK_secstyle FOREIGN KEY (SecondaryStyleID) REFERENCES "Style"(StyleID)
             ); '''
     return execute_query(sql, "Event Table Successfully Created")
                 
