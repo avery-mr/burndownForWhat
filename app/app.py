@@ -262,6 +262,21 @@ def createTriggers():
         conn.close()
 
 
+@app.route('/db_selectUser')
+def selectUser():
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM "User";')
+    records = cur.fetchall()
+    cur.close()
+    conn.close()
+
+    response_string = "<table border='1'><thead><tr><th>UserID</th><th>Username</th><th>Email</th><th>State</th><th>City</th><th>Experience</th><th>Bio</th></tr></thead><tbody>"
+    for user in records:
+        response_string += "<tr>" + "".join(f"<td>{info}</td>" for info in user) + "</tr>"
+    response_string += "</tbody></table>"
+    return response_string
+
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if 'username' in session:
