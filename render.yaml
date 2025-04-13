@@ -10,7 +10,7 @@ services:
     env: python
     plan: free
     region: oregon 
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install -r requirements.txt && python db_create.py && python seed_data.py
     startCommand: gunicorn app.app:app
     envVars:
       - key: DATABASE_URL
@@ -18,7 +18,4 @@ services:
           name: BelayBuddy
           property: connectionString
       - key: PYTHON_VERSION
-        value: 3.8 # Adjust to your Python version
-    postDeploy: |
-      python db_create.py
-      python seed_data.py
+        value: 3.8 
