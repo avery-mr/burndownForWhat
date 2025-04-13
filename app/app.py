@@ -12,6 +12,20 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 def get_connection():
     return psycopg2.connect(DATABASE_URL)
 
+def execute_query(sql: str, message: str):
+    try:
+        conn = get_connection()
+        cur = conn.cursor()
+        cur.execute(sql)
+        conn.commit()
+        return message
+    except Exception as e:
+        print(f"Error: {e}")
+        return f"Error: {e}"
+    finally:
+        cur.close()
+        conn.close()
+
 @app.route('/db_test')
 def testing():
     conn = get_connection()
@@ -20,11 +34,7 @@ def testing():
 
 @app.route('/db_createUser')
 def createUser():
-    try:
-        conn = get_connection()
-        cur = conn.cursor()
-        cur.execute('''
-            DROP TABLE IF EXISTS "User";
+    sql = ''' DROP TABLE IF EXISTS "User";
         
             CREATE TABLE IF NOT EXISTS "User" (
             UserID SERIAL PRIMARY KEY,
@@ -34,46 +44,23 @@ def createUser():
             City VARCHAR(45) NOT NULL,
             Experience INT NOT NULL,
             Bio TEXT
-            );
-            ''')
-        conn.commit()
-        return "User Table Successfully Created"
-    except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        cur.close()
-        conn.close()
-
+            ); '''
+    return execute_query(sql, "User Table Successfully Created")
 
 @app.route('/db_createStyle')
 def createStyle():
-    try:
-        conn = get_connection()
-        cur = conn.cursor()
-        cur.execute('''
-            DROP TABLE IF EXISTS "Style";
+    sql = ''' DROP TABLE IF EXISTS "Style";
         
             CREATE TABLE IF NOT EXISTS "Style" (
             StyleID SERIAL PRIMARY KEY,
             StyleName VARCHAR(45) NOT NULL UNIQUE
-            );
-            ''')
-        conn.commit()
-        return "Style Table Successfully Created"
-    except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        cur.close()
-        conn.close()
+            ); '''
+    return execute_query(sql, "Style Table Successfully Created")
 
 
 @app.route('/db_createLocation')
 def createLocation():
-    try:
-        conn = get_connection()
-        cur = conn.cursor()
-        cur.execute('''
-            DROP TABLE IF EXISTS "Location";
+    sql = ''' DROP TABLE IF EXISTS "Location";
         
             CREATE TABLE IF NOT EXISTS "Location" (
             LocationID SERIAL PRIMARY KEY,
@@ -86,24 +73,13 @@ def createLocation():
             UserRating INT NULL,
             Notes TEXT NULL,
             CONSTRAINT FK_style FOREIGN KEY (Style) REFERENCES "Style"(StyleID)
-            );
-            ''')
-        conn.commit()
-        return "Location Table Successfully Created"
-    except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        cur.close()
-        conn.close()
+            ); '''
+    return execute_query(sql, "Location Table Successfully Created")      
 
 
 @app.route('/db_createUserStyle')
 def createUserStyle():
-    try:
-        conn = get_connection()
-        cur = conn.cursor()
-        cur.execute('''
-            DROP TABLE IF EXISTS "UserStyle";
+    sql = ''' DROP TABLE IF EXISTS "UserStyle";
         
             CREATE TABLE IF NOT EXISTS "UserStyle" (
             UserID INT NOT NULL,
@@ -111,24 +87,13 @@ def createUserStyle():
             PRIMARY KEY (UserID, StyleID),
             CONSTRAINT FK_user FOREIGN KEY (UserID) REFERENCES "User"(UserID),
             CONSTRAINT FK_style FOREIGN KEY (StyleID) REFERENCES "Style"(StyleID)
-            );
-            ''')
-        conn.commit()
-        return "UserStyle Table Successfully Created"
-    except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        cur.close()
-        conn.close()
+            ); '''
+    return execute_query(sql, "UserStyle Table Successfully Created")
 
 
 @app.route('/db_createUserRating')
 def createUserRating():
-    try:
-        conn = get_connection()
-        cur = conn.cursor()
-        cur.execute('''
-            DROP TABLE IF EXISTS "UserRating";
+    sql = ''' DROP TABLE IF EXISTS "UserRating";
         
             CREATE TABLE IF NOT EXISTS "UserRating" (
             RatingID SERIAL PRIMARY KEY,
@@ -137,24 +102,13 @@ def createUserRating():
             Rating INT NOT NULL,
             CONSTRAINT FK_location FOREIGN KEY (LocationID) REFERENCES "Location"(LocationID),
             CONSTRAINT FK_user FOREIGN KEY (UserID) REFERENCES "User"(UserID)
-            );
-            ''')
-        conn.commit()
-        return "UserRating Table Successfully Created"
-    except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        cur.close()
-        conn.close()
+            ); '''
+    return execute_query(sql, "UserRating Table Successfully Created")
 
 
 @app.route('/db_createBuddy')
 def createBuddy():
-    try:
-        conn = get_connection()
-        cur = conn.cursor()
-        cur.execute('''
-            DROP TABLE IF EXISTS "Buddy";
+    sql = ''' DROP TABLE IF EXISTS "Buddy";
             DROP TYPE IF EXISTS status_enum;
         
             CREATE TYPE status_enum AS ENUM ('pending', 'confirmed', 'declined');
@@ -165,24 +119,13 @@ def createBuddy():
             PRIMARY KEY (UserID, FriendID),
             CONSTRAINT FK_userid FOREIGN KEY (UserID) REFERENCES "User"(UserID),
             CONSTRAINT FK_friendid FOREIGN KEY (FriendID) REFERENCES "User"(UserID)
-            );
-            ''')
-        conn.commit()
-        return "Buddy Table Successfully Created"
-    except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        cur.close()
-        conn.close()
+            ); '''
+    return execute_query(sql, "Buddy Table Successfully Created")
 
 
 @app.route('/db_createMessage')
 def createMessage():
-    try:
-        conn = get_connection()
-        cur = conn.cursor()
-        cur.execute('''
-            DROP TABLE IF EXISTS "Message";
+    sql = ''' DROP TABLE IF EXISTS "Message";
     
             CREATE TABLE IF NOT EXISTS "Message" (
             MessageID SERIAL PRIMARY KEY,
@@ -192,24 +135,13 @@ def createMessage():
             Timestamp TIMESTAMP NOT NULL,
             CONSTRAINT FK_sender FOREIGN KEY (SenderID) REFERENCES "User"(UserID),
             CONSTRAINT FK_receiver FOREIGN KEY (ReceiverID) REFERENCES "User"(UserID)
-            );
-            ''')
-        conn.commit()
-        return "Message Table Successfully Created"
-    except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        cur.close()
-        conn.close()
-        
+            ); '''
+    return execute_query(sql, "Message Table Successfully Created")
+
 
 @app.route('/db_createEvent')
 def createEvent():
-    try:
-        conn = get_connection()
-        cur = conn.cursor()
-        cur.execute('''
-            DROP TABLE IF EXISTS "Event";
+    sql = ''' DROP TABLE IF EXISTS "Event";
             DROP TYPE IF EXISTS status_enum2;
         
             CREATE TYPE status_enum2 AS ENUM ('going', 'not going', 'full');
@@ -236,15 +168,8 @@ def createEvent():
             CONSTRAINT FK_location FOREIGN KEY (LocationID) REFERENCES Location(LocationID),
             CONSTRAINT FK_primstyle FOREIGN KEY (PrimaryStyleID) REFERENCES Style(StyleID),
             CONSTRAINT FK_secstyle FOREIGN KEY (SecondaryStyleID) REFERENCES Style(StyleID)
-            );
-            ''')
-        conn.commit()
-        return "Event Table Successfully Created"
-    except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        cur.close()
-        conn.close()
+            ); '''
+    return execute_query(sql, "Event Table Successfully Created")
                 
 
 @app.route('/db_createTriggers')
