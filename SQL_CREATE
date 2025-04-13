@@ -29,8 +29,6 @@ CREATE TABLE IF NOT EXISTS `BelayBuddy`.`User` (
   `State` VARCHAR(45) NOT NULL,
   `City` VARCHAR(45) NOT NULL,
   `Experience` INT NOT NULL,
-  `Height` INT NULL,
-  `Weight` INT NULL,
   `Bio` TEXT NULL,
   PRIMARY KEY (`UserID`),
   UNIQUE INDEX `username_UNIQUE` (`Username` ASC) VISIBLE,
@@ -211,6 +209,29 @@ CREATE TABLE IF NOT EXISTS `BelayBuddy`.`UserRating` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `BelayBuddy`.`UserStyle`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `BelayBuddy`.`UserStyle` ;
+
+CREATE TABLE IF NOT EXISTS `BelayBuddy`.`UserStyle` (
+  `UserID` INT NOT NULL,
+  `StyleID` INT NOT NULL,
+  PRIMARY KEY (`UserID`, `StyleID`),
+  INDEX `StyleID_idx` (`StyleID` ASC) VISIBLE,
+  CONSTRAINT `UserID`
+    FOREIGN KEY (`UserID`)
+    REFERENCES `BelayBuddy`.`User` (`UserID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `StyleID`
+    FOREIGN KEY (`StyleID`)
+    REFERENCES `BelayBuddy`.`Style` (`StyleID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 USE `BelayBuddy`;
 
 DELIMITER $$
@@ -273,13 +294,13 @@ INSERT INTO `Style` (`Name`) VALUES
 	('Aid'),
 	('Mixed');
 
-INSERT INTO `User` (`Username`, `Email`, `State`, `City`, `Experience`, `Height`, `Weight`, `Bio`) VALUES
-	('climbzRcool', 'cool@climb.com', 'Colorado', 'Boulder', 5, 170, 65, 'Lover of granite'),
-	('chalkup', 'grip@protonmail.com', 'California', 'San Diego', 3, 165, 60, 'Sandstone specialist'),
-	('belayqueen', 'ropequeen@cruxmail.com', 'Utah', 'Moab', 7, 160, 55, 'Trad and tacos'),
-	('cruxjunkie', 'beta@stone.net', 'Nevada', 'Las Vegas', 4, 175, 70, 'Chasing the send in Red Rock'),
-	('dynoDan', 'hopskip@jumpmail.com', 'Oregon', 'Portland', 2, 180, 68, 'Boulders and beers'),
-	('racknrope', 'tradster@cragmail.com', 'Washington', 'Seattle', 6, 168, 62, 'Big walls and big coffee');
+INSERT INTO `User` (`Username`, `Email`, `State`, `City`, `Experience`, `Bio`) VALUES
+	('climbzRcool', 'cool@climb.com', 'Colorado', 'Boulder', 5, 'Lover of granite'),
+	('chalkup', 'grip@protonmail.com', 'California', 'San Diego', 3, 'Sandstone specialist'),
+	('belayqueen', 'ropequeen@cruxmail.com', 'Utah', 'Moab', 7, 'Trad and tacos'),
+	('cruxjunkie', 'beta@stone.net', 'Nevada', 'Las Vegas', 4, 'Chasing the send in Red Rock'),
+	('dynoDan', 'hopskip@jumpmail.com', 'Oregon', 'Portland', 2, 'Boulders and beers'),
+	('racknrope', 'tradster@cragmail.com', 'Washington', 'Seattle', 6, 'Big walls and big coffee');
 
 INSERT INTO `Location` (`Name`, `Style`, `State`, `City`, `Address`, `AverageRating`, `UserRating`, `Notes`) VALUES
 	('Eldorado Canyon', 3, 'Colorado', 'Eldorado Springs', 'Eldorado Canyon State Park', 0.00, NULL, 'Classic trad routes'),
