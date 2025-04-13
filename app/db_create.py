@@ -1,6 +1,6 @@
 import psycopg2
 import os
-from db_utils import get_connection, execute_query
+from .db_utils import get_connection, execute_query
 
 
 def createUser():
