@@ -6,15 +6,20 @@ app = Flask(__name__)
 # lets try using a simple session and cookies to store user data
 app.secret_key = 'burndownforwhat'
 
+DATABASE_URL = "postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy"
+
+def get_connection():
+    return psycopg2.connect(DATABASE_URL)
+
 @app.route('/db_test')
 def testing():
-    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    conn = get_connection()
     conn.close()
     return "Database Connection Successful"
 
 @app.route('/db_createUser')
 def createUser():
-    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    conn = get_connection()
     cur = conn.cursor()
     cur.execute('''
         DROP TABLE IF EXISTS "User";
@@ -36,7 +41,7 @@ def createUser():
 
 @app.route('/db_createBuddy')
 def createBuddy():
-    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    conn = get_connection()
     cur = conn.cursor()
     cur.execute('''
         DROP TABLE IF EXISTS "Buddy";
@@ -59,7 +64,7 @@ def createBuddy():
 
 @app.route('/db_createMessage')
 def createMessage():
-    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    conn = get_connection()
     cur = conn.cursor()
     cur.execute('''
         DROP TABLE IF EXISTS "Message";
@@ -81,7 +86,7 @@ def createMessage():
 
 @app.route('/db_createStyle')
 def createStyle():
-    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    conn = get_connection()
     cur = conn.cursor()
     cur.execute('''
         DROP TABLE IF EXISTS "Style";
@@ -98,7 +103,7 @@ def createStyle():
 
 @app.route('/db_createLocation')
 def createLocation():
-    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    conn = get_connection()
     cur = conn.cursor()
     cur.execute('''
         DROP TABLE IF EXISTS "Location";
@@ -123,7 +128,7 @@ def createLocation():
 
 @app.route('/db_createEvent')
 def createEvent():
-    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    conn = get_connection()
     cur = conn.cursor()
     cur.execute('''
         DROP TABLE IF EXISTS "Event";
@@ -162,7 +167,7 @@ def createEvent():
 
 @app.route('/db_createUserRating')
 def createUserRating():
-    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    conn = get_connection()
     cur = conn.cursor()
     cur.execute('''
         DROP TABLE IF EXISTS "UserRating";
@@ -183,7 +188,7 @@ def createUserRating():
 
 @app.route('/db_createUserStyle')
 def createUserStyle():
-    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    conn = get_connection()
     cur = conn.cursor()
     cur.execute('''
         DROP TABLE IF EXISTS "UserStyle";
@@ -203,7 +208,7 @@ def createUserStyle():
 
 @app.route('/db_createTriggers')
 def createTriggers():
-    conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
+    conn = get_connection()
     cur = conn.cursor()
 
     try:
