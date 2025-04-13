@@ -58,7 +58,7 @@ def createBuddy():
     return "Buddy Table Successfully Created"
 
 @app.route('/db_createMessage')
-def createUser():
+def createMessage():
     conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
     cur = conn.cursor()
     cur.execute('''
@@ -69,7 +69,7 @@ def createUser():
         SenderID INT NOT NULL,
         ReceiverID INT NOT NULL,
         Text TEXT NOT NULL,
-        Timestamp DATETIME NOT NULL,
+        Timestamp TIMESTAMP NOT NULL,
         CONSTRAINT FK_sender FOREIGN KEY (SenderID) REFERENCES "User"(UserID),
         CONSTRAINT FK_receiver FOREIGN KEY (ReceiverID) REFERENCES "User"(UserID)
         );
@@ -80,7 +80,7 @@ def createUser():
     return "Message Table Successfully Created"
 
 @app.route('/db_createStyle')
-def createUser():
+def createStyle():
     conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
     cur = conn.cursor()
     cur.execute('''
@@ -88,7 +88,7 @@ def createUser():
         
         CREATE TABLE IF NOT EXISTS "Style" (
         StyleID SERIAL PRIMARY KEY,
-        StyleName VARCHAR(45) NOT NULL UNIQUE;
+        StyleName VARCHAR(45) NOT NULL UNIQUE
         );
         ''')
     conn.commit()
@@ -97,7 +97,7 @@ def createUser():
     return "Style Table Successfully Created"
 
 @app.route('/db_createLocation')
-def createUser():
+def createLocation():
     conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
     cur = conn.cursor()
     cur.execute('''
@@ -122,7 +122,7 @@ def createUser():
     return "Location Table Successfully Created"
 
 @app.route('/db_createEvent')
-def createUser():
+def createEvent():
     conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
     cur = conn.cursor()
     cur.execute('''
@@ -138,7 +138,7 @@ def createUser():
         ClimberID3 INT,
         ClimberID4 INT,
         ClimberID5 INT,
-        DateTime DATETIME NOT NULL,
+        DateTime TIMESTAMP NOT NULL,
         LocationID INT NOT NULL,
         PrimaryStyleID INT,
         SecondaryStyleID INT,
@@ -161,7 +161,7 @@ def createUser():
     return "Event Table Successfully Created"
 
 @app.route('/db_createUserRating')
-def createUser():
+def createUserRating():
     conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
     cur = conn.cursor()
     cur.execute('''
@@ -182,7 +182,7 @@ def createUser():
     return "UserRating Table Successfully Created"
 
 @app.route('/db_createUserStyle')
-def createUser():
+def createUserStyle():
     conn = psycopg2.connect("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy")
     cur = conn.cursor()
     cur.execute('''
@@ -193,7 +193,7 @@ def createUser():
         StyleID INT NOT NULL,
         PRIMARY KEY (UserID, StyleID),
         CONSTRAINT FK_user FOREIGN KEY (UserID) REFERENCES "User"(UserID),
-        CONSTRAINT FK_style FOREIGN KEY (StyleID) REFERENCE "Style"(StyleID)
+        CONSTRAINT FK_style FOREIGN KEY (StyleID) REFERENCES "Style"(StyleID)
         );
         ''')
     conn.commit()
