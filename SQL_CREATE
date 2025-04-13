@@ -94,9 +94,9 @@ DROP TABLE IF EXISTS `BelayBuddy`.`Style` ;
 
 CREATE TABLE IF NOT EXISTS `BelayBuddy`.`Style` (
   `StyleID` INT NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(45) NOT NULL,
+  `StyleName` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`StyleID`),
-  UNIQUE INDEX `name_UNIQUE` (`Name` ASC) VISIBLE)
+  UNIQUE INDEX `name_UNIQUE` (`StyleName` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -283,7 +283,7 @@ END$$
 
 DELIMITER ;
 
-INSERT INTO `Style` (`Name`) VALUES
+INSERT INTO `Style` (`StyleName`) VALUES
 	('Bouldering'),
 	('Sport'),
 	('Trad'),
