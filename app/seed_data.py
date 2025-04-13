@@ -8,13 +8,11 @@ def seed_database():
     cur = conn.cursor()
 
     try:
-        # Check all tables
-        tables = ["User", "Style", "Location", "Message", "UserRating", "Event", "Buddy", "UserStyle"]
-        for table in tables:
-            cur.execute(f'SELECT COUNT(*) FROM "{table}";')
-            if cur.fetchone()[0] > 0:
-                print(f"Table {table} already has data, skipping seeding.")
-                return f"Table {table} already has data, skipping seeding."
+        # Check User table
+        cur.execute('SELECT 1 FROM "user" WHERE "Username" = %s;', ('climbzRcool',))
+        if cur.fetchone():
+            print("Database already seeded, skipping.")
+            return "Database already seeded, skipping."
         
         # Insert Styles
         cur.execute("""
@@ -79,7 +77,7 @@ def seed_database():
 
         # Insert Events
         cur.execute("""
-        INSERT INTO "Event" (HostID, DateTime, LocationID, PrimaryStyle, SecondaryStyle, Status, Notes) VALUES
+        INSERT INTO "Event" (HostID, DateTime, LocationID, PrimaryStyleID, SecondaryStyleID, Status, Notes) VALUES
             (1, '2025-04-15 09:00:00', 1, 1, NULL, 'going', 'Morning session at the local gym'),
             (2, '2025-04-16 18:30:00', 2, 2, 4, 'full', 'After-work climb, bring snacks!'),
             (3, '2025-04-17 14:00:00', 3, 3, NULL, 'not going', 'Weekend warm-up on the slab routes'),
@@ -91,9 +89,25 @@ def seed_database():
         # Insert Buddy relationships
         cur.execute("""
         INSERT INTO "Buddy" (UserID, FriendID, Status) VALUES
-            (1, 2, 'confirmed'), (1, 3, 'pending'), (2, 4, 'confirmed'), (3, 1, 'declined'),
-            (4, 5, 'confirmed'), (5, 2, 'pending'), (6, 1, 'confirmed'),
-            (3, 6, 'confirmed'), (2, 6, 'pending'), (5, 3, 'declined');
+            (1, 2, 'confirmed'), 
+            (1, 3, 'pending'), 
+            (2, 4, 'confirmed'), 
+            (3, 1, 'declined'),
+            (4, 5, 'confirmed'), 
+            (5, 2, 'pending'), 
+            (6, 1, 'confirmed'),
+            (3, 6, 'confirmed'), 
+            (2, 6, 'pending'), 
+            (5, 3, 'declined');
+        """)
+
+        # Insert UserStyle
+        cur.execute("""
+        INSERT INTO "UserStyle" (UserID, StyleID) VALUES
+            (1, 1),    -- climbzRcool, Bouldering
+            (1, 3),    -- climbzRcool, Trad
+            (2, 2),    -- chalkup, Sport
+            (3, 3);    -- belayqueen, Trad
         """)
 
         conn.commit()
