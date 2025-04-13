@@ -1,0 +1,24 @@
+databases:
+  - name: BelayBuddy
+    databaseName: BelayBuddy
+    plan: free
+    region: oregon 
+
+services:
+  - type: web
+    name: BelayBuddy
+    env: python
+    plan: free
+    region: oregon 
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app.app:app
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: BelayBuddy
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: 3.8 # Adjust to your Python version
+    postDeploy: |
+      python db_create.py
+      python seed_data.py
