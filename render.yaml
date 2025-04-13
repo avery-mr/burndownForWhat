@@ -10,7 +10,7 @@ services:
     env: python
     plan: free
     region: oregon 
-    buildCommand: pip install -r requirements.txt && python app/db_create.py && python app/seed_data.py
+    buildCommand: pip install -r requirements.txt && python setup.py
     startCommand: gunicorn app.app:app
     envVars:
       - key: DATABASE_URL
