@@ -1,5 +1,6 @@
 import psycopg2
 import os
+import traceback
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
@@ -14,8 +15,9 @@ def execute_query(sql: str, message: str):
         conn.commit()
         return message
     except Exception as e:
-        print(f"Error: {e}")
-        return f"Error: {e}"
+        print(f"Error executing query: {str(e)}")
+        traceback.print_exc()
+        return f"Error: {str(e)}"
     finally:
         cur.close()
         conn.close()
