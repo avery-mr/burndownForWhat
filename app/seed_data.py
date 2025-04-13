@@ -1,5 +1,6 @@
 import os
 import psycopg2
+import traceback
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
@@ -9,7 +10,7 @@ def seed_database():
 
     try:
         # Check User table
-        cur.execute('SELECT 1 FROM "user" WHERE "Username" = %s;', ('climbzRcool',))
+        cur.execute('SELECT 1 FROM "User" WHERE "Username" = %s;', ('climbzRcool',))
         if cur.fetchone():
             print("Database already seeded, skipping.")
             return "Database already seeded, skipping."
@@ -117,6 +118,7 @@ def seed_database():
     except Exception as e:
         conn.rollback()
         print(f"Error inserting seed data: {e}")
+        traceback.print_exc()
         return f"Error inserting seed data: {e}"
 
     finally:
