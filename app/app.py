@@ -4,7 +4,18 @@ import os
 from flask import Flask, render_template, session, request, redirect, url_for
 from .seed_data import seed_database
 from .db_create import createAll
+from .db_drop import dropAll
 from .db_utils import get_connection
+from .db_select import (
+    selectUser,
+    selectStyle,
+    selectLocation,
+    selectUserStyle,
+    selectUserRating,
+    selectBuddy,
+    selectMessage,
+    selectEvent
+    )
 
 app = Flask(__name__)
 # lets try using a simple session and cookies to store user data
