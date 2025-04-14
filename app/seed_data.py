@@ -53,7 +53,7 @@ def seed_database():
         # Insert Locations
         print("Inserting locations into Location table...")
         cur.execute("""
-        INSERT INTO "Location" (Name, Style, State, City, Address, AverageRating, UserRating, Notes) VALUES
+        INSERT INTO "Location" (Name, StyleID, State, City, Address, AverageRating, UserRating, Notes) VALUES
             ('Eldorado Canyon', 3, 'Colorado', 'Eldorado Springs', 'Eldorado Canyon State Park', 0.00, NULL, 'Classic trad routes'),
             ('Mission Cliffs Gym', 5, 'California', 'San Francisco', '2295 Harrison St', 0.00, NULL, 'Great indoor setting'),
             ('Indian Creek', 3, 'Utah', 'Moab', 'County Road 211', 0.00, NULL, 'Splitter cracks galore'),
