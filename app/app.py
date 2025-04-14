@@ -48,31 +48,31 @@ def selectUser():
     return selectUser()
 
 @app.route('/db_selectStyle')
-def selectUser():
+def selectStyle():
     return selectStyle()
 
 @app.route('/db_selectLocation')
-def selectUser():
+def selectLocation():
     return selectLocation()
 
 @app.route('/db_selectUserStyle')
-def selectUser():
+def selectUserStyle():
     return selectUserStyle()
 
 @app.route('/db_selectUserRating')
-def selectUser():
+def selectUserRating():
     return selectUserRating()
 
 @app.route('/db_selectBuddy')
-def selectUser():
+def selectBuddy():
     return selectBuddy()
 
 @app.route('/db_selectMessage')
-def selectUser():
+def selectMessage():
     return selectMessage()
 
 @app.route('/db_selectEvent')
-def selectUser():
+def selectEvent():
     return selectEvent()
         
 
