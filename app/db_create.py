@@ -152,7 +152,7 @@ def createTriggers():
             SET AverageRating = (
                 SELECT ROUND(COALESCE(AVG(Rating), 0.00), 2)
                 FROM "UserRating"
-                WHERE LocationID = NEW."LocationID
+                WHERE LocationID = NEW.LocationID
             )
             WHERE LocationID = NEW.LocationID;
             RETURN NEW;
