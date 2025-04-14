@@ -16,6 +16,7 @@ def seed_database():
             return "Database already seeded, skipping."
         
         # Insert Styles
+        print("Inserting styles into Style table...")
         cur.execute("""
         INSERT INTO "Style" (StyleName) VALUES
             ('Bouldering'), 
@@ -28,8 +29,16 @@ def seed_database():
             ('Aid'), 
             ('Mixed');
         """)
+        conn.commit()
+        # Verify styles
+        cur.execute('SELECT COUNT(*) FROM "Style";')
+        style_count = cur.fetchone()[0]
+        print(f"Inserted {style_count} styles")
+        if style_count != 9:
+            raise Exception(f"Expected 9 styles, got {style_count}")
 
         # Insert Users
+        print("Inserting users into User table...")
         cur.execute("""
         INSERT INTO "User" (Username, Email, State, City, Experience, Bio) VALUES
             ('climbzRcool', 'cool@climb.com', 'Colorado', 'Boulder', 5, 'Lover of granite'),
@@ -39,8 +48,10 @@ def seed_database():
             ('dynoDan', 'hopskip@jumpmail.com', 'Oregon', 'Portland', 2, 'Boulders and beers'),
             ('racknrope', 'tradster@cragmail.com', 'Washington', 'Seattle', 6, 'Big walls and big coffee');
         """)
+        conn.commit()
 
         # Insert Locations
+        print("Inserting locations into Location table...")
         cur.execute("""
         INSERT INTO "Location" (Name, Style, State, City, Address, AverageRating, UserRating, Notes) VALUES
             ('Eldorado Canyon', 3, 'Colorado', 'Eldorado Springs', 'Eldorado Canyon State Park', 0.00, NULL, 'Classic trad routes'),
@@ -50,8 +61,10 @@ def seed_database():
             ('Planet Granite', 5, 'Oregon', 'Portland', '1405 NW 14th Ave', 0.00, NULL, 'Modern indoor bouldering and sport'),
             ('Index Town Wall', 3, 'Washington', 'Index', 'Index-Galena Rd', 0.00, NULL, 'Granite trad lines and runouts');
         """)
+        conn.commit()
 
         # Insert Messages
+        print("Inserting messages into Message table")
         cur.execute("""
         INSERT INTO "Message" (SenderID, ReceiverID, Text, Timestamp) VALUES
             (1, 2, 'Hey! Climbing at The Spot this weekend?', NOW() - INTERVAL '2 days'),
@@ -63,6 +76,7 @@ def seed_database():
         """)
 
         # Insert Ratings
+        print("Inserting ratings into UserRating table...")
         cur.execute("""
         INSERT INTO "UserRating" (LocationID, UserID, Rating) VALUES
             (1, 1, 5), 
@@ -77,6 +91,7 @@ def seed_database():
         """)
 
         # Insert Events
+        print("Inserting events into Event table...")
         cur.execute("""
         INSERT INTO "Event" (HostID, DateTime, LocationID, PrimaryStyleID, SecondaryStyleID, Status, Notes) VALUES
             (1, '2025-04-15 09:00:00', 1, 1, NULL, 'going', 'Morning session at the local gym'),
@@ -88,6 +103,7 @@ def seed_database():
         """)
 
         # Insert Buddy relationships
+        print("Inserting buddies into Buddy table...")
         cur.execute("""
         INSERT INTO "Buddy" (UserID, FriendID, Status) VALUES
             (1, 2, 'confirmed'), 
@@ -103,6 +119,7 @@ def seed_database():
         """)
 
         # Insert UserStyle
+        print("Inserting userstyles into UserStyle table...")
         cur.execute("""
         INSERT INTO "UserStyle" (UserID, StyleID) VALUES
             (1, 1),    -- climbzRcool, Bouldering
