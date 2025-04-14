@@ -200,6 +200,7 @@ select option {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    /* border-right: solid white; */
   }
 
 
@@ -218,6 +219,10 @@ select option {
     text-align: left;
 }  
 
+.msg-buddy-btn.selected {
+    background-color: #D9A441;
+}
+
 .msg-buddy-btn:hover {
     background-color: #949494;
 }
@@ -228,12 +233,12 @@ select option {
     border-radius: 50%;
 }
 
-.msg-messages {
+.msg-chat-window {
     flex: 1;
     overflow-y: auto;
     flex-direction: column;
     font-size: 16px;
-    color: white;
+    color: black;
     padding: 10px;
     background-color: #2f2f2f;
     background-image: url('../img/mtn.png');
@@ -243,9 +248,37 @@ select option {
     border-radius: 10px;
 }
 
-.msg-messages * {
+.chat-message {
+    max-width: 70%;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 8px;
+    position: relative;
+}
+.chat-message * {
     color: white;
-  }
+}
+
+.chat-message.sent {
+    background-color: #5d757bc0;
+    margin-left: auto;
+    /* text-align: right; */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.chat-message.received {
+    background-color: #151D23c0; /* rustic orange */
+    margin-right: auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.timestamp {
+    display: block;
+    font-size: 0.7em;
+    color: #d1d1d1;
+    margin-top: 5px;
+
+}
 
 .msg-chat-container {
     flex: 1;
@@ -293,3 +326,12 @@ select option {
 }
 
 /* End of CSS for Messages page */
+
+/* colors:
+
+#5D757B - slate gray-blue
+#151D23 - Navy-Black
+#31353B → Charcoal / near-black
+#C95730 - orange
+#D9A441 - yellow/gold
+ */
