@@ -31,7 +31,7 @@ def run_seed():
     return seed_database()
 
 
-@app.route('db_selectUser')
+@app.route('/db_selectUser')
 def selectUser():
     try:
         conn = get_connection()
