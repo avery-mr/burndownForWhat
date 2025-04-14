@@ -29,7 +29,7 @@ def createLocation():
             CREATE TABLE IF NOT EXISTS "Location" (
             LocationID SERIAL PRIMARY KEY,
             Name VARCHAR(45) NOT NULL,
-            Style INT NOT NULL,
+            StyleID INT NOT NULL,
             State VARCHAR(45) NOT NULL,
             City VARCHAR(45) NOT NULL,
             Address VARCHAR(45) NOT NULL,
