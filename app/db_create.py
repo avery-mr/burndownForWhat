@@ -36,7 +36,7 @@ def createLocation():
             AverageRating DECIMAL(3, 2) NOT NULL,
             UserRating INT NULL,
             Notes TEXT NULL,
-            CONSTRAINT FK_style FOREIGN KEY (Style) REFERENCES "Style"(StyleID)
+            CONSTRAINT FK_style FOREIGN KEY (StyleID) REFERENCES "Style"(StyleID)
             ); '''
     return execute_query(sql, "Location Table Successfully Created")
 
