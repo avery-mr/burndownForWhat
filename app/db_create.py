@@ -149,12 +149,12 @@ def createTriggers():
         RETURNS TRIGGER AS $$
         BEGIN
             UPDATE "Location"
-            SET "AverageRating" = (
-                SELECT ROUND(COALESCE(AVG("Rating"), 0.00), 2)
+            SET AverageRating = (
+                SELECT ROUND(COALESCE(AVG(Rating), 0.00), 2)
                 FROM "UserRating"
-                WHERE "LocationID" = NEW."LocationID"
+                WHERE LocationID = NEW."LocationID
             )
-            WHERE "LocationID" = NEW."LocationID";
+            WHERE LocationID = NEW.LocationID;
             RETURN NEW;
         END;
         $$ LANGUAGE plpgsql;
@@ -173,12 +173,12 @@ def createTriggers():
         RETURNS TRIGGER AS $$
         BEGIN
             UPDATE "Location"
-            SET "AverageRating" = (
-                SELECT ROUND(COALESCE(AVG("Rating"), 0.00), 2)
+            SET AverageRating = (
+                SELECT ROUND(COALESCE(AVG(Rating), 0.00), 2)
                 FROM "UserRating"
-                WHERE "LocationID" = OLD."LocationID"
+                WHERE LocationID = OLD.LocationID
             )
-            WHERE "LocationID" = OLD."LocationID";
+            WHERE LocationID = OLD.LocationID;
             RETURN OLD;
         END;
         $$ LANGUAGE plpgsql;
