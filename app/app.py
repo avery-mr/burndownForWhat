@@ -31,29 +31,49 @@ def testing():
     except Exception as e:
         return f"Database Connection Failed: {str(e)}", 500
 
-
 @app.route('/db_init', methods=['GET'])
 def init_db():
     return createAll()
 
+@app.route('/db_drop', methods=['GET'])
+def drop_db():
+    return dropAll()
 
 @app.route('/seed', methods=['GET'])
 def run_seed():
     return seed_database()
 
-
 @app.route('/db_selectUser')
 def selectUser():
-    try:
-        conn = get_connection()
-        cur = conn.cursor()
-        cur.execute('SELECT * FROM "User";')
-        records = cur.fetchall()
-        cur.close()
-        conn.close()
-        return "<br>".join(str(record) for record in records)
-    except Exception as e:
-        return f"Error: {str(e)}"
+    return selectUser()
+
+@app.route('/db_selectStyle')
+def selectUser():
+    return selectStyle()
+
+@app.route('/db_selectLocation')
+def selectUser():
+    return selectLocation()
+
+@app.route('/db_selectUserStyle')
+def selectUser():
+    return selectUserStyle()
+
+@app.route('/db_selectUserRating')
+def selectUser():
+    return selectUserRating()
+
+@app.route('/db_selectBuddy')
+def selectUser():
+    return selectBuddy()
+
+@app.route('/db_selectMessage')
+def selectUser():
+    return selectMessage()
+
+@app.route('/db_selectEvent')
+def selectUser():
+    return selectEvent()
         
 
 @app.route('/', methods=['GET', 'POST'])
