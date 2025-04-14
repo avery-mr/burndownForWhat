@@ -1,4 +1,26 @@
-## 03//10/2025
+## 04/7/2025
+
+### Summary:
+* Redesigned some of the layout (and renamed some things to simplify)  https://docs.google.com/presentation/d/1ncAmPZ-siARAbuOKce5822HwWyBCqII-jvZPaDD3iIg/edit?slide=id.p#slide=id.p
+* Assigned roles to get started - Mitch and Tiffany starting UI. Chris and Ahmed to work on databases. Eric to work on backend as well, once we have front end in place.
+### Actions:
+* Still need to redesign Messages page - e.g. how find buddies and how connect with them.
+* We'll start to meet twice per week until project is done. Let's target Wednesday evening for next meeting, same time.
+
+## 03/30/2025
+
+### Summary:
+* We caught up and discussed their progress in the course since the week off for Spring Break.
+* We reviewed the initial SQL_TESTING.md file that Mitchell created and reviewed the proposed schema.
+### Actions:
+* Team to attend office hours and clarify Milestone 5 requirements, specifically those surrounding test cases.
+* Team to continue discussing and editing the SQL_TESTING.md file.
+  * Each team member is responsible for the test cases associated with the page they designed in the last milestone.
+  * Please monitor your emails on Wednesday for finalization of the assignment.
+* Tiffany to submit the completed file by EoD Thursday.
+* Mitchell to add these minutes to the status file in our repo.
+
+## 03/10/2025
 
 ### Summary:
 * We discussed our understanding of Lab 8 and shared a few ideas and things we learned from completing it.
