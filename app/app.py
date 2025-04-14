@@ -29,7 +29,21 @@ def init_db():
 @app.route('/seed', methods=['GET'])
 def run_seed():
     return seed_database()
-    
+
+
+@app.route('db_selectUser')
+def selectUser():
+    try:
+        conn = get_connection()
+        cur = conn.cursor()
+        cur.execute('SELECT * FROM "User";')
+        records = cur.fetchall()
+        cur.close()
+        conn.close()
+        return "<br>".join(str(record) for record in records)
+    except Exception as e:
+        return f"Error: {str(e)}"
+        
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
