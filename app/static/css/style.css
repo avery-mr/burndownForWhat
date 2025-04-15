@@ -2,7 +2,7 @@ body {
     font-family: 'Franaklin Gothic Medium', sans-serif;
     /* background-color: #1a1a1a; */
     background-color: #151D23;
-    color: white;
+    color: #FAF6EA;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -30,6 +30,7 @@ body {
     margin-left: 5px;
     margin-right: 5px;
     text-decoration: none;
+    transition: background-color 0.2s;
 }
 
 .navbar a:hover {
@@ -77,7 +78,7 @@ body {
     padding-top: 14px;
     padding-bottom: 14px;
     background-color: #C95730; /* rustic orange */
-    color: #f5e9c5;
+    color: #FAF6EA;
     border: none;
     font-size: 18px;
     border-radius: 10px;
@@ -152,7 +153,7 @@ select option {
     padding-top: 14px;
     padding-bottom: 14px;
     background-color: #C95730; /* rustic orange */
-    color: #f5e9c5;
+    color: #FAF6EA;
     border: none;
     font-size: 18px;
     border-radius: 10px;
@@ -200,6 +201,8 @@ select option {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    gap: 7px;
+    padding-right: 20px;
     /* border-right: solid white; */
   }
 
@@ -207,30 +210,35 @@ select option {
 .msg-buddy-btn {
     display: flex;
     align-items: center;
-    gap: 10px;
     padding: 5px 20px 5px 10px;
-    background-color: #B7B7B7;
-    border: 2px solid #3e3c3c;
-    border-radius: 15px;
-    font-size: 18px;
-    color: black;
+    background-color: #5D757B;
+    border: none;
+    border-radius: 8px;
+    /* font-size: 18px; */
+    font-weight: bold;
+    color: #151D23;
     cursor: pointer;
     width: 100%;
     text-align: left;
+    transition: background-color 0.2s;
+
 }  
 
 .msg-buddy-btn.selected {
-    background-color: #D9A441;
+    background-color: #C95730;
+    color: #FAF6EA;
 }
 
 .msg-buddy-btn:hover {
-    background-color: #949494;
+    background-color: #D9A441;
+
 }
 
 .msg-buddy-btn img {
     height:30px;
     width:30px;
     border-radius: 50%;
+    margin-right: 10px;
 }
 
 .msg-chat-window {
@@ -256,7 +264,7 @@ select option {
     position: relative;
 }
 .chat-message * {
-    color: white;
+    color: #FAF6EA;
 }
 
 .chat-message.sent {
@@ -313,20 +321,53 @@ select option {
     width: 100px;
     padding: 10px;
     background-color: #C95730;
-    color: #f5e9c5;
+    color: #FAF6EA;
     font-size: 16px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     flex-shrink: 0;
+    transition: background-color 0.2s;
   }
 
   .msg-form button:hover {
     background-color: #813015;
 }
 
+
+
+
+
 /* End of CSS for Messages page */
 
+
+
+/* Scrollbars */
+.container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chat-window::-webkit-scrollbar-track,
+.friends-list::-webkit-scrollbar-track {
+  background: #31353B;         /* Charcoal */
+  border-radius: 5px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #31353B;   /* Burnt orange */
+  border-radius: 5px;
+  border: 2px solid #151D23;   /* Navy-black border inset look */
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background-color: #D9A441;   /* Mustard on hover */
+}
+
+/* Firefox support */
+.container {
+  scrollbar-width: thin;
+  scrollbar-color: #5D757B #31353B;
+}
 /* colors:
 
 #5D757B - slate gray-blue
@@ -334,4 +375,5 @@ select option {
 #31353B → Charcoal / near-black
 #C95730 - orange
 #D9A441 - yellow/gold
+#78c091
  */
