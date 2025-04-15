@@ -97,7 +97,7 @@ a {
 }
 
 .container {
-    width: 1000px;
+    width: 1200px;
     margin: 0 auto;
     padding: 100px 20px 20px;
     background-color: #222;
@@ -191,7 +191,7 @@ select option {
 
 .msg-page-container {
     display: flex;
-    height: 500px;
+    height: 800px;
     gap: 10px;
 }
 
