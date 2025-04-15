@@ -20,6 +20,25 @@
 * Tiffany to submit the completed file by EoD Thursday.
 * Mitchell to add these minutes to the status file in our repo.
 
+## 03/24/2025
+
+### Summary:
+* Spring Break week
+* Team checked in over email due to schedule conflicts.
+* Mitch started the SQL_DESIGN.md document in the repo and added several tables and fields that seemed relevant.
+* Chris drafted many of the initial tables for the SQL_DESIGN.md project. 
+
+### Actions:
+* Team agreed to review (in our own time) and get going on the database design assignment. 
+* Each team member to complete tests for the database tables for their assigned page.
+
+## 03/17/2025
+
+### Summary:
+* Team connected about the JavaScript assignment, and demoed their solutions.
+* We reviewed the custom features that were implemented, including highlighting incorrect text, adding images, and customizing the theme.
+* Tiffany reported from office hours that after this lab, we can start development on the font end of our final project.
+
 ## 03/10/2025
 
 ### Summary:
