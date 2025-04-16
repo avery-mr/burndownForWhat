@@ -103,7 +103,7 @@ def profile():
         cur.close()
         conn.close()
         if records:
-            return render_template('profile.html'), username=username, records=records)
+            return render_template('profile.html', username=username, records=records)
         return "User not found", 404
     except Exception as e:
         return f"Error selecting User: {str(e)}", 500
