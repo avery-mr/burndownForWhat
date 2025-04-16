@@ -117,7 +117,7 @@ def createEvent():
             LocationID INT NOT NULL,
             PrimaryStyleID INT,
             SecondaryStyleID INT,
-            Status status_enum2 NOT NULL,
+            status status_enum2 NOT NULL,
             Notes TEXT,
             CONSTRAINT FK_host FOREIGN KEY (HostID) REFERENCES "User"(UserID),
             CONSTRAINT FK_climber1 FOREIGN KEY (ClimberID1) REFERENCES "User"(UserID),
