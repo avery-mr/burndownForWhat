@@ -22,7 +22,7 @@ def selectStyle():
     conn.close()
     return "<br>".join(str(record) for record in records) or "No records found."
   except Exception as e:
-    return f"Error selecting User: {str(e)}"
+    return f"Error selecting Style: {str(e)}"
 
 def selectLocation():
   try:
@@ -34,7 +34,7 @@ def selectLocation():
     conn.close()
     return "<br>".join(str(record) for record in records) or "No records found."
   except Exception as e:
-    return f"Error selecting User: {str(e)}"
+    return f"Error selecting Location: {str(e)}"
 
 def selectUserStyle():
   try:
@@ -46,7 +46,7 @@ def selectUserStyle():
     conn.close()
     return "<br>".join(str(record) for record in records) or "No records found."
   except Exception as e:
-    return f"Error selecting User: {str(e)}"
+    return f"Error selecting UserStyle: {str(e)}"
 
 def selectUserRating():
   try:
@@ -58,7 +58,7 @@ def selectUserRating():
     conn.close()
     return "<br>".join(str(record) for record in records) or "No records found."
   except Exception as e:
-    return f"Error selecting User: {str(e)}"
+    return f"Error selecting UserRating: {str(e)}"
 
 def selectBuddy():
   try:
@@ -70,7 +70,7 @@ def selectBuddy():
     conn.close()
     return "<br>".join(str(record) for record in records) or "No records found."
   except Exception as e:
-    return f"Error selecting User: {str(e)}"
+    return f"Error selecting Buddy: {str(e)}"
 
 def selectMessage():
   try:
@@ -82,7 +82,7 @@ def selectMessage():
     conn.close()
     return "<br>".join(str(record) for record in records) or "No records found."
   except Exception as e:
-    return f"Error selecting User: {str(e)}"
+    return f"Error selecting Message: {str(e)}"
 
 def selectEvent():
   try:
@@ -94,7 +94,7 @@ def selectEvent():
     conn.close()
     return "<br>".join(str(record) for record in records) or "No records found."
   except Exception as e:
-    return f"Error selecting User: {str(e)}"
+    return f"Error selecting Event: {str(e)}"
 
 if __name__ == "__main__":
     print("Testing select functions:")
