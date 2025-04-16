@@ -131,7 +131,19 @@ def locations():
 def create_profile():
     if request.method == 'POST':
         username = request.form['username'].strip()
+        userEmail = request.form['userEmail'].strip()
+        firstName = request.form['firstName'].strip()
+        lastName = request.form['lastName'].strip()
+        userCity = request.form['userCity'].strip()
+        userState = request.form['userState'].strip()
+        userXP = request.form['userXP'].strip()
+        profilePic = request.form['profilePic'].strip()
 
+        conn = get_connection()
+        cur = conn.cursor()
+        cur.execute('''INSERT INTO "User" (username, email, firstname, lastname, state, city, experience, bio, picture)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s);''', (username, userEmail, firstName, lastName, userCity, userState, userXP, profilePic,))
+                    
         session['username'] = username
         return redirect(url_for('profile'))
     return render_template('create_profile.html')
