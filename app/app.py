@@ -151,12 +151,13 @@ def create_profile():
         userCity = request.form['userCity'].strip()
         userState = request.form['userState'].strip()
         userXP = request.form['userXP'].strip()
+        bio = request.form['bio']
         profilePic = request.form['profilePic'].strip()
 
         conn = get_connection()
         cur = conn.cursor()
         cur.execute('''INSERT INTO "User" (username, email, firstname, lastname, state, city, experience, bio, picture)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s);''', (username, userEmail, firstName, lastName, userCity, userState, userXP, profilePic,))
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);''', (username, userEmail, firstName, lastName, userCity, userState, userXP, bio, profilePic,))
                     
         session['username'] = username
         return redirect(url_for('profile'))
