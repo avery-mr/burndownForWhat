@@ -88,7 +88,7 @@ def selectEvent():
   try:
     conn = get_connection()
     cur = conn.cursor()
-    cur.execute('SELECT EventID, HostID, ClimberID1, ClimberID2, ClimberID3, ClimberID4, ClimberID5, TO_CHAR(DateTime, \'YYYY-MM-DD HH24:MI:SS\') AS DateTime, LocationID, PrimaryStyleID, SecondaryStyleID, Status, Notes FROM "Event";')
+    cur.execute('SELECT EventID, HostID, ClimberID1, ClimberID2, ClimberID3, ClimberID4, ClimberID5, TO_CHAR(DateTime, \'YYYY-MM-DD HH24:MI:SS\') AS DateTime, LocationID, PrimaryStyleID, SecondaryStyleID, status, Notes FROM "Event";')
     records = cur.fetchall()
     cur.close()
     conn.close()
