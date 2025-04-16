@@ -6,7 +6,7 @@ from .seed_data import seed_database
 from .db_create import createAll
 from .db_drop import dropAll
 from .db_utils import get_connection
-from .db_select import (
+from .db_selectAll import (
     selectUser,
     selectStyle,
     selectLocation,
