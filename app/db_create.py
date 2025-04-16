@@ -12,7 +12,8 @@ def createUser():
             State VARCHAR(45) NOT NULL,
             City VARCHAR(45) NOT NULL,
             Experience INT NOT NULL,
-            Bio TEXT
+            Bio TEXT,
+            Picture VARCHAR(45)
             ); '''
     return execute_query(sql, "User Table Successfully Created")
 
