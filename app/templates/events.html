@@ -4,45 +4,118 @@
 
 
 <div class="container">
-    <div class="event-form-container">
-        <h2>Create Event</h2>
-        <form class="event-form">
-            <label for="event-title">Event Title</label>
-            <input type="text" id="event-title" required><br>
-            <label for="event-date">Date</label>
-            <input type="date" id="event-date" required><br>
-            <label for="event-location">Location</label>
-            <input type="text" id="event-location" required><br>
-            <label for="event-count">Buddies Needed</label>
-            <input type="number" id="event-count" required><br>
-            <button type="submit">Post Event</button>
-        </form>
-    </div>
-
-    <div class="event-posts-container">
-        <h2>Open Events</h2>
-        <div class="event-entry">
-            <div class="event-header">
-                <p><strong>Gym Climb at The Spot</strong></p>
-            </div>
-            <p>Date</p>
-            <p>Location</p>
-            <p>spots open</p>
-            <p>whatever else</p>
-            <button>Join Climb</button>
+    <div class="event-page-container">
+        <div class="event-form-container">
+            <h2>Create Event</h2>
+            <form class="event-form">
+                <label for="event-title">Event Title</label>
+                <input type="text" id="event-title" required><br>
+                <label for="event-date">Date</label>
+                <input type="date" id="event-date" required><br>
+                <label for="event-location">Location</label>
+                <input type="text" id="event-location" required><br>
+                <label for="event-count">Buddies Needed</label>
+                <input type="number" id="event-count" required><br>
+                <button type="submit">Post Event</button>
+            </form>
         </div>
-        <div class="event-entry">
-            <div class="event-header">
-                <p><strong>Bouldering at Flagstaff</strong></p>
+        <div class="event-posts-container">
+            <h2>Open Events</h2>
+            <div class="event-posts-scrolling-container">
+                <!------------------>
+                <div class="event-entry">
+                    <div class="event-entry-top">
+                        <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
+                        <p class="event-attendance">0/4</p>
+                    </div>
+                    <div class="event-entry-bottom">
+                        <div class="event-details">
+                            <p>Location: Boulder, CO</p>
+                            <p>Date: April 20, 2025</p>
+                        </div>
+                        <button class="event-join-button">Join<br>Event</button>
+                    </div>
+                </div>
+                <!------------------>
+                <div class="event-entry">
+                    <div class="event-entry-top">
+                        <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
+                        <p class="event-attendance">0/4</p>
+                    </div>
+                    <div class="event-entry-bottom">
+                        <div class="event-details">
+                            <p>Location: Boulder, CO</p>
+                            <p>Date: April 20, 2025</p>
+                        </div>
+                        <button class="event-join-button">Join<br>Event</button>
+                    </div>
+                </div>
+                <!------------------>
+                <div class="event-entry">
+                    <div class="event-entry-top">
+                        <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
+                        <p class="event-attendance">0/4</p>
+                    </div>
+                    <div class="event-entry-bottom">
+                        <div class="event-details">
+                            <p>Location: Boulder, CO</p>
+                            <p>Date: April 20, 2025</p>
+                        </div>
+                        <button class="event-join-button">Join<br>Event</button>
+                    </div>
+                </div>
+                <!------------------>
+                <div class="event-entry">
+                    <div class="event-entry-top">
+                        <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
+                        <p class="event-attendance">0/4</p>
+                    </div>
+                    <div class="event-entry-bottom">
+                        <div class="event-details">
+                            <p>Location: Boulder, CO</p>
+                            <p>Date: April 20, 2025</p>
+                        </div>
+                        <button class="event-join-button">Join<br>Event</button>
+                    </div>
+                </div>
+                <!------------------>
+                <div class="event-entry">
+                    <div class="event-entry-top">
+                        <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
+                        <p class="event-attendance">0/4</p>
+                    </div>
+                    <div class="event-entry-bottom">
+                        <div class="event-details">
+                            <p>Location: Boulder, CO</p>
+                            <p>Date: April 20, 2025</p>
+                        </div>
+                        <button class="event-join-button">Join<br>Event</button>
+                    </div>
+                </div>
+                <!------------------>
+
             </div>
-            <p>Date</p>
-            <p>Location</p>
-            <p>spots open</p>
-            <p>whatever else</p>
-            <button>Join Climb</button>
         </div>
     </div>
 </div>
 
 
 {% endblock %}
+
+
+
+
+
+<!-- <div class="event-entry">
+    <div class="event-entry-top">
+        <p class="event-name"><strong>{{ eventName }}</strong></p>
+        <p class="event-attendance">{{ eventRegistered }}/{{ eventCapacity }}</p>
+    </div>
+    <div class="event-entry-bottom">
+        <div class="event-details">
+            <p>Location: {{ eventLocation }}</p>
+            <p>Date: {{ eventDate }}</p>
+        </div>
+        <button class="event-join-button">Join<br>Event</button>
+    </div>
+</div> -->

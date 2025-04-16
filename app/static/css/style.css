@@ -86,7 +86,7 @@ body {
     margin-top: 20px;
 }
   
-  .login-form a, p {
+  .login-form a, .login-form p {
     margin-top: 15px;
     color: #5D757B
     
@@ -97,7 +97,7 @@ a {
 }
 
 .container {
-    width: 1200px;
+    width: 1000px;
     margin: 0 auto;
     padding: 100px 20px 20px;
     background-color: #222;
@@ -123,9 +123,18 @@ a {
     background-color: gray;
 }
 
+.event-page-container {
+    display: flex;
+    height: 600px;
+    margin-bottom: 20px;
+    gap:20px;
+    
+}
+
 .event-form-container {
-    width:500px;
-    margin: 20px auto;
+    width:400px;
+    /* margin: 20px; */
+    
 
 }
 
@@ -159,6 +168,7 @@ select option {
     border-radius: 10px;
     cursor: pointer;
     margin-top: 20px;
+    transition: background-color 0.2s;
 }
 
 .event-form button:hover {
@@ -166,22 +176,91 @@ select option {
 }
 
 .event-posts-container {
-    border-top: solid;
-    border-color:#C95730;
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* margin: 20px; */
+    padding-left: 20px;
+    max-height: 600px;
+    border-left: 2px solid #C95730;
+}
+
+.event-posts-scrolling-container {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 10px;
 }
 
 .event-entry {
-    padding: 20px;
-    margin: 20px auto;
+    padding: 10px 20px;
+    margin: 10px 0;
     border: 2px solid #5D757B;
-    border-radius:20px;
+    border-radius: 12px;
     background-color: #333;
+    display: flex;
+    flex-direction: column;
+    color: #FAF6EA;
+    gap: 10px;
 }
 
-.event-header {
-    margin-top: 0;
-    font-size: 20px;
+.event-entry-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
     border-bottom: 2px solid #5D757B;
+}
+
+.event-name {
+    font-size: 18px;
+    margin: 0;
+    color: #FAF6EA;
+}
+
+.event-attendance {
+    /* font-size: 14px; */
+    color: #FAF6EA;
+    margin: 0;
+    font-weight: bold;
+}
+
+.event-entry-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FAF6EA;
+}
+
+.event-details {
+    font-size: 16px;
+    color: #FAF6EA;
+    justify-content: center;
+}
+
+.event-join-button {
+    padding: 16px 20px;
+    background-color: #C95730;
+    color: #FAF6EA;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    line-height: 1.2;
+    height: 52px; /* controls height visually if using 2 lines */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+    transition: background-color 0.2s;
+}
+
+.event-join-button:hover {
+    background-color: #813015;
 }
 
 /* CSS for Messages page begins */
@@ -191,7 +270,7 @@ select option {
 
 .msg-page-container {
     display: flex;
-    height: 800px;
+    height: 600px;
     gap: 10px;
 }
 
