@@ -44,35 +44,35 @@ def run_seed():
     return seed_database()
 
 @app.route('/db_selectUser')
-def selectUser():
+def selectUser_db():
     return selectUser()
 
 @app.route('/db_selectStyle')
-def selectStyle():
+def selectStyle_db():
     return selectStyle()
 
 @app.route('/db_selectLocation')
-def selectLocation():
+def selectLocation_db():
     return selectLocation()
 
 @app.route('/db_selectUserStyle')
-def selectUserStyle():
+def selectUserStyle_db():
     return selectUserStyle()
 
 @app.route('/db_selectUserRating')
-def selectUserRating():
+def selectUserRating_db():
     return selectUserRating()
 
 @app.route('/db_selectBuddy')
-def selectBuddy():
+def selectBuddy_db():
     return selectBuddy()
 
 @app.route('/db_selectMessage')
-def selectMessage():
+def selectMessage_db():
     return selectMessage()
 
 @app.route('/db_selectEvent')
-def selectEvent():
+def selectEvent_db():
     return selectEvent()
         
 
