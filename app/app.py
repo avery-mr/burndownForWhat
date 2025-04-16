@@ -98,7 +98,7 @@ def profile():
     try:
         conn = get_connection()
         cur = conn.cursor()
-        cur.execute('SELECT * FROM "User" WHERE Username = {username};')
+        cur.execute(f'SELECT * FROM "User" WHERE Username = {username};')
         records = cur.fetchone()
         cur.close()
         conn.close()
