@@ -83,17 +83,7 @@ def login():
     if request.method == 'POST':
         username = request.form['username'].strip()
 
-        
-        url = urlparse.urlparse("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a.oregon-postgres.render.com/belaybuddy")
-        conn = psycopg2.connect(
-            dbname=url.path[1:], 
-            user=url.username,
-            password=url.password,
-            host=url.hostname,
-            port=url.port or 5432,
-            sslmode='require'
-            )
-
+        conn = get_connection()
         cur = conn.cursor()
         cur.execute('SELECT 1 FROM "User" WHERE Username = %s;', (username,))
         result = cur.fetchone()
