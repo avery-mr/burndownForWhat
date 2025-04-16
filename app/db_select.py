@@ -76,7 +76,7 @@ def selectMessage():
   try:
     conn = get_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM "Message";')
+    cur.execute('SELECT MessageID, SenderID, ReceiverID, Text, TO_CHAR(Timestamp, \'YYYY-MM-DD HH24:MI:22\') AS Timestamp FROM "Message";')
     records = cur.fetchall()
     cur.close()
     conn.close()
@@ -88,7 +88,7 @@ def selectEvent():
   try:
     conn = get_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM "Event";')
+    cur.execute('SELECT EventID, HostID, ClimberID1, ClimberID2, ClimberID3, ClimberID4, ClimberID5, TO_CHAR(DateTime, \'YYYY-MM-DD HH24:MI:SS\') AS DateTime, LocationID, PrimaryStyleID, SecondaryStyleID, Status, Notes FROM "Event";')
     records = cur.fetchall()
     cur.close()
     conn.close()
