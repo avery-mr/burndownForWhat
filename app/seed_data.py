@@ -40,13 +40,13 @@ def seed_database():
         # Insert Users
         print("Inserting users into User table...")
         cur.execute("""
-        INSERT INTO "User" (Username, Email, State, City, Experience, Bio) VALUES
-            ('climbzRcool', 'cool@climb.com', 'Colorado', 'Boulder', 5, 'Lover of granite'),
-            ('chalkup', 'grip@protonmail.com', 'California', 'San Diego', 3, 'Sandstone specialist'),
-            ('belayqueen', 'ropequeen@cruxmail.com', 'Utah', 'Moab', 7, 'Trad and tacos'),
-            ('cruxjunkie', 'beta@stone.net', 'Nevada', 'Las Vegas', 4, 'Chasing the send in Red Rock'),
-            ('dynoDan', 'hopskip@jumpmail.com', 'Oregon', 'Portland', 2, 'Boulders and beers'),
-            ('racknrope', 'tradster@cragmail.com', 'Washington', 'Seattle', 6, 'Big walls and big coffee');
+        INSERT INTO "User" (Username, Email, FirstName, LastName, State, City, Experience, Bio) VALUES
+            ('climbzRcool', 'cool@climb.com', 'Bob', 'Ross', 'Colorado', 'Boulder', 5, 'Lover of granite'),
+            ('chalkup', 'grip@protonmail.com', 'Steve', 'Buschemi', 'California', 'San Diego', 3, 'Sandstone specialist'),
+            ('belayqueen', 'ropequeen@cruxmail.com', 'Lance', 'Armstrong', 'Utah', 'Moab', 7, 'Trad and tacos'),
+            ('cruxjunkie', 'beta@stone.net', 'Carl', 'Sagan', 'Nevada', 'Las Vegas', 4, 'Chasing the send in Red Rock'),
+            ('dynoDan', 'hopskip@jumpmail.com', 'Bob', 'Belcher', 'Oregon', 'Portland', 2, 'Boulders and beers'),
+            ('racknrope', 'tradster@cragmail.com', 'Anakin', 'Skywalker', 'Washington', 'Seattle', 6, 'Big walls and big coffee');
         """)
         conn.commit()
 
