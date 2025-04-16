@@ -98,28 +98,13 @@ def profile():
     try:
         conn = get_connection()
         cur = conn.cursor()
-        cur.execute(f'SELECT * FROM "User" WHERE Username = {username};')
+        cur.execute(f'SELECT * FROM "User" WHERE Username = "{username}";')
         records = cur.fetchone()
         cur.close()
         conn.close()
         return "<br>".join(str(record) for record in records) or "No records found."
     except Exception as e:
         return f"Error selecting User: {str(e)}"
-    
-    # conn = ?
-    # cur = conn.cursor()
-    # cur.execute("""
-    #     SELECT name, city, state
-    #     FROM users
-    #     WHERE username = ?
-
-    # """, (username))
-
-    # result = cur.fetchone()
-    
-    # name, city, state = result
-
-
     return render_template('profile.html', username=username)
 
 
