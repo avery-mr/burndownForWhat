@@ -87,12 +87,36 @@ def login():
         return redirect(url_for('profile'))
     return render_template('login.html')
 
+
+
+
 @app.route('/profile')
 def profile():
     if 'username' not in session:
         return redirect(url_for('login'))
     username = session.get('username')
+
+    # conn = ?
+    # cur = conn.cursor()
+    # cur.execute("""
+    #     SELECT name, city, state
+    #     FROM users
+    #     WHERE username = ?
+
+    # """, (username))
+
+    # result = cur.fetchone()
+    
+    # name, city, state = result
+
+
     return render_template('profile.html', username=username)
+
+
+
+
+
+
 
 @app.route('/events')
 def events():
