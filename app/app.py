@@ -100,14 +100,6 @@ def profile():
         cur = conn.cursor()
         cur.execute('SELECT * FROM "User" WHERE Username = %s;', (username,))
         records = cur.fetchone()
-        '''
-        for i in records:
-            state = i['State']
-            city = i['City']
-            experience = i['Experience']
-            bio = i['bio']
-            city = records
-        '''
         userid, username, email, state, city, experience, bio, picture = records 
         cur.close()
         conn.close()
