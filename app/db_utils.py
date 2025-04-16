@@ -2,7 +2,7 @@ import psycopg2
 import os
 import traceback
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = "postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a/belaybuddy"
 
 def get_connection():
     return psycopg2.connect(DATABASE_URL)
