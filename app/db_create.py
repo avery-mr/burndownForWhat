@@ -9,6 +9,8 @@ def createUser():
             UserID SERIAL PRIMARY KEY,
             Username VARCHAR(45) NOT NULL UNIQUE,
             Email VARCHAR(45) NOT NULL UNIQUE,
+            FirstName VARCHAR(45) NOT NULL,
+            LastName VARCHAR(45) NOT NULL,
             State VARCHAR(45) NOT NULL,
             City VARCHAR(45) NOT NULL,
             Experience INT NOT NULL,
