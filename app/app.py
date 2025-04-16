@@ -108,10 +108,11 @@ def profile():
             bio = i['bio']
             city = records
         '''
+        userid, username, email, state, city, experience, bio, picture = records 
         cur.close()
         conn.close()
         if records:
-            return render_template('profile.html', username=username, records=records)
+            return render_template('profile.html', userid=userid, username=username, email=email, state=state, city=city, experience=experience, bio=bio picture=picture)
         return "User not found", 404
     except Exception as e:
         return f"Error selecting User: {str(e)}", 500
