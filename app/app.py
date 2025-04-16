@@ -95,7 +95,17 @@ def profile():
     if 'username' not in session:
         return redirect(url_for('login'))
     username = session.get('username')
-
+  try:
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM "User" WHERE Username = {username};')
+    records = cur.fetchone()
+    cur.close()
+    conn.close()
+    return "<br>".join(str(record) for record in records) or "No records found."
+  except Exception as e:
+    return f"Error selecting User: {str(e)}"
+    
     # conn = ?
     # cur = conn.cursor()
     # cur.execute("""
