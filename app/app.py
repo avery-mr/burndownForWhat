@@ -129,7 +129,33 @@ def profile():
 def events():
     if 'username' not in session:
         return redirect(url_for('login'))
+    
+    username = session.get('username')
+    conn = get_connection()
+    cur = conn.cursor()
+
+
+    if request.method == 'POST':
+        # insert event from form here
+
+        return redirect(url_for('events'))
+
+    # cur.execute('''
+    #     # Somthing like
+    #     # SELECT event_name, event_date, event_location, event_numCapacity, event_numRegistered FROM events where date is after todays date
+                
+ 
+    #             ;''')
+    # events = cur.fetchall()    
+
+    cur.close()
+    conn.close()
+
     return render_template('events.html')
+
+
+
+
 
 @app.route('/messages')
 def messages():
