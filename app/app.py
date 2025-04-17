@@ -111,7 +111,7 @@ def login():
             session['username'] = username
             return redirect(url_for('profile'))
         else: 
-            error = "Username not found"
+            error = "User does not exist"
             return render_template('login.html', error=error)
 
     return render_template('login.html')
@@ -136,7 +136,7 @@ def profile():
         cur.close()
         conn.close()
         if records:
-            return render_template('profile.html', username=username, email=email, state=state, city=city, experience=experience, bio=bio)
+            return render_template('profile.html', username=username, fname=fname, lname=lname, email=email, state=state, city=city, experience=experience, bio=bio)
         return "User not found", 404
     except Exception as e:
         return f"Error selecting User: {str(e)}", 500

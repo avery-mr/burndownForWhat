@@ -9,7 +9,11 @@
     <body>
         <div class="login-container">
             <img src="static/img/belayBuddy_logo_temp_01.svg" alt ="Belay Buddy Logo" class="logo">
-
+            {% if error %}
+                <div class="login-error">
+                    {{ error }}
+                </div>
+            {% endif %}
             <form class="login-form" method="post">
                 <input type="text" id="username" name="username" placeholder="User Name" required>
                 <button type="submit">Log In</button>
