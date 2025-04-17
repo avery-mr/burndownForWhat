@@ -1,5 +1,6 @@
 import psycopg2
 import os
+from datetime import datetime
 from urllib.parse import urlparse
 
 from flask import Flask, render_template, session, request, redirect, url_for
@@ -141,17 +142,28 @@ def events():
         return redirect(url_for('events'))
 
     # cur.execute('''
-    #     # Somthing like
-    #     # SELECT event_name, event_date, event_location, event_numCapacity, event_numRegistered FROM events where date is after todays date
+    #     SELECT * FROM "Event"
                 
- 
-    #             ;''')
-    # events = cur.fetchall()    
+    #             ''')
+    
+    # print(cur.fetchone())
+    cur.execute('''
+        SELECT * from "Event"
+        WHERE DateTime >= %s
+        ORDER BY DateTime ASC
+                
+                ;''', (datetime.now(),))
+
+    # cur.execute('SELECT eventid, datetime FROM "Event" ORDER BY datetime;')
+    
+    
+    events = cur.fetchall()  
+    print(events)  
 
     cur.close()
     conn.close()
 
-    return render_template('events.html')
+    return render_template('events.html', events=events)
 
 
 
@@ -168,6 +180,12 @@ def locations():
     if 'username' not in session:
         return redirect(url_for('login'))
     return render_template('locations.html')
+
+@app.route('/directory')
+def directory():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    return render_template('directory.html')
 
 @app.route('/create_profile', methods=['GET', 'POST'])
 def create_profile():

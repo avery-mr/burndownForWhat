@@ -24,18 +24,18 @@
             <div class="event-posts-scrolling-container">
 
                 <!-- This will be our dynamically loading div for events -->
-                <!--
+                
                 {% for event in events %}
 
                 <div class="event-entry">
                     <div class="event-entry-top">
-                        <p class="event-name"><strong>{{ event_name }}</strong></p>
-                        <p class="event-attendance">{{ event_numRegistered }}/{{ event_numCapacity }}</p>
+                        <p class="event-name"><strong>{{ event[6] }}</strong></p>
+                        <p class="event-attendance">{{ event[5] }}/{{ event[4] }}</p>
                     </div>
                     <div class="event-entry-bottom">
                         <div class="event-details">
-                            <p>Location: {{ event_location }}</p>
-                            <p>Date: {{ event_date }}</p>
+                            <p>Location: {{ event[3] }}</p>
+                            <p>Date: {{ event[2].strftime('%B %d, %Y') }}</p>
                         </div>
                         <button class="event-join-button">Join<br>Event</button>
                     </div>
@@ -44,11 +44,11 @@
 
                 {% endfor %}
                 
-                -->
+               
 
 
                 <!------------------>
-                <div class="event-entry">
+                <!-- <div class="event-entry">
                     <div class="event-entry-top">
                         <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
                         <p class="event-attendance">0/4</p>
@@ -60,9 +60,9 @@
                         </div>
                         <button class="event-join-button">Join<br>Event</button>
                     </div>
-                </div>
+                </div> -->
                 <!------------------>
-                <div class="event-entry">
+                <!-- <div class="event-entry">
                     <div class="event-entry-top">
                         <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
                         <p class="event-attendance">0/4</p>
@@ -74,9 +74,9 @@
                         </div>
                         <button class="event-join-button">Join<br>Event</button>
                     </div>
-                </div>
+                </div> -->
                 <!------------------>
-                <div class="event-entry">
+                <!-- <div class="event-entry">
                     <div class="event-entry-top">
                         <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
                         <p class="event-attendance">0/4</p>
@@ -88,9 +88,9 @@
                         </div>
                         <button class="event-join-button">Join<br>Event</button>
                     </div>
-                </div>
+                </div> -->
                 <!------------------>
-                <div class="event-entry">
+                <!-- <div class="event-entry">
                     <div class="event-entry-top">
                         <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
                         <p class="event-attendance">0/4</p>
@@ -102,9 +102,9 @@
                         </div>
                         <button class="event-join-button">Join<br>Event</button>
                     </div>
-                </div>
+                </div> -->
                 <!------------------>
-                <div class="event-entry">
+                <!-- <div class="event-entry">
                     <div class="event-entry-top">
                         <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
                         <p class="event-attendance">0/4</p>
@@ -116,7 +116,7 @@
                         </div>
                         <button class="event-join-button">Join<br>Event</button>
                     </div>
-                </div>
+                </div> -->
                 <!------------------>
 
             </div>
