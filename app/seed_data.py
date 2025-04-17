@@ -94,7 +94,7 @@ def seed_database():
         print("Inserting events into Event table...")
         cur.execute("""
         INSERT INTO "Event" (HostID, DateTime, Location, Capacity, Registered, Notes) VALUES
-            (6, '2025-04-15 09:00:00', 'Eldorado Canyon, 6, 4, 'Morning session at the local gym'),
+            (6, '2025-04-15 09:00:00', 'Eldorado Canyon', 6, 4, 'Morning session at the local gym'),
             (1, '2025-04-16 18:30:00', 'Mission Cliffs Gym', 4, 2, 'After-work climb, bring snacks!'),
             (5, '2025-04-17 14:00:00', 'Indian Creek', 3, 3, 'Weekend warm-up on the slab routes'),
             (2, '2025-04-18 10:00:00', 'Red Rock Canyon', 5, 3, 'Trying some new routes today'),
