@@ -68,17 +68,9 @@ def createUserRating():
 
 def createBuddy():
     sql = ''' 
-            DO $$ BEGIN
-                IF EXISTS (SELECT 1 FROM pg_type WHERE typname = 'status_enum')
-                THEN DROP TYPE status_enum CASCADE;
-                END IF;
-            END $$;
-        
-            CREATE TYPE status_enum AS ENUM ('pending', 'confirmed', 'declined');
             CREATE TABLE IF NOT EXISTS "Buddy" (
             UserID INT NOT NULL,
             FriendID INT NOT NULL,
-            Status status_enum NOT NULL,
             PRIMARY KEY (UserID, FriendID),
             CONSTRAINT FK_userid FOREIGN KEY (UserID) REFERENCES "User"(UserID),
             CONSTRAINT FK_friendid FOREIGN KEY (FriendID) REFERENCES "User"(UserID)
@@ -100,36 +92,15 @@ def createMessage():
 
 def createEvent():
     sql = ''' 
-            DO $$ BEGIN
-                IF EXISTS (SELECT 1 FROM pg_type WHERE typname = 'status_enum2')
-                THEN DROP TYPE status_enum2 CASCADE;
-                END IF;
-            END $$;
-        
-            CREATE TYPE status_enum2 AS ENUM ('going', 'not going', 'full');
             CREATE TABLE IF NOT EXISTS "Event" (
             EventID SERIAL PRIMARY KEY,
             HostID INT NOT NULL,
-            ClimberID1 INT,
-            ClimberID2 INT,
-            ClimberID3 INT,
-            ClimberID4 INT,
-            ClimberID5 INT,
             DateTime TIMESTAMP NOT NULL,
-            LocationID INT NOT NULL,
-            PrimaryStyleID INT,
-            SecondaryStyleID INT,
-            status status_enum2 NOT NULL,
+            Location VARCHAR(45) NOT NULL,
+            Capacity INT NOT NULL,
+            Registered INT NOT NULL,
             Notes TEXT,
             CONSTRAINT FK_host FOREIGN KEY (HostID) REFERENCES "User"(UserID),
-            CONSTRAINT FK_climber1 FOREIGN KEY (ClimberID1) REFERENCES "User"(UserID),
-            CONSTRAINT FK_climber2 FOREIGN KEY (ClimberID2) REFERENCES "User"(UserID),
-            CONSTRAINT FK_climber3 FOREIGN KEY (ClimberID3) REFERENCES "User"(UserID),
-            CONSTRAINT FK_climber4 FOREIGN KEY (ClimberID4) REFERENCES "User"(UserID),
-            CONSTRAINT FK_climber5 FOREIGN KEY (ClimberID5) REFERENCES "User"(UserID),
-            CONSTRAINT FK_location FOREIGN KEY (LocationID) REFERENCES "Location"(LocationID),
-            CONSTRAINT FK_primstyle FOREIGN KEY (PrimaryStyleID) REFERENCES "Style"(StyleID),
-            CONSTRAINT FK_secstyle FOREIGN KEY (SecondaryStyleID) REFERENCES "Style"(StyleID)
             ); '''
     return execute_query(sql, "Event Table Successfully Created")
 
