@@ -93,29 +93,29 @@ def seed_database():
         # Insert Events
         print("Inserting events into Event table...")
         cur.execute("""
-        INSERT INTO "Event" (HostID, DateTime, LocationID, PrimaryStyleID, SecondaryStyleID, Status, Notes) VALUES
-            (1, '2025-04-15 09:00:00', 1, 1, NULL, 'going', 'Morning session at the local gym'),
-            (2, '2025-04-16 18:30:00', 2, 2, 4, 'full', 'After-work climb, bring snacks!'),
-            (3, '2025-04-17 14:00:00', 3, 3, NULL, 'not going', 'Weekend warm-up on the slab routes'),
-            (1, '2025-04-18 10:00:00', 2, 4, 2, 'going', 'Trying some new routes today'),
-            (2, '2025-04-19 08:00:00', 1, 1, NULL, 'not going', 'Weather turned bad — rescheduling'),
-            (3, '2025-04-20 13:00:00', 3, 6, 9, 'full', 'Mixed styles today — all levels welcome');
+        INSERT INTO "Event" (HostID, DateTime, Location, Capacity, Registered, Notes) VALUES
+            (6, '2025-04-15 09:00:00', 'Eldorado Canyon, 6, 4, 'Morning session at the local gym'),
+            (1, '2025-04-16 18:30:00', 'Mission Cliffs Gym', 4, 2, 'After-work climb, bring snacks!'),
+            (5, '2025-04-17 14:00:00', 'Indian Creek', 3, 3, 'Weekend warm-up on the slab routes'),
+            (2, '2025-04-18 10:00:00', 'Red Rock Canyon', 5, 3, 'Trying some new routes today'),
+            (4, '2025-04-19 08:00:00', 'Planet Granite', 4, 3, 'Bouldering routes have been reset. Should be fun'),
+            (3, '2025-04-20 13:00:00', 'Index Town Wall', 10, 7, 'Mixed styles today — all levels welcome');
         """)
 
         # Insert Buddy relationships
         print("Inserting buddies into Buddy table...")
         cur.execute("""
-        INSERT INTO "Buddy" (UserID, FriendID, Status) VALUES
-            (1, 2, 'confirmed'), 
-            (1, 3, 'pending'), 
-            (2, 4, 'confirmed'), 
-            (3, 1, 'declined'),
-            (4, 5, 'confirmed'), 
-            (5, 2, 'pending'), 
-            (6, 1, 'confirmed'),
-            (3, 6, 'confirmed'), 
-            (2, 6, 'pending'), 
-            (5, 3, 'declined');
+        INSERT INTO "Buddy" (UserID, FriendID) VALUES
+            (1, 2,), 
+            (1, 3,), 
+            (2, 4,), 
+            (3, 1,),
+            (4, 5,), 
+            (5, 2,), 
+            (6, 1,),
+            (3, 6,), 
+            (2, 6,), 
+            (5, 3,);
         """)
 
         # Insert UserStyle
