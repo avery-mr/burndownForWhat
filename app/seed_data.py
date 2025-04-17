@@ -106,16 +106,16 @@ def seed_database():
         print("Inserting buddies into Buddy table...")
         cur.execute("""
         INSERT INTO "Buddy" (UserID, FriendID) VALUES
-            (1, 2,), 
-            (1, 3,), 
-            (2, 4,), 
-            (3, 1,),
-            (4, 5,), 
-            (5, 2,), 
-            (6, 1,),
-            (3, 6,), 
-            (2, 6,), 
-            (5, 3,);
+            (1, 2), 
+            (1, 3), 
+            (2, 4), 
+            (3, 1),
+            (4, 5), 
+            (5, 2), 
+            (6, 1),
+            (3, 6), 
+            (2, 6), 
+            (5, 3);
         """)
 
         # Insert UserStyle
