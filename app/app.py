@@ -25,7 +25,7 @@ app.secret_key = os.getenv("SECRET_KEY", "burndownforwhat")
 
 # to connect to postgresql db from local deployment
 def local_db_connect():
-    url = urlparse.urlparse("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a.oregon-postgres.render.com/belaybuddy")
+    url = urlparse("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a.oregon-postgres.render.com/belaybuddy")
     conn = psycopg2.connect(
         dbname=url.path[1:], 
         user=url.username,
@@ -126,14 +126,17 @@ def profile():
     username = session.get('username')
     try:
         conn = get_connection()
+        # conn = local_db_connect()
         cur = conn.cursor()
-        cur.execute('SELECT * FROM "User" WHERE Username = %s;', (username,))
+        cur.execute('''
+            SELECT Username, Email, FirstName, LastName, State, City, Experience, Bio
+            FROM "User" WHERE Username = %s;''', (username,))
         records = cur.fetchone()
-        userid, username, email, state, city, experience, bio, picture = records 
+        username, email, fname, lname, state, city, experience, bio = records 
         cur.close()
         conn.close()
         if records:
-            return render_template('profile.html', userid=userid, username=username, email=email, state=state, city=city, experience=experience, bio=bio, picture=picture)
+            return render_template('profile.html', username=username, email=email, state=state, city=city, experience=experience, bio=bio)
         return "User not found", 404
     except Exception as e:
         return f"Error selecting User: {str(e)}", 500
@@ -169,12 +172,17 @@ def create_profile():
         bio = request.form['bio']
         profilePic = request.form['profilePic'].strip()
 
+ 
         conn = get_connection()
+        # conn = local_db_connect()
         cur = conn.cursor()
         cur.execute('''INSERT INTO "User" (username, email, firstname, lastname, state, city, experience, bio, picture)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);''', (username, userEmail, firstName, lastName, userCity, userState, userXP, bio, profilePic,))
-                    
+        conn.commit()
+        cur.close()
+        conn.close()           
         session['username'] = username
+
         return redirect(url_for('profile'))
     return render_template('create_profile.html')
 

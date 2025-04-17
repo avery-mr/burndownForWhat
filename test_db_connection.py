@@ -1,6 +1,7 @@
 import psycopg2
 import urllib.parse as urlparse
-from app.app import local_db_connect
+from app.db_utils import get_connection
+
 
 def local_db_connect():
     url = urlparse.urlparse("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a.oregon-postgres.render.com/belaybuddy")
@@ -27,7 +28,7 @@ def test_db_connection():
         #     port=url.port or 5432,
         #     sslmode='require'
         # )
-        conn = local_db_connect()
+        conn = get_connection()
 
         cur = conn.cursor()
         cur.execute('SELECT Email, City, State FROM "User" where Username = %s;', (username,))
