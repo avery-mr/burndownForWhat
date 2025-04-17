@@ -23,19 +23,6 @@ app = Flask(__name__)
 #app.secret_key = 'burndownforwhat'
 app.secret_key = os.getenv("SECRET_KEY", "burndownforwhat")
 
-# to connect to postgresql db from local deployment
-def local_db_connect():
-    url = urlparse("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a.oregon-postgres.render.com/belaybuddy")
-    conn = psycopg2.connect(
-        dbname=url.path[1:], 
-        user=url.username,
-        password=url.password,
-        host=url.hostname,
-        port=url.port or 5432,
-        sslmode='require'
-        )
-    return conn
-
 @app.route('/db_test')
 def testing():
     try:
@@ -98,7 +85,6 @@ def login():
         username = request.form['username'].strip()
 
         conn = get_connection()
-        # conn = local_db_connect()
         cur = conn.cursor()
         cur.execute('SELECT 1 FROM "User" WHERE Username = %s;', (username,))
         result = cur.fetchone()
@@ -124,22 +110,20 @@ def profile():
     if 'username' not in session:
         return redirect(url_for('login'))
     username = session.get('username')
-    try:
-        conn = get_connection()
-        # conn = local_db_connect()
-        cur = conn.cursor()
-        cur.execute('''
-            SELECT Username, Email, FirstName, LastName, State, City, Experience, Bio
-            FROM "User" WHERE Username = %s;''', (username,))
-        records = cur.fetchone()
-        username, email, fname, lname, state, city, experience, bio = records 
-        cur.close()
-        conn.close()
-        if records:
-            return render_template('profile.html', username=username, fname=fname, lname=lname, email=email, state=state, city=city, experience=experience, bio=bio)
-        return "User not found", 404
-    except Exception as e:
-        return f"Error selecting User: {str(e)}", 500
+
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute('''
+        SELECT Username, Email, FirstName, LastName, State, City, Experience, Bio
+        FROM "User" WHERE Username = %s;''', (username,))
+    records = cur.fetchone()
+    username, email, fname, lname, state, city, experience, bio = records 
+    cur.close()
+    conn.close()
+    if records:
+        return render_template('profile.html', username=username, fname=fname, lname=lname, email=email, state=state, city=city, experience=experience, bio=bio)
+    return "User not found", 404
+
     
 @app.route('/events')
 def events():
@@ -174,7 +158,6 @@ def create_profile():
 
  
         conn = get_connection()
-        # conn = local_db_connect()
         cur = conn.cursor()
         cur.execute('''INSERT INTO "User" (username, email, firstname, lastname, state, city, experience, bio, picture)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);''', (username, userEmail, firstName, lastName, userCity, userState, userXP, bio, profilePic,))

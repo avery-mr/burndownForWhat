@@ -149,7 +149,10 @@ a {
 
 }
 
-.event-form input, select {
+.event-form {
+    padding-top: 60px;
+}
+.event-form input, select, textarea {
     box-sizing: border-box;
     width:100%;
     padding: 14px;
@@ -167,6 +170,9 @@ select option {
     font-size: 16px;
     border-radius: 8px;
 }
+
+
+
 
 .event-form button {
     width: 100%;
@@ -439,25 +445,22 @@ select option {
 
 .chat-window::-webkit-scrollbar-track,
 .friends-list::-webkit-scrollbar-track {
-  background: #31353B;         /* Charcoal */
+  background: #31353B;         
   border-radius: 5px;
 }
 
 .container::-webkit-scrollbar-thumb {
-  background-color: #31353B;   /* Burnt orange */
+  background-color: #31353B;   
   border-radius: 5px;
-  border: 2px solid #151D23;   /* Navy-black border inset look */
+  border: 2px solid #151D23;   
 }
 
 .container::-webkit-scrollbar-thumb:hover {
   background-color: #D9A441;   /* Mustard on hover */
 }
 
-/* Firefox support */
-.container {
-  scrollbar-width: thin;
-  scrollbar-color: #5D757B #31353B;
-}
+
+
 /* colors:
 
 #5D757B - slate gray-blue
