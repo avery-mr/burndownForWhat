@@ -100,7 +100,7 @@ def createEvent():
             Capacity INT NOT NULL,
             Registered INT NOT NULL,
             Notes TEXT,
-            CONSTRAINT FK_host FOREIGN KEY (HostID) REFERENCES "User"(UserID),
+            CONSTRAINT FK_host FOREIGN KEY (HostID) REFERENCES "User"(UserID)
             ); '''
     return execute_query(sql, "Event Table Successfully Created")
 
