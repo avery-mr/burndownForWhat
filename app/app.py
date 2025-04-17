@@ -1,5 +1,6 @@
 import psycopg2
 import os
+from urllib.parse import urlparse
 
 from flask import Flask, render_template, session, request, redirect, url_for
 from .seed_data import seed_database
@@ -21,6 +22,19 @@ app = Flask(__name__)
 # lets try using a simple session and cookies to store user data
 #app.secret_key = 'burndownforwhat'
 app.secret_key = os.getenv("SECRET_KEY", "burndownforwhat")
+
+# to connect to postgresql db from local deployment
+def local_db_connect():
+    url = urlparse.urlparse("postgresql://belaybuddy_user:AtDkADwMJk9CGBWZdWxLvWS6IaVfksiq@dpg-cvti41be5dus73a9kcng-a.oregon-postgres.render.com/belaybuddy")
+    conn = psycopg2.connect(
+        dbname=url.path[1:], 
+        user=url.username,
+        password=url.password,
+        host=url.hostname,
+        port=url.port or 5432,
+        sslmode='require'
+        )
+    return conn
 
 @app.route('/db_test')
 def testing():
@@ -83,7 +97,8 @@ def login():
     if request.method == 'POST':
         username = request.form['username'].strip()
 
-        conn = get_connection()
+        # conn = get_connection()
+        conn = local_db_connect()
         cur = conn.cursor()
         cur.execute('SELECT 1 FROM "User" WHERE Username = %s;', (username,))
         result = cur.fetchone()
@@ -172,3 +187,6 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
