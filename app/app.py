@@ -97,8 +97,8 @@ def login():
     if request.method == 'POST':
         username = request.form['username'].strip()
 
-        # conn = get_connection()
-        conn = local_db_connect()
+        conn = get_connection()
+        # conn = local_db_connect()
         cur = conn.cursor()
         cur.execute('SELECT 1 FROM "User" WHERE Username = %s;', (username,))
         result = cur.fetchone()
