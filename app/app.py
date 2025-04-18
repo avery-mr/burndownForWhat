@@ -120,11 +120,22 @@ def profile():
         SELECT Username, Email, FirstName, LastName, State, City, Experience, Bio
         FROM "User" WHERE Username = %s;''', (username,))
     records = cur.fetchone()
-    username, email, fname, lname, state, city, experience, bio = records 
+    username, email, fname, lname, state, city, xp, bio = records 
+
     cur.close()
     conn.close()
+
+    experience_levels = {
+        1: "Gumby",
+        2: "Crag Tourist",
+        3: "Gear Junkie",
+        4: "Rope Gun",
+        5: "Beta Whisperer",
+        6: "Crag Legend"
+    }
+
     if records:
-        return render_template('profile.html', username=username, fname=fname, lname=lname, email=email, state=state, city=city, experience=experience, bio=bio)
+        return render_template('profile.html', username=username, fname=fname, lname=lname, email=email, state=state, city=city, experience=experience_levels[xp], bio=bio)
     return "User not found", 404
 
     
@@ -215,7 +226,7 @@ def messages():
 
     # AUTOSCROLL to bottom of chat/conversation so the most recent is displayed?
 
-    
+
     return render_template('messages.html')
 
 

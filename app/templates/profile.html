@@ -3,20 +3,22 @@
 {% block content %}
 <div class="container">
     <div class="profile-header">
-        <div class="profile-info">
+        <div class="profile-info-left">
             <h2>Welcome, {{ username }}!</h2>
             <p>Email: {{ email }}</p>
             <p>Location: {{ city }}, {{ state }}</p>
             <p>Experience: {{ experience }}</p>
     
         </div>
-        <div class="profile-pic"></div>
+        <div class="profile-info-right">
+            <div class="profile-pic"></div>
+        </div>
     </div>
 
     <div class="profile-section">
         <h3>About</h3>
         <p><strong>{{ fname }} {{ lname }}</strong></p>
-        <p>{{ bio }}</p>
+        <p>"{{ bio }}"</p>
     </div>
 
     <div class="profile-section">
