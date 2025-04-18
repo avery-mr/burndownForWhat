@@ -176,6 +176,18 @@ def events():
     events = cur.fetchall()  
     print(events)  
 
+    # It would be cool here to find a way to let the user click the join event button to register
+    # would be nice if clicking register would increase the registered count
+    # would be extra nice if user couldn't join an event they've already joined (same for host, but host should be automatically joined when creating the event)
+    # Also cool if the event entry turned a color when it was full
+    # even cooler if it could turn another color if user is registered and maybe get rid of join button
+
+    # future what if:  add an expansion info area or popup for additional event details
+    #                  add host name and possibly registered attendees names
+    #                  add specific time of event in addition to date
+    #                  add more precise location, etc
+
+
     cur.close()
     conn.close()
 
@@ -189,6 +201,19 @@ def events():
 def messages():
     if 'username' not in session:
         return redirect(url_for('login'))
+    
+    username = session.get('username')
+    userID = session.get('userID')
+
+    # POPULATE MESSAGE BUDDIES LIST
+    # not quite sure how to tackle this
+    # something like SELECT * FROM "Message" WHERE userid == SenderID or userid == ReceiverID
+    # but then appendUnique every sender/recipient who isn't the user so we have a list of ids of unique friends that the user has messaged.
+    # Get friend username from "User" for each unique friend user id for display
+
+    # AND THEN we still have to display only the mesages between user and friend, and find a way to switch between friends by selecting from the site
+
+
     return render_template('messages.html')
 
 @app.route('/locations')
@@ -201,7 +226,14 @@ def locations():
 def directory():
     if 'username' not in session:
         return redirect(url_for('login'))
-    return render_template('directory.html')
+    
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM "User" ORDER BY lastname;')
+
+    users = cur.fetchall()
+
+    return render_template('directory.html', users=users)
 
 @app.route('/create_profile', methods=['GET', 'POST'])
 def create_profile():
