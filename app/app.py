@@ -80,25 +80,27 @@ def selectEvent_db():
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
-    if 'username' in session:
+    if 'username' in session:                          # checks if there is a user currently 'logged in'
         return redirect(url_for('profile'))
-    if request.method == 'POST':
-        username = request.form['username'].strip()
+    if request.method == 'POST':                          # this get run when the user clicks 'Log In'
+        username = request.form['username'].strip()       # assign the entered name to username
 
         conn = get_connection()
         cur = conn.cursor()
-        cur.execute('SELECT 1 FROM "User" WHERE Username = %s;', (username,))
+        cur.execute('SELECT userid FROM "User" WHERE Username = %s;', (username,))     # check if username exists in the database
         result = cur.fetchone()
 
         
         cur.close()
         conn.close()
 
-        if result:
+        if result:     
+            session['userID'] = result[0]                                          # if username does exist in database, assign it to session and redirect to profile page
             session['username'] = username
+            print("username: " + session['username'] + ", userID: " + str(session['userID']) )
             return redirect(url_for('profile'))
         else: 
-            error = "User does not exist"
+            error = "User does not exist"                         # if username is not in db, return error message
             return render_template('login.html', error=error)
 
     return render_template('login.html')
@@ -108,9 +110,9 @@ def login():
 
 @app.route('/profile')
 def profile():
-    if 'username' not in session:
-        return redirect(url_for('login'))
-    username = session.get('username')
+    if 'username' not in session:                      # this is at the beginning of each route.  
+        return redirect(url_for('login'))              # basically just checks if a user is logged in, if not send to login page.  This way someone can't navigate manually do page with url wihtout signing in
+    username = session.get('username')                 # get logged in username from session
 
     conn = get_connection()
     cur = conn.cursor()
@@ -126,7 +128,7 @@ def profile():
     return "User not found", 404
 
     
-@app.route('/events')
+@app.route('/events', methods=['GET', 'POST'])
 def events():
     if 'username' not in session:
         return redirect(url_for('login'))
@@ -138,7 +140,21 @@ def events():
 
     if request.method == 'POST':
         # insert event from form here
+        eventHostID = session.get('userID')
+        eventTitle = request.form['event-title']
+        eventDate = request.form['event-date']
+        eventLocation = request.form['event-location'].strip()
+        eventCapacity = request.form['event-count']
+        eventRegistered = 1
 
+        cur.execute('''
+            INSERT INTO "Event" 
+            (HostID, DateTime, Location, Capacity, Registered, Notes) 
+            VALUES (%s, %s, %s, %s, %s, %s);''', (eventHostID, eventDate, eventLocation, eventCapacity, eventRegistered, eventTitle,))
+
+        conn.commit()
+        cur.close()
+        conn.close()
         return redirect(url_for('events'))
 
     # cur.execute('''
@@ -198,13 +214,12 @@ def create_profile():
         userState = request.form['userState'].strip()
         userXP = request.form['userXP'].strip()
         bio = request.form['bio']
-        profilePic = request.form['profilePic'].strip()
 
  
         conn = get_connection()
         cur = conn.cursor()
-        cur.execute('''INSERT INTO "User" (username, email, firstname, lastname, state, city, experience, bio, picture)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);''', (username, userEmail, firstName, lastName, userCity, userState, userXP, bio, profilePic,))
+        cur.execute('''INSERT INTO "User" (username, email, firstname, lastname, state, city, experience, bio)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s);''', (username, userEmail, firstName, lastName, userState, userCity, userXP, bio))
         conn.commit()
         cur.close()
         conn.close()           

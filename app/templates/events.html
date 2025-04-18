@@ -7,15 +7,15 @@
     <div class="event-page-container">
         <div class="event-form-container">
             <h2>Create Event</h2>
-            <form class="event-form">
+            <form class="event-form" method="POST">
                 <label for="event-title">Event Title</label>
-                <input type="text" id="event-title" required><br>
+                <input type="text" id="event-title" name="event-title" required><br>
                 <label for="event-date">Date</label>
-                <input type="date" id="event-date" required><br>
+                <input type="date" id="event-date" name="event-date" required><br>
                 <label for="event-location">Location</label>
-                <input type="text" id="event-location" required><br>
+                <input type="text" id="event-location" name="event-location" required><br>
                 <label for="event-count">Buddies Needed</label>
-                <input type="number" id="event-count" required><br>
+                <input type="number" id="event-count" name="event-count" required><br>
                 <button type="submit">Post Event</button>
             </form>
         </div>
