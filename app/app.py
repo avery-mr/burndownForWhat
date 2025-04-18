@@ -213,14 +213,21 @@ def messages():
 
     # AND THEN we still have to display only the mesages between user and friend, and find a way to switch between friends by selecting from the site
 
+    # AUTOSCROLL to bottom of chat/conversation so the most recent is displayed?
 
+    
     return render_template('messages.html')
+
+
 
 @app.route('/locations')
 def locations():
     if 'username' not in session:
         return redirect(url_for('login'))
     return render_template('locations.html')
+
+
+
 
 @app.route('/directory')
 def directory():
@@ -230,10 +237,18 @@ def directory():
     conn = get_connection()
     cur = conn.cursor()
     cur.execute('SELECT * FROM "User" ORDER BY lastname;')
+    # would be nice here to include an 'add friend' button next to all users who are not yet friends.  
+    # clicking add friend would add an entry to 'buddies' table where user1 and user2 are friends
+    # we would want to make sure that no duplicates occur, maybe by removing 'add friend' button for buddies that are already friends
+    # also make sure that table rows aren't duplicated, e.g., user1, user2 is the same as user2, user1
 
     users = cur.fetchall()
 
     return render_template('directory.html', users=users)
+
+
+
+
 
 @app.route('/create_profile', methods=['GET', 'POST'])
 def create_profile():
