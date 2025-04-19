@@ -90,9 +90,8 @@ def selectEvent_db():
     return selectEvent()
 
 @app.route('/add_buddy', methods=['POST'])
-@login_required
 def add_buddy():
-    if "UserID" not in session:
+    if "username" not in session:
         flash("Please log in to add a buddy.", "error")
         return redirect(url_for('login'))
         
@@ -329,7 +328,8 @@ def directory():
             "lastname": lastname,
             "state": state,
             "city": city,
-            "experience": experience_levels.get(xp, "Experience Level Unknown")
+            "experience": experience_levels.get(xp, "Experience Level Unknown"),
+            "is_buddy": userID in buddy_ids
 
         })
 
