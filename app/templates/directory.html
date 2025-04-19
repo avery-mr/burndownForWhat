@@ -17,8 +17,12 @@
                 <div class="directory-info">
                     <p>{{ user.experience }}</p>
                 </div>
-            </div> 
-            <button class="directory-addfriend-button">Add Buddy</button>
+            </div>
+            <form action="/add_buddy" method="POST">
+                <input type="hidden" name="UserID" value="{{ current_user.UserID }}">
+                <input type="hidden" name="FriendID" value="{{ user.UserID }}">
+                <button type="submit" class="directory-addfriend-button">Add Buddy</button>
+            </form>
         </div>
     {% endfor %}
 </div>
