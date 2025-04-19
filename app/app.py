@@ -88,6 +88,51 @@ def selectMessage_db():
 @app.route('/db_selectEvent')
 def selectEvent_db():
     return selectEvent()
+
+@app.route('/add_buddy', methods=['POST'])
+@login_required
+def add_buddy():
+    if "UserID" not in session:
+        flash("Please log in to add a buddy.", "error")
+        return redirect(url_for('login'))
+        
+    user_id = session['UserID']
+    friend_id = request.form['FriendID']
+
+    #preventing adding self as buddy
+    if str(user_id) == friend_id:
+        flash("You silly goose! You cannot add yourself as a buddy.", "error")
+        return redirect(url_for('directory'))
+
+    try:
+        conn = get_connection()
+        cur = conn.cursor()
+
+        #checking if buddy pair already exists (in either direction)
+        cur.execute('''
+            SELECT 1 FROM Buddy
+            WHERE (UserID = %s AND FriendID = %s)
+            OR (UserID = %s AND FriendID = $s)
+            ''', (UserID, FriendID, FriendID, UserID))
+        if cur.fetchone():
+            flash("This user is already your buddy!", "error")
+            cur.close()
+            conn.close()
+            return redirect(url_for('directory'))
+            
+        #inserting into Buddy table
+        sql = "INSERT INTO Buddy (UserID, FriendID) VALUES (%s, %s)"
+        cur.execute(sql, (user_id, friend_id))
+        conn.commit()
+
+        flash("Buddy added successfully!" "success")
+    except psycopg2.Error as e:
+        flash(f"Error adding Buddy: {e}", "error")
+    finally:
+        cur.close()
+        conn.close()
+
+    return redirect(url_for('directory'))
         
 
 @app.route('/', methods=['GET', 'POST'])
@@ -262,11 +307,18 @@ def directory():
     
     conn = get_connection()
     cur = conn.cursor()
-    cur.execute('SELECT username, firstname, lastname, state, city, experience FROM "User" ORDER BY lastname;')
-
-
+    #fetch all users
+    cur.execute('SELECT userID, username, firstname, lastname, state, city, experience FROM "User" ORDER BY lastname;')
     allUsers = cur.fetchall()
 
+    #fetch current user's buddies (in either direction)
+    cur.execute('''
+        SELECT FriendID FROM Buddy WHERE UserID = %s
+        UNION
+        SELECT UserID FROM Buddy WHERE FriendID = %s
+        ''', (UserID, UserID))
+    buddy_ids = {row[0] for row in cur.fetchall()}
+    
     # here I'm appending all the fetched data to a new array 'users' and replacing experience int with string, then passing the new array to the template
     users = []
     for user in allUsers:
@@ -281,18 +333,17 @@ def directory():
 
         })
 
-    # now go through budy list and find all buddies of current user (by userID)
-
+    cur.close()
+    conn.close()
     
-
-
-
+    # now go through budy list and find all buddies of current user (by userID)
+    
         # would be nice here to include an 'add friend' button next to all users who are not yet friends.  
     # clicking add friend would add an entry to 'buddies' table where user1 and user2 are friends
     # we would want to make sure that no duplicates occur, maybe by removing 'add friend' button for buddies that are already friends
     # also make sure that table rows aren't duplicated, e.g., user1, user2 is the same as user2, user1
 
-    return render_template('directory.html', users=users)
+    return render_template('directory.html', users=users, current_user_id=userID)
 
 
 
