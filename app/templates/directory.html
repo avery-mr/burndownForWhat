@@ -5,7 +5,7 @@
 <div class="container">
     <h2>Belay Buddy Members Directory</h2>
     {% for user in users %}
-        {% if user.userID != current_user_id % }
+        {% if user.userID != current_user_id %}
             <div class="directory-entry">
                 <div class="directory-entry-left">
                     <div class="directory-names">
@@ -21,7 +21,7 @@
                 </div>
                 {% if not user.is_buddy %}
                     <form action="{{ url_for('add_buddy') }}" method="POST">
-                        <input type="hidden" name="FriendID" value="{{ user.UserID }}">
+                        <input type="hidden" name="FriendID" value="{{ user.userID }}">
                         <button type="submit" class="directory-addfriend-button">Add Buddy</button>
                     </form>
                 {% else %}
