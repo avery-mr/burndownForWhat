@@ -124,7 +124,7 @@ def add_buddy():
         cur.execute(sql, (user_id, friend_id))
         conn.commit()
 
-        flash("Buddy added successfully!" "success")
+        flash("Buddy added successfully!", "success")
     except psycopg2.Error as e:
         flash(f"Error adding Buddy: {e}", "error")
     finally:
