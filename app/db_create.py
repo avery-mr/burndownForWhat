@@ -74,6 +74,12 @@ def createBuddy():
             PRIMARY KEY (UserID, FriendID),
             CONSTRAINT FK_userid FOREIGN KEY (UserID) REFERENCES "User"(UserID),
             CONSTRAINT FK_friendid FOREIGN KEY (FriendID) REFERENCES "User"(UserID)
+            CONSTRAINT no_self CHECK (UserID != FriendID)
+
+            CREATE UNIQUE INDEX buddy_pair ON "Buddy" (
+            LEAST(UserID, FriendID),
+            GREATEST(UserID, FriendID)
+            
             ); '''
     return execute_query(sql, "Buddy Table Successfully Created")
 
