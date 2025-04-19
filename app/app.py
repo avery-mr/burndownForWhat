@@ -109,7 +109,7 @@ def add_buddy():
 
         #checking if buddy pair already exists (in either direction)
         cur.execute('''
-            SELECT 1 FROM Buddy
+            SELECT 1 FROM "Buddy"
             WHERE (UserID = %s AND FriendID = %s)
             OR (UserID = %s AND FriendID = %s)
             ''', (user_id, friend_id, friend_id, user_id))
@@ -120,7 +120,7 @@ def add_buddy():
             return redirect(url_for('directory'))
             
         #inserting into Buddy table
-        sql = "INSERT INTO Buddy (UserID, FriendID) VALUES (%s, %s)"
+        sql = 'INSERT INTO "Buddy" (UserID, FriendID) VALUES (%s, %s)'
         cur.execute(sql, (user_id, friend_id))
         conn.commit()
 
