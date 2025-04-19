@@ -53,6 +53,23 @@ a {
     gap: 20px;
 }
 
+.alert-success {
+    background-color: #78c091; /* green from palette */
+    color: #FAF6EA;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 2px solid #5D757B;
+}
+
+.alert-error {
+    background-color: #C95730; /* orange for errors */
+    color: #FAF6EA;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 2px solid #5D757B;
+}     
 
 /* index / login styling */
 .login-container {
