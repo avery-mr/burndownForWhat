@@ -5,7 +5,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h2>You have successfully logged out</h2>
-    <a href="{{ url_for('login') }}">Log Back In</a>
+    <div class="logout-container">
+        <h2>You have successfully logged out</h2>
+        <a href="{{ url_for('login') }}">Log Back In</a>
+    </div>
 </body>
 </html>
