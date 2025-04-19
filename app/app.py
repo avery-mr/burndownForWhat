@@ -95,7 +95,7 @@ def add_buddy():
         flash("Please log in to add a buddy.", "error")
         return redirect(url_for('login'))
         
-    user_id = session['UserID']
+    user_id = session['userID']
     friend_id = request.form['FriendID']
 
     #preventing adding self as buddy
@@ -111,8 +111,8 @@ def add_buddy():
         cur.execute('''
             SELECT 1 FROM Buddy
             WHERE (UserID = %s AND FriendID = %s)
-            OR (UserID = %s AND FriendID = $s)
-            ''', (UserID, FriendID, FriendID, UserID))
+            OR (UserID = %s AND FriendID = %s)
+            ''', (user_id, friend_id, friend_id, user_id))
         if cur.fetchone():
             flash("This user is already your buddy!", "error")
             cur.close()
@@ -307,7 +307,7 @@ def directory():
     conn = get_connection()
     cur = conn.cursor()
     #fetch all users
-    cur.execute('SELECT userID, username, firstname, lastname, state, city, experience FROM "User" ORDER BY lastname;')
+    cur.execute('SELECT userid, username, firstname, lastname, state, city, experience FROM "User" ORDER BY lastname;')
     allUsers = cur.fetchall()
 
     #fetch current user's buddies (in either direction)
@@ -315,21 +315,22 @@ def directory():
         SELECT FriendID FROM Buddy WHERE UserID = %s
         UNION
         SELECT UserID FROM Buddy WHERE FriendID = %s
-        ''', (UserID, UserID))
+        ''', (userID, userID))
     buddy_ids = {row[0] for row in cur.fetchall()}
     
     # here I'm appending all the fetched data to a new array 'users' and replacing experience int with string, then passing the new array to the template
     users = []
     for user in allUsers:
-        username, firstname, lastname, state, city, xp = user
+        userID_val, username_val, firstname, lastname, state, city, xp = user
         users.append({
-            "username": username,
+            "userID": userID_val,
+            "username": username_val,
             "firstname": firstname,
             "lastname": lastname,
             "state": state,
             "city": city,
             "experience": experience_levels.get(xp, "Experience Level Unknown"),
-            "is_buddy": userID in buddy_ids
+            "is_buddy": userID_val in buddy_ids
 
         })
 
