@@ -5,28 +5,31 @@
 <div class="container">
     <h2>Belay Buddy Members Directory</h2>
     {% for user in users %}
-        <div class="directory-entry">
-            <div class="directory-entry-left">
-                <div class="directory-names">
-                    <h3>{{ user.lastname }}, {{ user.firstname }}</h3>
-                    <p>{{ user.username }}</p>
+        {% if user.userID != current_user_id % }
+            <div class="directory-entry">
+                <div class="directory-entry-left">
+                    <div class="directory-names">
+                        <h3>{{ user.lastname }}, {{ user.firstname }}</h3>
+                        <p>{{ user.username }}</p>
+                    </div>
+                    <div class="directory-info">
+                        <p>{{ user.city }}, {{ user.state }}</p>
+                    </div>
+                    <div class="directory-info">
+                        <p>{{ user.experience }}</p>
+                    </div>
                 </div>
-                <div class="directory-info">
-                    <p>{{ user.city }}, {{ user.state }}</p>
-                </div>
-                <div class="directory-info">
-                    <p>{{ user.experience }}</p>
-                </div>
+                {% if not user.is_buddy %}
+                    <form action="{{ url_for('add_buddy') }}" method="POST">
+                        <input type="hidden" name="FriendID" value="{{ user.UserID }}">
+                        <button type="submit" class="directory-addfriend-button">Add Buddy</button>
+                    </form>
+                {% else %}
+                    <span class="directory-addfriend-button" style="background-color: #5D757B; cursor: default;">Buddy</span>
+                {% endif %}
             </div>
-            <form action="/add_buddy" method="POST">
-                <input type="hidden" name="UserID" value="{{ current_user.UserID }}">
-                <input type="hidden" name="FriendID" value="{{ user.UserID }}">
-                <button type="submit" class="directory-addfriend-button">Add Buddy</button>
-            </form>
-        </div>
+        {% endif %}
     {% endfor %}
 </div>
-
-
 
 {% endblock %}
