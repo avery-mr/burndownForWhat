@@ -312,9 +312,9 @@ def directory():
 
     #fetch current user's buddies (in either direction)
     cur.execute('''
-        SELECT FriendID FROM Buddy WHERE UserID = %s
+        SELECT FriendID FROM "Buddy" WHERE UserID = %s
         UNION
-        SELECT UserID FROM Buddy WHERE FriendID = %s
+        SELECT UserID FROM "Buddy" WHERE FriendID = %s
         ''', (userID, userID))
     buddy_ids = {row[0] for row in cur.fetchall()}
     
