@@ -283,7 +283,7 @@ select option {
     border-radius: 8px;
     cursor: pointer;
     line-height: 1.2;
-    height: 52px; /* controls height visually if using 2 lines */
+    height: 52px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -456,16 +456,53 @@ select option {
     border-radius: 10px;
     padding: 5px 20px;
     margin: 10px auto;
+    align-items: center;
+
 }
 
+.directory-entry-left {
+    display: flex;
+    flex: 1;
+    gap:20px;
+}
+
+.directory-names {
+    width: 30%;
+
+}
+
+.directory-info {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
 .directory-entry h3 {
     color:#D9A441;
+    margin-bottom: -5px;
 }
 
-.directory-entry-buttons {
-    background-color:red;
+.directory-addfriend-button {
+    padding: 16px 20px;
+    background-color: #C95730;
+    color: #FAF6EA;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 50px; 
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    justify-content: center;
+    transition: background-color 0.2s;
 }
 
+.directory-addfriend-button:hover {
+    background-color: #813015;
+}
 /* End of CSS for Messages page */
 
 

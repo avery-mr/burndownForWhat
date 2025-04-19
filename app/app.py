@@ -24,6 +24,18 @@ app = Flask(__name__)
 #app.secret_key = 'burndownforwhat'
 app.secret_key = os.getenv("SECRET_KEY", "burndownforwhat")
 
+
+# for displaying experience level names on page
+experience_levels = {
+        1: "Gumby",
+        2: "Crag Tourist",
+        3: "Gear Junkie",
+        4: "Rope Gun",
+        5: "Beta Whisperer",
+        6: "Crag Legend"
+    }
+
+
 @app.route('/db_test')
 def testing():
     try:
@@ -245,15 +257,40 @@ def directory():
     if 'username' not in session:
         return redirect(url_for('login'))
     
+    username = session.get('username')
+    userID = session.get('userID')
+    
     conn = get_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM "User" ORDER BY lastname;')
-    # would be nice here to include an 'add friend' button next to all users who are not yet friends.  
+    cur.execute('SELECT username, firstname, lastname, state, city, experience FROM "User" ORDER BY lastname;')
+
+
+    allUsers = cur.fetchall()
+
+    # here I'm appending all the fetched data to a new array 'users' and replacing experience int with string, then passing the new array to the template
+    users = []
+    for user in allUsers:
+        username, firstname, lastname, state, city, xp = user
+        users.append({
+            "username": username,
+            "firstname": firstname,
+            "lastname": lastname,
+            "state": state,
+            "city": city,
+            "experience": experience_levels.get(xp, "Experience Level Unknown")
+
+        })
+
+    # now go through budy list and find all buddies of current user (by userID)
+
+    
+
+
+
+        # would be nice here to include an 'add friend' button next to all users who are not yet friends.  
     # clicking add friend would add an entry to 'buddies' table where user1 and user2 are friends
     # we would want to make sure that no duplicates occur, maybe by removing 'add friend' button for buddies that are already friends
     # also make sure that table rows aren't duplicated, e.g., user1, user2 is the same as user2, user1
-
-    users = cur.fetchall()
 
     return render_template('directory.html', users=users)
 

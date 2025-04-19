@@ -6,13 +6,19 @@
     <h2>Belay Buddy Members Directory</h2>
     {% for user in users %}
         <div class="directory-entry">
-            <div class="directory-entry-info">
-                <h3>{{ user[4] }}, {{ user[3] }}</h3>
-                <p>{{ user[4] }}, {{ user[3] }}  USERNAME: {{ user[1] }} EMAIL: {{ user[2] }}</p>
-            </div>
-            <div class="directory-entry-buttons">
-                <button>button</button>
-            </div>
+            <div class="directory-entry-left">
+                <div class="directory-names">
+                    <h3>{{ user.lastname }}, {{ user.firstname }}</h3>
+                    <p>{{ user.username }}</p>
+                </div>
+                <div class="directory-info">
+                    <p>{{ user.city }}, {{ user.state }}</p>
+                </div>
+                <div class="directory-info">
+                    <p>{{ user.experience }}</p>
+                </div>
+            </div> 
+            <button class="directory-addfriend-button">Add Buddy</button>
         </div>
     {% endfor %}
 </div>
