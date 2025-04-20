@@ -28,7 +28,13 @@
     </div>
     <div class="msg-chat-container">
         <div class="msg-chat-window">
-            <div class="chat-message received">
+            {% for message in messages %}
+                <div class="chat-message received">
+                    <p><strong>{{ message[2] }} </strong>{{ message[0] }}</p>
+                <span class="timestamp">{{ message[1] }}</span>
+
+            {% endfor %}
+            <!-- <div class="chat-message received">
                 <p><strong>JaneClimbs: </strong>Hey RG28, I saw you want to climb this Sat at Movement in Denver. I’m interested!</p>
                 <span class="timestamp">4/11/25 9:51 PM</span>
             </div>
@@ -75,7 +81,7 @@
             <div class="chat-message received">
                 <p>even more conversation</p>
                 <span class="timestamp">later</span>
-            </div>
+            </div> -->
     
         </div>
         <div class="msg-form">

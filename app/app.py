@@ -326,8 +326,16 @@ def messages():
                 VALUES (%s, %s, %s, %s);''', (userID, chat_buddy_id, message, timestamp))
             conn.commit()
 
+    
 
-            # load messages after selecting buddy or sending message
+    # load messages after selecting buddy or sending message
+    if chat_buddy_id:
+        cur.execute('''
+            SELECT text, timestamp, senderid, receiverid FROM "Message"
+            WHERE (senderid = %s AND receiverid = %s) OR (receiverid = %s AND senderid = %s)
+            ORDER BY timestamp ASC;''', (userID, chat_buddy_id, chat_buddy_id, userID))
+        
+        messages = cur.fetchall()
 
 
 
