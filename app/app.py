@@ -264,7 +264,7 @@ def events():
 
 
 
-@app.route('/messages')
+@app.route('/messages', methods=['GET', 'POST'])
 def messages():
     if 'username' not in session:
         return redirect(url_for('login'))
@@ -291,16 +291,41 @@ def messages():
         UNION
         SELECT UserID FROM "Buddy" WHERE FriendID = %s
         ''', (userID, userID))
-    buddy_ids = {row[0] for row in cur.fetchall()}
-    print("buddy_ids:")
-    print(buddy_ids)
+    buddy_ids = {row[0] for row in cur.fetchall()}   # grab the id of each friend (from either side of friendship)
+    # print("buddy_ids:")
+    # print(buddy_ids)
 
     buddy_names =[]
-    for id in buddy_ids:
+    for id in buddy_ids:       # collect names of friend buddies
         cur.execute('SELECT userid, username from "User" where userid = %s;', (id,))
         buddy_names.append(cur.fetchone())
     
-    print(buddy_names[0])
+    # print(buddy_names[0])
+    chat_buddy_id = None       # to store selected buddy for chat
+
+    messages = []      # to store messages
+
+    if request.method == "POST":
+        if 'buddy-id' in request.form:
+            chat_buddy_id = int(request.form.get('buddy-id'))        # set buddy id to selected buddy in list
+            print('selected buddy: ' + str(chat_buddy_id))
+
+
+        elif chat_buddy_id and 'message' in request.form:     # if there is a message in the send form box, insert it into the Message table
+            message = request.form.get('message').strip()
+            timestamp = datetime.now()
+
+            print("message: " + message)
+            print("timestamp: " + str(timestamp))
+            print("chat buddy: " + str(chat_buddy_id))
+
+            
+
+
+            # load messages after selecting buddy or sending message
+
+
+
 
     return render_template('messages.html', buddy_names=buddy_names)
 
