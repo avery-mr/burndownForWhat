@@ -282,8 +282,27 @@ def messages():
 
     # AUTOSCROLL to bottom of chat/conversation so the most recent is displayed?
 
+    conn = get_connection()
+    cur = conn.cursor()
 
-    return render_template('messages.html')
+    #run through all rows in buddy list looking for any pair (user1, user2) that contains userID
+    cur.execute('''
+        SELECT FriendID FROM "Buddy" WHERE UserID = %s
+        UNION
+        SELECT UserID FROM "Buddy" WHERE FriendID = %s
+        ''', (userID, userID))
+    buddy_ids = {row[0] for row in cur.fetchall()}
+    print("buddy_ids:")
+    print(buddy_ids)
+
+    buddy_names =[]
+    for id in buddy_ids:
+        cur.execute('SELECT userid, username from "User" where userid = %s;', (id,))
+        buddy_names.append(cur.fetchone())
+    
+    print(buddy_names[0])
+
+    return render_template('messages.html', buddy_names=buddy_names)
 
 
 
