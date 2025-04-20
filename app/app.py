@@ -321,6 +321,10 @@ def messages():
             print("timestamp: " + str(timestamp))
             print("chat buddy: " + str(chat_buddy_id))
 
+            cur.execute('''
+                INSERT INTO "Message" (senderid, receiverid, text, timestamp)
+                VALUES (%s, %s, %s, %s);''', (userID, chat_buddy_id, message, timestamp))
+            conn.commit()
 
 
             # load messages after selecting buddy or sending message
