@@ -15,6 +15,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    height: 48px;
     background-color: #31353B;
     padding: 15px;
     display: flex;
@@ -53,22 +54,29 @@ a {
     gap: 20px;
 }
 
+
+/* flash message styling */
+
+.alert {
+    margin: 10px auto;
+    width: 80%;
+    border-radius: 8px;
+    font-weight: bold;
+    padding: 10px;
+}
+
 .alert-success {
     background-color: #78c091; /* green from palette */
     color: #FAF6EA;
-    padding: 10px;
-    margin: 10px 0;
     border-radius: 8px;
-    border: 2px solid #5D757B;
+    border: 1px solid #5D757B;
 }
 
 .alert-error {
     background-color: #C95730; /* orange for errors */
     color: #FAF6EA;
-    padding: 10px;
-    margin: 10px 0;
     border-radius: 8px;
-    border: 2px solid #5D757B;
+    border: 1px solid #5D757B;
 }     
 
 /* index / login styling */
@@ -117,7 +125,7 @@ a {
     width: 55%;
     padding-top: 14px;
     padding-bottom: 14px;
-    background-color: #C95730; /* rustic orange */
+    background-color: #C95730;
     color: #FAF6EA;
     border: none;
     font-size: 18px;
@@ -211,7 +219,7 @@ select option {
     width: 100%;
     padding-top: 14px;
     padding-bottom: 14px;
-    background-color: #C95730; /* rustic orange */
+    background-color: #C95730;
     color: #FAF6EA;
     border: none;
     font-size: 18px;
@@ -404,7 +412,7 @@ select option {
 }
 
 .chat-message.received {
-    background-color: #151D23c0; /* rustic orange */
+    background-color: #151D23c0;
     margin-right: auto;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
@@ -465,6 +473,22 @@ select option {
 
 
 /* Directory Styling */
+
+.directory-container {
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+}
+
+.directory-header {
+    width: 100%;
+}
+
+.directory-scrolling-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
 .directory-entry {
     display:flex;
     justify-content: space-between;

@@ -1,37 +1,37 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="container">
-    <div class="profile-header">
-        <div class="profile-info-left">
-            <h2>Welcome, {{ username }}!</h2>
-            <p>Email: {{ email }}</p>
-            <p>Location: {{ city }}, {{ state }}</p>
-            <p>Experience: {{ experience }}</p>           
-        </div>
-        <div class="profile-info-right">
-            <div class="profile-pic"></div>
-        </div>
-    </div>
 
-    <div class="profile-section">
-        <h3>About</h3>
-        <p><strong>{{ fname }} {{ lname }}</strong></p>
-        <p>"{{ bio }}"</p>
+<div class="profile-header">
+    <div class="profile-info-left">
+        <h2>Welcome, {{ username }}!</h2>
+        <p>Email: {{ email }}</p>
+        <p>Location: {{ city }}, {{ state }}</p>
+        <p>Experience: {{ experience }}</p>           
     </div>
-
-    <div class="profile-section">
-        <h3>Current Events</h3>
-        <p>here's a list of events you're currently enrolled in</p>
-    </div>
-
-    <div class="profile-section">
-        <h3>Past events</h3>
-        <p>list of completed events and maybe some pics or other info?</p>
-    </div>
-    <div class="profile-section">
-        <h3>Buddies</h3>
-        <p>list of connections / climbing partners / buddies</p>
+    <div class="profile-info-right">
+        <div class="profile-pic"></div>
     </div>
 </div>
+
+<div class="profile-section">
+    <h3>About</h3>
+    <p><strong>{{ fname }} {{ lname }}</strong></p>
+    <p>"{{ bio }}"</p>
+</div>
+
+<div class="profile-section">
+    <h3>Current Events</h3>
+    <p>here's a list of events you're currently enrolled in</p>
+</div>
+
+<div class="profile-section">
+    <h3>Past events</h3>
+    <p>list of completed events and maybe some pics or other info?</p>
+</div>
+<div class="profile-section">
+    <h3>Buddies</h3>
+    <p>list of connections / climbing partners / buddies</p>
+</div>
+
 {% endblock %}

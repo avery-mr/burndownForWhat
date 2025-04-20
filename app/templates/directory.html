@@ -2,8 +2,11 @@
 
 {% block content %}
 
-<div class="container">
-    <h2>Belay Buddy Members Directory</h2>
+<div class="directory-container">
+    <div class="directory-header">
+        <h2>Belay Buddy Members Directory</h2>
+    </div>
+    <div class="directory-scrolling-list">
     {% for user in users %}
         {% if user.userID != current_user_id %}
             <div class="directory-entry">
@@ -25,11 +28,14 @@
                         <button type="submit" class="directory-addfriend-button">Add Buddy</button>
                     </form>
                 {% else %}
-                    <span class="directory-addfriend-button" style="background-color: #5D757B; cursor: default;">Buddy</span>
+                    <span class="directory-addfriend-button" style="background-color: #5D757B; cursor: default; width:78px; height: 26px">Buddy</span>
                 {% endif %}
             </div>
         {% endif %}
     {% endfor %}
+    </div>
+    
 </div>
+
 
 {% endblock %}

@@ -3,123 +3,121 @@
 {% block content %}
 
 
-<div class="container">
-    <div class="event-page-container">
-        <div class="event-form-container">
-            <h2>Create Event</h2>
-            <form class="event-form" method="POST">
-                <label for="event-title">Event Title</label>
-                <input type="text" id="event-title" name="event-title" required><br>
-                <label for="event-date">Date</label>
-                <input type="date" id="event-date" name="event-date" required><br>
-                <label for="event-location">Location</label>
-                <input type="text" id="event-location" name="event-location" required><br>
-                <label for="event-count">Buddies Needed</label>
-                <input type="number" id="event-count" name="event-count" required><br>
-                <button type="submit">Post Event</button>
-            </form>
-        </div>
-        <div class="event-posts-container">
-            <h2>Open Events</h2>
-            <div class="event-posts-scrolling-container">
+<div class="event-page-container">
+    <div class="event-form-container">
+        <h2>Create Event</h2>
+        <form class="event-form" method="POST">
+            <label for="event-title">Event Title</label>
+            <input type="text" id="event-title" name="event-title" required><br>
+            <label for="event-date">Date</label>
+            <input type="date" id="event-date" name="event-date" required><br>
+            <label for="event-location">Location</label>
+            <input type="text" id="event-location" name="event-location" required><br>
+            <label for="event-count">Buddies Needed</label>
+            <input type="number" id="event-count" name="event-count" required><br>
+            <button type="submit">Post Event</button>
+        </form>
+    </div>
+    <div class="event-posts-container">
+        <h2>Open Events</h2>
+        <div class="event-posts-scrolling-container">
 
-                <!-- This will be our dynamically loading div for events -->
-                
-                {% for event in events %}
+            <!-- This will be our dynamically loading div for events -->
+            
+            {% for event in events %}
 
-                <div class="event-entry">
-                    <div class="event-entry-top">
-                        <p class="event-name"><strong>{{ event[6] }}</strong></p>
-                        <p class="event-attendance">{{ event[5] }}/{{ event[4] }}</p>
-                    </div>
-                    <div class="event-entry-bottom">
-                        <div class="event-details">
-                            <p>Location: {{ event[3] }}</p>
-                            <p>Date: {{ event[2].strftime('%B %d, %Y') }}</p>
-                        </div>
-                        <button class="event-join-button">Join<br>Event</button>
-                    </div>
+            <div class="event-entry">
+                <div class="event-entry-top">
+                    <p class="event-name"><strong>{{ event[6] }}</strong></p>
+                    <p class="event-attendance">{{ event[5] }}/{{ event[4] }}</p>
                 </div>
-
-
-                {% endfor %}
-                
-               
-
-
-                <!------------------>
-                <!-- <div class="event-entry">
-                    <div class="event-entry-top">
-                        <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
-                        <p class="event-attendance">0/4</p>
+                <div class="event-entry-bottom">
+                    <div class="event-details">
+                        <p>Location: {{ event[3] }}</p>
+                        <p>Date: {{ event[2].strftime('%B %d, %Y') }}</p>
                     </div>
-                    <div class="event-entry-bottom">
-                        <div class="event-details">
-                            <p>Location: Boulder, CO</p>
-                            <p>Date: April 20, 2025</p>
-                        </div>
-                        <button class="event-join-button">Join<br>Event</button>
-                    </div>
-                </div> -->
-                <!------------------>
-                <!-- <div class="event-entry">
-                    <div class="event-entry-top">
-                        <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
-                        <p class="event-attendance">0/4</p>
-                    </div>
-                    <div class="event-entry-bottom">
-                        <div class="event-details">
-                            <p>Location: Boulder, CO</p>
-                            <p>Date: April 20, 2025</p>
-                        </div>
-                        <button class="event-join-button">Join<br>Event</button>
-                    </div>
-                </div> -->
-                <!------------------>
-                <!-- <div class="event-entry">
-                    <div class="event-entry-top">
-                        <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
-                        <p class="event-attendance">0/4</p>
-                    </div>
-                    <div class="event-entry-bottom">
-                        <div class="event-details">
-                            <p>Location: Boulder, CO</p>
-                            <p>Date: April 20, 2025</p>
-                        </div>
-                        <button class="event-join-button">Join<br>Event</button>
-                    </div>
-                </div> -->
-                <!------------------>
-                <!-- <div class="event-entry">
-                    <div class="event-entry-top">
-                        <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
-                        <p class="event-attendance">0/4</p>
-                    </div>
-                    <div class="event-entry-bottom">
-                        <div class="event-details">
-                            <p>Location: Boulder, CO</p>
-                            <p>Date: April 20, 2025</p>
-                        </div>
-                        <button class="event-join-button">Join<br>Event</button>
-                    </div>
-                </div> -->
-                <!------------------>
-                <!-- <div class="event-entry">
-                    <div class="event-entry-top">
-                        <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
-                        <p class="event-attendance">0/4</p>
-                    </div>
-                    <div class="event-entry-bottom">
-                        <div class="event-details">
-                            <p>Location: Boulder, CO</p>
-                            <p>Date: April 20, 2025</p>
-                        </div>
-                        <button class="event-join-button">Join<br>Event</button>
-                    </div>
-                </div> -->
-                <!------------------>
-
+                    <button class="event-join-button">Join<br>Event</button>
+                </div>
             </div>
+
+
+            {% endfor %}
+            
+            
+
+
+            <!------------------>
+            <!-- <div class="event-entry">
+                <div class="event-entry-top">
+                    <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
+                    <p class="event-attendance">0/4</p>
+                </div>
+                <div class="event-entry-bottom">
+                    <div class="event-details">
+                        <p>Location: Boulder, CO</p>
+                        <p>Date: April 20, 2025</p>
+                    </div>
+                    <button class="event-join-button">Join<br>Event</button>
+                </div>
+            </div> -->
+            <!------------------>
+            <!-- <div class="event-entry">
+                <div class="event-entry-top">
+                    <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
+                    <p class="event-attendance">0/4</p>
+                </div>
+                <div class="event-entry-bottom">
+                    <div class="event-details">
+                        <p>Location: Boulder, CO</p>
+                        <p>Date: April 20, 2025</p>
+                    </div>
+                    <button class="event-join-button">Join<br>Event</button>
+                </div>
+            </div> -->
+            <!------------------>
+            <!-- <div class="event-entry">
+                <div class="event-entry-top">
+                    <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
+                    <p class="event-attendance">0/4</p>
+                </div>
+                <div class="event-entry-bottom">
+                    <div class="event-details">
+                        <p>Location: Boulder, CO</p>
+                        <p>Date: April 20, 2025</p>
+                    </div>
+                    <button class="event-join-button">Join<br>Event</button>
+                </div>
+            </div> -->
+            <!------------------>
+            <!-- <div class="event-entry">
+                <div class="event-entry-top">
+                    <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
+                    <p class="event-attendance">0/4</p>
+                </div>
+                <div class="event-entry-bottom">
+                    <div class="event-details">
+                        <p>Location: Boulder, CO</p>
+                        <p>Date: April 20, 2025</p>
+                    </div>
+                    <button class="event-join-button">Join<br>Event</button>
+                </div>
+            </div> -->
+            <!------------------>
+            <!-- <div class="event-entry">
+                <div class="event-entry-top">
+                    <p class="event-name"><strong>Gym Climb at The Spot</strong></p>
+                    <p class="event-attendance">0/4</p>
+                </div>
+                <div class="event-entry-bottom">
+                    <div class="event-details">
+                        <p>Location: Boulder, CO</p>
+                        <p>Date: April 20, 2025</p>
+                    </div>
+                    <button class="event-join-button">Join<br>Event</button>
+                </div>
+            </div> -->
+            <!------------------>
+
         </div>
     </div>
 </div>
