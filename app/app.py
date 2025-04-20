@@ -311,15 +311,16 @@ def messages():
             print('selected buddy: ' + str(chat_buddy_id))
 
 
-        elif chat_buddy_id and 'message' in request.form:     # if there is a message in the send form box, insert it into the Message table
-            message = request.form.get('message').strip()
+        elif 'msg' in request.form:     # if there is a message in the send form box, insert it into the Message table
+            print('button worked')
+            chat_buddy_id = int(request.form.get('msg-buddy-id'))  # pull buddy id back from form - keeps getting set to None on page load
+            message = request.form.get('msg').strip()
             timestamp = datetime.now()
 
             print("message: " + message)
             print("timestamp: " + str(timestamp))
             print("chat buddy: " + str(chat_buddy_id))
 
-            
 
 
             # load messages after selecting buddy or sending message
@@ -327,7 +328,7 @@ def messages():
 
 
 
-    return render_template('messages.html', buddy_names=buddy_names)
+    return render_template('messages.html', buddy_names=buddy_names, messages=messages, chat_buddy_id=chat_buddy_id, userID=userID)
 
 
 

@@ -79,8 +79,9 @@
     
         </div>
         <div class="msg-form">
-            <form method="post">
-                <input type="text" name="message" placeholder="Type your message here..." required>
+            <form method="post" action="{{ url_for('messages') }}">
+                <input type="hidden" name="msg-buddy-id" value="{{ chat_buddy_id }}">
+                <input type="text" name="msg" placeholder="Type your message here..." required>
                 <button type="submit">Send</button>
             </form>
         </div>
