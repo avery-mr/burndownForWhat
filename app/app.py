@@ -1,3 +1,30 @@
+"""
+File: app.py
+Project: Belay Buddy (Team 2 BurndownForWhat)  
+Author: Mitchell Avery et al
+
+Description:  
+    Main Flask application file for Belay Buddy web app. 
+    Handles routing, session management, database interactions, and page rendering.  
+    The app connects to a PostgreSQL database using psycopg2 and uses Jinja2 for templating.
+
+Usage:  
+    - Run this file with Flask to launch the web server.  
+    - Defines routes for login, profile creation, events, messages, and directory browsing.  
+    - Interacts with PostgreSQL through helper modules for seeding, creating, and querying data.  
+
+Dependencies:  
+    - Flask  
+    - psycopg2  
+    - os  
+    - datetime  
+    - Jinja2  
+
+Citations:  
+    - https://flask.palletsprojects.com/en/stable/quickstart/  
+    - https://www.psycopg.org/docs/  
+"""
+
 import psycopg2
 import os
 from datetime import datetime

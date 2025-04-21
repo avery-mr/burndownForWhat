@@ -1,3 +1,21 @@
+/* 
+  File: style.css
+  Project: Belay Buddy (Team 2 - BurndownForWhat)
+  Author: Mitchell Avery et al
+  Date: 04/08/2025
+  Description: Style sheet for entire Belay Buddy App
+
+  Citations:
+    - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+    - https://www.w3schools.com/css/css3_flexbox.asp
+
+  Notes: Many styles should be combined for organization and for uniformity accross app.  Flexbox is very confusing and a lot of the layout is a result of trial and error until it looked
+         decent, so there are probably a lot of areas of redundancy and parts that do absolutely nothing
+*/
+
+
+
+
 /* general styling / layout template / navbar */
 body {
     font-family: 'Franaklin Gothic Medium', sans-serif;
