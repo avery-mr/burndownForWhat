@@ -394,6 +394,20 @@ select option {
     border-radius: 10px;
 }
 
+.chat-empty-message {
+    background-color:#5d757bc4;
+    width: 50%;
+    margin: 200px auto;
+    text-align: center;
+    font-weight: bold;
+    color:#FAF6EA;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 .chat-message {
     max-width: 70%;
     margin: 5px 0;

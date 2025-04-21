@@ -230,6 +230,8 @@ def events():
     #             ''')
     
     # print(cur.fetchone())
+
+    # looking only for events that haven't expired yet
     cur.execute('''
         SELECT * from "Event"
         WHERE DateTime >= %s
@@ -335,7 +337,26 @@ def messages():
             WHERE (senderid = %s AND receiverid = %s) OR (receiverid = %s AND senderid = %s)
             ORDER BY timestamp ASC;''', (userID, chat_buddy_id, chat_buddy_id, userID))
         
-        messages = cur.fetchall()
+        messages_raw = cur.fetchall()
+
+        cur.execute('SELECT username FROM "User" WHERE userid = %s;', (chat_buddy_id,))
+        chat_buddy_name = cur.fetchone()
+
+
+        # map to determine sender and recipient user names
+        user_map = {userID: "You", chat_buddy_id: chat_buddy_name}
+
+        messages = []
+        for message in messages_raw:
+            text, timestamp, senderID, receiverID = message
+            messages.append({
+                "text" : text,
+                "time" : timestamp.strftime('%Y-%m-%d %H:%M'),
+                "sender": user_map.get(senderID, "Unknown"),
+                "receiver": user_map.get(receiverID, "unkown"),
+                "sent_by_user": senderID == userID          # test if user is sender, for styling ()
+            })
+
 
 
 
