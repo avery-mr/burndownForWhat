@@ -490,7 +490,7 @@ select option {
 /* Directory Styling */
 
 .directory-container {
-    height: 650px;
+    height: 80vh;
     display: flex;
     flex-direction: column;
 }

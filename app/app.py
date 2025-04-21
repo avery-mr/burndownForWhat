@@ -332,19 +332,23 @@ def messages():
 
     # load messages after selecting buddy or sending message
     if chat_buddy_id:
+        print("using chat buddy id " + str(chat_buddy_id))
+        print("using user id " + str(userID))
         cur.execute('''
             SELECT text, timestamp, senderid, receiverid FROM "Message"
             WHERE (senderid = %s AND receiverid = %s) OR (receiverid = %s AND senderid = %s)
-            ORDER BY timestamp ASC;''', (userID, chat_buddy_id, chat_buddy_id, userID))
+            ORDER BY timestamp ASC;''', (userID, chat_buddy_id, userID, chat_buddy_id))
         
         messages_raw = cur.fetchall()
 
         cur.execute('SELECT username FROM "User" WHERE userid = %s;', (chat_buddy_id,))
         chat_buddy_name = cur.fetchone()
 
-
+        print("chat buddy: " + str(chat_buddy_name))
+        print('messages:')
+        print(messages_raw)
         # map to determine sender and recipient user names
-        user_map = {userID: "You", chat_buddy_id: chat_buddy_name}
+        user_map = {userID: "You", chat_buddy_id: chat_buddy_name[0]}
 
         messages = []
         for message in messages_raw:
