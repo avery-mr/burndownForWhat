@@ -21,6 +21,16 @@
       filter and discover climbing meetups based on criteria such as skill level, location, and climbing discipline, significantly enhancing the platform’s 
       usability and relevance.
   * What you had planned for the future
+    * In addition to completing the events functionality outlined above, we have identified several goals that would be well-suited for upcoming development sprints. These include:
+      * Implementing live messaging functionality
+        * While technically feasible, we determined early on that real-time messaging would introduce a new layer of complexity and significantly broaden the project’s scope.
+      * Enhancing login security.
+      * Developing a gear exchange or marketplace page
+        * This feature would allow users to buy, sell, or trade climbing gear within the community.
+      * Creating a "Crag Wall" forum page
+        * Envisioned as a community-driven message forum, this would give users a space to share tips, trip reports, and general climbing discussions.
+      * Adding more detailed fields across all pages
+      *   We plan to expand the depth and usability of each feature by incorporating additional data fields and UI improvements.
   * Any known problems (bugs, issues)
   * What we learned, what we'd do differently, what worked and didn't, alternatives we thought, explanation of why we made different decisions.
 * List your public hosting site and make sure that it is available: https://belay-buddy.onrender.com/
