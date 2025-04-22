@@ -8,4 +8,5 @@
   * What you were in the middle of implementing
   * What you had planned for the future
   * Any known problems (bugs, issues)
+  * What we learned, what we'd do differently, what worked and didn't, alternatives we thought, explanation of why we made different decisions.
 * List your public hosting site and make sure that it is available: https://belay-buddy.onrender.com/
