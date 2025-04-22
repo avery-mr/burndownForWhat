@@ -16,8 +16,7 @@
     * We also added an embedded Google Maps search which allows the user to see common climbing areas nearby.
     * This MVP lays the groundwork for a more refined version of the app with expanded functionality and improved user experience in future iterations. 
   * What you were in the middle of implementing
-    * One key feature that remains incomplete is the ability for users to "join" an event, which is essential to fulfilling the minimum use case for the events  
-      functionality. Implementing this feature requires additional backend logic to insert data into a user-event join table, introducing a level of complexity 
+    * One key feature that remains incomplete is the ability for users to "join" an event, which is essential to fulfilling the minimum use case for the events functionality. Implementing this feature requires additional backend logic to insert data into a user-event join table, introducing a level of complexity 
       beyond the basic features completed so far. Additionally, we plan to expand the events feature by introducing search functionality. This would enable users to 
       filter and discover climbing meetups based on criteria such as skill level, location, and climbing discipline, significantly enhancing the platform’s 
       usability and relevance.
