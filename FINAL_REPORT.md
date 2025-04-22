@@ -10,8 +10,8 @@
      events, and share their passion for climbing. The application includes low-fidelity login functionality, allowing users to log in and maintain their session 
      across multiple pages.
     * Through session tracking, we implemented key features that interact with our database using both GET and POST requests. These features include:
-      * Editing and displaying basic user profile information
-      * Creating and viewing climbing events
+      * Editing and displaying basic user profile information.
+      * Creating and viewing climbing events.
       * Sending and viewing previously sent messages.
     * We also added an embedded Google Maps search which allows the user to see common climbing areas nearby.
     * This MVP lays the groundwork for a more refined version of the app with expanded functionality and improved user experience in future iterations. 
