@@ -31,5 +31,13 @@
       * Adding more detailed fields across all pages
       *   We plan to expand the depth and usability of each feature by incorporating additional data fields and UI improvements.
   * Any known problems (bugs, issues):
+      * Profile does not update with list of buddies/connections and current events once you add a new connection or enroll in a new event
+      * On the events page, under open events, the "join event" buttons are currently not functional
   * What we learned, what we'd do differently, what worked and didn't, alternatives we thought, explanation of why we made different decisions:
+      * What we learned: what it is like to work as a software development team with various people of different levels of experience, and how to collaborate together to come up with a final product.
+      * What we'd do differently: perhaps plan and outline the project scope more from start to finish and establish what the milestones are for the coding part of the project (get started earlier).
+      * What worked: in the initial stages we used Trello for our project, which was very effective. We should continue using this as a project management tool in the future.
+      * What didn't work: using outlook for communication was very ineffective, so moving to Whatsapp or a group chat allowed for more collaboration.
+      * Alternatives we thought: 
+      * Why we made different decisions:
 * List your public hosting site and make sure that it is available: https://belay-buddy.onrender.com/
