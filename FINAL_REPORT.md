@@ -3,7 +3,7 @@
 * **Project Title:** Belay Buddy
 * **Team members' names:** Eric McAfee, Mitchell Avery, Christopher Taylor, Ahmed Khan, Tiffany LaRue
 * **Project tracker link:** https://drive.google.com/drive/folders/1beZIkaFKalVyTnrPjIL3pgL30ewgVrrh
-* **Link to 5 minute video:** a demo for a potential customer: https://cuboulder.zoom.us/rec/share/jRfsJuTc0fpkTnPskpOIIndSL-ls8Ff0H6LU_8gnxifieEtBH9R_q_oYoWBWF14.-6T2McErhz455WYD?startTime=1745298710000 Passcode: ZFK+h8Cx
+* **Link to 5 minute video (a demo for a potential customer):** https://cuboulder.zoom.us/rec/share/jRfsJuTc0fpkTnPskpOIIndSL-ls8Ff0H6LU_8gnxifieEtBH9R_q_oYoWBWF14.-6T2McErhz455WYD?startTime=1745298710000 Passcode: ZFK+h8Cx
 * **Version control repository link:** https://github.com/avery-mr/burndownForWhat
 * **Final Status Report and reflection for**
   * **What we completed:**
