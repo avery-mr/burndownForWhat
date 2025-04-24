@@ -1,4 +1,6 @@
-* Project Title: Belay Buddy
+## Final Report: Team 2 - Burndown for What?
+
+* *Project Title:* Belay Buddy
 * Team members' names: Eric McAfee, Mitchell Avery, Christopher Taylor, Ahmed Khan, Tiffany LaRue
 * Project tracker link (Instructor can access)
 * Link to 5 minute video: a demo for a potential customer (could be same one you used in the presentation)
@@ -41,3 +43,5 @@
       * Alternatives we thought of: some of the alternatives we thought of in terms of improvement included using Trello to allow for more ownership and manageable deadlines over the course of the project.
       * Why we made different decisions: perhaps due to the time crunch at the end of the project, it became difficult to use the project management tool, which in retrospect, should have been our primary resource when things got tough.
 * List your public hosting site and make sure that it is available: https://belay-buddy.onrender.com/
+* Product Demo: https://cuboulder.zoom.us/rec/share/jRfsJuTc0fpkTnPskpOIIndSL-ls8Ff0H6LU_8gnxifieEtBH9R_q_oYoWBWF14.-6T2McErhz455WYD?startTime=1745298710000
+      * Passcode: ZFK+h8Cx
