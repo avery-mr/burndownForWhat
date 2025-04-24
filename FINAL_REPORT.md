@@ -14,7 +14,7 @@
       * Editing and displaying basic user profile information.
       * Creating and viewing climbing events.
       * Sending and viewing previously sent messages.
-    * We also added an embedded Google Maps search which allows the user to see common climbing areas nearby.
+    * We also added an embedded Google Maps search which allows the user to see climbing areas nearby.
     * This MVP lays the groundwork for a more refined version of the app with expanded functionality and improved user experience in future iterations. 
   * **What we were in the middle of implementing:**
     * One key feature that remains incomplete is the ability for users to "join" an event, which is essential to fulfilling the minimum use case for the events functionality. Implementing this feature requires additional backend logic to insert data into a user-event join table, introducing a level of complexity 
@@ -35,7 +35,7 @@
   * **Any known problems (bugs, issues):**
       * Profile does not update with list of buddies/connections and current events once you add a new connection or enroll in a new event
       * On the events page, under open events, the "join event" buttons are currently not functional
-  * **What we learned, what we'd do differently, what worked and didn't, alternatives we thought, explanation of why we made different decisions:**
+  * **Additional Reflections:**
       * **What we learned:** what it is like to work as a software development team with various people of different levels of experience, and how to collaborate together to come up with a final product.
       * **What we'd do differently:** perhaps plan and outline the project scope more from start to finish and establish what the milestones are for the coding part of the project (get started earlier).
       * **What worked:** in the initial stages we used Trello for our project, which was very effective. We should continue using this as a project management tool in the future.
