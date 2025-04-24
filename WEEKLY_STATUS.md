@@ -1,3 +1,28 @@
+## 04/21/2025
+
+### Summary:
+* The team built out more of the backend, with Mitch and Chris creating most of the code.
+* Team found challenge in getting up to speed on the code that was already built, comments are needed.
+* Tiffany, Chris and Ahmed met and worked on the presentation deck.
+* Team reviewed and updated presentation deck, and assigned presenters.
+* ### Actions:
+* Mitch to add code comments.
+* Eric and Ahmed to complete final report doc. Tiffany to review and submit.
+* Tiffany to record demo video for final report.
+
+## 04/14/2025
+
+### Summary:
+* Over the last week, development work was done on the app. Mitch created a template and the UI for the Login page and Profile page.
+* Tiffany created the UI for Messaging page but it needed some CSS updates for different screen sized.
+* Mitch updated the Messaging page to work correctly.
+* Chris created worked on Render to get our site hosted, and created the PostgreSQL database, the backend tables, and some routes to test the data.
+* Mitch demoed the current code; Tiffany demoed the functionality (UI).
+* Tiffany started a blank FINAL_REPORT.md file.
+* ### Actions:
+* The team to meet to work on the backend.
+* Ahmed to work on the final report doc.
+
 ## 04/7/2025
 
 ### Summary:
